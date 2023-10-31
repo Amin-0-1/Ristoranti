@@ -1,0 +1,70 @@
+# Xcode
+.DS_Store
+DerivedData/
+build/
+*.pbxuser
+*.xcuserstate
+*.xccheckout
+xcuserdata/
+*.swiftpm/
+
+# Swift Package Manager
+.Package.resolved
+.checkouts
+
+# Xcode workspace files
+*.xcworkspace
+
+# AppCode
+.idea/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+
+# Compiled source
+*.o
+*.linkFileList
+*.hmap
+*.ipa
+
+# Swift build
+.build/
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Various settings
+*.tmproperties
+*.xcconfig
+
+# Xcode 4
+*.xcode
+
+# Version control
+vagrant_up
+.terraform/
+
+# Package files
+*.gz
+
+# macOS
+.DS_Store
+
+
+# SPM Package Builder
+.buildFolder/
+
+# SPM Coverage folder
+.cov/
+
+# Mint
+Mintfile
+
+# Mint packages
+Mintfile.swift
+
+# Mint executable
+/usr/local/bin/mint
