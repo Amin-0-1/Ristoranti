@@ -9,23 +9,51 @@
 /* Begin PBXBuildFile section */
 		2715A6B72AF1551A001EE453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6B62AF1551A001EE453 /* AppDelegate.swift */; };
 		2715A6B92AF1551A001EE453 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6B82AF1551A001EE453 /* SceneDelegate.swift */; };
-		2715A6BB2AF1551A001EE453 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6BA2AF1551A001EE453 /* ViewController.swift */; };
-		2715A6BE2AF1551A001EE453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2715A6BC2AF1551A001EE453 /* Main.storyboard */; };
 		2715A6C12AF1551A001EE453 /* Ristoranti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6BF2AF1551A001EE453 /* Ristoranti.xcdatamodeld */; };
 		2715A6C32AF1551B001EE453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2715A6C22AF1551B001EE453 /* Assets.xcassets */; };
 		2715A6C62AF1551B001EE453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2715A6C42AF1551B001EE453 /* LaunchScreen.storyboard */; };
+		2715A6D22AF15BDB001EE453 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6D02AF15BDB001EE453 /* OnboardingVC.swift */; };
+		2715A6D32AF15BDB001EE453 /* OnboardingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2715A6D12AF15BDB001EE453 /* OnboardingVC.xib */; };
+		2715A6D82AF15FE3001EE453 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6D72AF15FE3001EE453 /* OnboardingCoordinator.swift */; };
+		2715A6DB2AF15FFB001EE453 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6DA2AF15FFB001EE453 /* AppCoordinator.swift */; };
+		2715A6DE2AF166BC001EE453 /* SofiaProRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2715A6DD2AF166BC001EE453 /* SofiaProRegular.ttf */; };
+		2715A6E32AF16AEF001EE453 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6E12AF16AEF001EE453 /* OnboardingCell.swift */; };
+		2715A6E42AF16AEF001EE453 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2715A6E22AF16AEF001EE453 /* OnboardingCell.xib */; };
+		2715A6ED2AF1702D001EE453 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6EB2AF16FF5001EE453 /* ReusableView.swift */; };
+		2715A6EE2AF17030001EE453 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6EC2AF16FF5001EE453 /* NibLoadable.swift */; };
+		2715A6F12AF17D6B001EE453 /* OnboardingViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6F02AF17D6B001EE453 /* OnboardingViewDataModel.swift */; };
+		2715A6F62AF18264001EE453 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6F42AF18264001EE453 /* LoginVC.swift */; };
+		2715A6F72AF18264001EE453 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2715A6F52AF18264001EE453 /* LoginVC.xib */; };
+		2715A6FC2AF1B01D001EE453 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6FB2AF1B01D001EE453 /* LoginCoordinator.swift */; };
+		2715A6FE2AF1B055001EE453 /* LoingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */; };
+		2715A7012AF1CFBC001EE453 /* LoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A7002AF1CFBC001EE453 /* LoaderButton.swift */; };
+		2715A7042AF1D337001EE453 /* UserdefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A7032AF1D337001EE453 /* UserdefaultManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2715A6B32AF1551A001EE453 /* Ristoranti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ristoranti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2715A6B62AF1551A001EE453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2715A6B82AF1551A001EE453 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2715A6BA2AF1551A001EE453 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2715A6BD2AF1551A001EE453 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2715A6C02AF1551A001EE453 /* Ristoranti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ristoranti.xcdatamodel; sourceTree = "<group>"; };
 		2715A6C22AF1551B001EE453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2715A6C52AF1551B001EE453 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2715A6C72AF1551B001EE453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2715A6D02AF15BDB001EE453 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		2715A6D12AF15BDB001EE453 /* OnboardingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingVC.xib; sourceTree = "<group>"; };
+		2715A6D72AF15FE3001EE453 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		2715A6DA2AF15FFB001EE453 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		2715A6DD2AF166BC001EE453 /* SofiaProRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SofiaProRegular.ttf; sourceTree = "<group>"; };
+		2715A6E12AF16AEF001EE453 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		2715A6E22AF16AEF001EE453 /* OnboardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
+		2715A6EB2AF16FF5001EE453 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		2715A6EC2AF16FF5001EE453 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		2715A6F02AF17D6B001EE453 /* OnboardingViewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewDataModel.swift; sourceTree = "<group>"; };
+		2715A6F42AF18264001EE453 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		2715A6F52AF18264001EE453 /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		2715A6FB2AF1B01D001EE453 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoingViewModel.swift; sourceTree = "<group>"; };
+		2715A7002AF1CFBC001EE453 /* LoaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderButton.swift; sourceTree = "<group>"; };
+		2715A7032AF1D337001EE453 /* UserdefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserdefaultManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +86,158 @@
 		2715A6B52AF1551A001EE453 /* Ristoranti */ = {
 			isa = PBXGroup;
 			children = (
-				2715A6B62AF1551A001EE453 /* AppDelegate.swift */,
-				2715A6B82AF1551A001EE453 /* SceneDelegate.swift */,
-				2715A6BA2AF1551A001EE453 /* ViewController.swift */,
-				2715A6BC2AF1551A001EE453 /* Main.storyboard */,
+				2715A6CD2AF15BA8001EE453 /* Application */,
+				2715A6CE2AF15BC2001EE453 /* Scene */,
 				2715A6C22AF1551B001EE453 /* Assets.xcassets */,
 				2715A6C42AF1551B001EE453 /* LaunchScreen.storyboard */,
 				2715A6C72AF1551B001EE453 /* Info.plist */,
 				2715A6BF2AF1551A001EE453 /* Ristoranti.xcdatamodeld */,
 			);
 			path = Ristoranti;
+			sourceTree = "<group>";
+		};
+		2715A6CD2AF15BA8001EE453 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6E62AF16EC7001EE453 /* Common */,
+				2715A6DC2AF166AC001EE453 /* Font */,
+				2715A6B62AF1551A001EE453 /* AppDelegate.swift */,
+				2715A6B82AF1551A001EE453 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		2715A6CE2AF15BC2001EE453 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6D92AF15FF0001EE453 /* AppCoordinator */,
+				2715A6CF2AF15BCD001EE453 /* Onboarding */,
+				2715A6F22AF18242001EE453 /* Login */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		2715A6CF2AF15BCD001EE453 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6D62AF15FBB001EE453 /* Coordinator */,
+				2715A6D52AF15FB7001EE453 /* ViewModel */,
+				2715A6D42AF15FB4001EE453 /* View */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		2715A6D42AF15FB4001EE453 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6E02AF16AB5001EE453 /* Cell */,
+				2715A6DF2AF16AAE001EE453 /* VC */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2715A6D52AF15FB7001EE453 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6F02AF17D6B001EE453 /* OnboardingViewDataModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2715A6D62AF15FBB001EE453 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6D72AF15FE3001EE453 /* OnboardingCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2715A6D92AF15FF0001EE453 /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6DA2AF15FFB001EE453 /* AppCoordinator.swift */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		2715A6DC2AF166AC001EE453 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6DD2AF166BC001EE453 /* SofiaProRegular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		2715A6DF2AF16AAE001EE453 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6D02AF15BDB001EE453 /* OnboardingVC.swift */,
+				2715A6D12AF15BDB001EE453 /* OnboardingVC.xib */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2715A6E02AF16AB5001EE453 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6E12AF16AEF001EE453 /* OnboardingCell.swift */,
+				2715A6E22AF16AEF001EE453 /* OnboardingCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2715A6E62AF16EC7001EE453 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2715A7022AF1D32C001EE453 /* Utilities */,
+				2715A6FF2AF1CFB3001EE453 /* Custom */,
+				2715A6E92AF16FE1001EE453 /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2715A6E92AF16FE1001EE453 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6EC2AF16FF5001EE453 /* NibLoadable.swift */,
+				2715A6EB2AF16FF5001EE453 /* ReusableView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2715A6F22AF18242001EE453 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6FB2AF1B01D001EE453 /* LoginCoordinator.swift */,
+				2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */,
+				2715A6F32AF1824D001EE453 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2715A6F32AF1824D001EE453 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6F42AF18264001EE453 /* LoginVC.swift */,
+				2715A6F52AF18264001EE453 /* LoginVC.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2715A6FF2AF1CFB3001EE453 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				2715A7002AF1CFBC001EE453 /* LoaderButton.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		2715A7022AF1D32C001EE453 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2715A7032AF1D337001EE453 /* UserdefaultManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +298,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2715A6F72AF18264001EE453 /* LoginVC.xib in Resources */,
+				2715A6DE2AF166BC001EE453 /* SofiaProRegular.ttf in Resources */,
 				2715A6C62AF1551B001EE453 /* LaunchScreen.storyboard in Resources */,
 				2715A6C32AF1551B001EE453 /* Assets.xcassets in Resources */,
-				2715A6BE2AF1551A001EE453 /* Main.storyboard in Resources */,
+				2715A6E42AF16AEF001EE453 /* OnboardingCell.xib in Resources */,
+				2715A6D32AF15BDB001EE453 /* OnboardingVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +314,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2715A6BB2AF1551A001EE453 /* ViewController.swift in Sources */,
+				2715A6F62AF18264001EE453 /* LoginVC.swift in Sources */,
+				2715A6DB2AF15FFB001EE453 /* AppCoordinator.swift in Sources */,
+				2715A6F12AF17D6B001EE453 /* OnboardingViewDataModel.swift in Sources */,
+				2715A6E32AF16AEF001EE453 /* OnboardingCell.swift in Sources */,
+				2715A7012AF1CFBC001EE453 /* LoaderButton.swift in Sources */,
 				2715A6B72AF1551A001EE453 /* AppDelegate.swift in Sources */,
+				2715A7042AF1D337001EE453 /* UserdefaultManager.swift in Sources */,
+				2715A6EE2AF17030001EE453 /* NibLoadable.swift in Sources */,
+				2715A6FC2AF1B01D001EE453 /* LoginCoordinator.swift in Sources */,
+				2715A6FE2AF1B055001EE453 /* LoingViewModel.swift in Sources */,
+				2715A6ED2AF1702D001EE453 /* ReusableView.swift in Sources */,
+				2715A6D22AF15BDB001EE453 /* OnboardingVC.swift in Sources */,
 				2715A6C12AF1551A001EE453 /* Ristoranti.xcdatamodeld in Sources */,
 				2715A6B92AF1551A001EE453 /* SceneDelegate.swift in Sources */,
+				2715A6D82AF15FE3001EE453 /* OnboardingCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2715A6BC2AF1551A001EE453 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2715A6BD2AF1551A001EE453 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2715A6C42AF1551B001EE453 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -301,7 +477,7 @@
 				INFOPLIST_FILE = Ristoranti/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -330,7 +506,7 @@
 				INFOPLIST_FILE = Ristoranti/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
