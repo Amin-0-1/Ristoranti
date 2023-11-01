@@ -28,6 +28,10 @@
 		2715A6FE2AF1B055001EE453 /* LoingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */; };
 		2715A7012AF1CFBC001EE453 /* LoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A7002AF1CFBC001EE453 /* LoaderButton.swift */; };
 		2715A7042AF1D337001EE453 /* UserdefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A7032AF1D337001EE453 /* UserdefaultManager.swift */; };
+		276299AC2AF1DFA300159501 /* RoundedTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276299A92AF1DF8F00159501 /* RoundedTextfield.swift */; };
+		27CB21672AF29CB80011E4F5 /* SofiaProSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27CB21652AF29CB80011E4F5 /* SofiaProSemiBold.ttf */; };
+		27CB21682AF29CB80011E4F5 /* SofiaProBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27CB21662AF29CB80011E4F5 /* SofiaProBold.ttf */; };
+		27CB216C2AF2A9260011E4F5 /* RoundedTextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27CB216B2AF2A9260011E4F5 /* RoundedTextfield.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,10 @@
 		2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoingViewModel.swift; sourceTree = "<group>"; };
 		2715A7002AF1CFBC001EE453 /* LoaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderButton.swift; sourceTree = "<group>"; };
 		2715A7032AF1D337001EE453 /* UserdefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserdefaultManager.swift; sourceTree = "<group>"; };
+		276299A92AF1DF8F00159501 /* RoundedTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextfield.swift; sourceTree = "<group>"; };
+		27CB21652AF29CB80011E4F5 /* SofiaProSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SofiaProSemiBold.ttf; sourceTree = "<group>"; };
+		27CB21662AF29CB80011E4F5 /* SofiaProBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SofiaProBold.ttf; sourceTree = "<group>"; };
+		27CB216B2AF2A9260011E4F5 /* RoundedTextfield.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundedTextfield.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				2715A6DD2AF166BC001EE453 /* SofiaProRegular.ttf */,
+				27CB21662AF29CB80011E4F5 /* SofiaProBold.ttf */,
+				27CB21652AF29CB80011E4F5 /* SofiaProSemiBold.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -208,8 +218,8 @@
 		2715A6F22AF18242001EE453 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				2715A6FB2AF1B01D001EE453 /* LoginCoordinator.swift */,
-				2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */,
+				276299A62AF1DDD000159501 /* Coordinator */,
+				276299A72AF1DDD800159501 /* ViewModel */,
 				2715A6F32AF1824D001EE453 /* View */,
 			);
 			path = Login;
@@ -227,6 +237,7 @@
 		2715A6FF2AF1CFB3001EE453 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				276299A82AF1DF8100159501 /* RoundedTextField */,
 				2715A7002AF1CFBC001EE453 /* LoaderButton.swift */,
 			);
 			path = Custom;
@@ -238,6 +249,31 @@
 				2715A7032AF1D337001EE453 /* UserdefaultManager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		276299A62AF1DDD000159501 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6FB2AF1B01D001EE453 /* LoginCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		276299A72AF1DDD800159501 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		276299A82AF1DF8100159501 /* RoundedTextField */ = {
+			isa = PBXGroup;
+			children = (
+				276299A92AF1DF8F00159501 /* RoundedTextfield.swift */,
+				27CB216B2AF2A9260011E4F5 /* RoundedTextfield.xib */,
+			);
+			path = RoundedTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,9 +335,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2715A6F72AF18264001EE453 /* LoginVC.xib in Resources */,
+				27CB21672AF29CB80011E4F5 /* SofiaProSemiBold.ttf in Resources */,
 				2715A6DE2AF166BC001EE453 /* SofiaProRegular.ttf in Resources */,
 				2715A6C62AF1551B001EE453 /* LaunchScreen.storyboard in Resources */,
+				27CB216C2AF2A9260011E4F5 /* RoundedTextfield.xib in Resources */,
 				2715A6C32AF1551B001EE453 /* Assets.xcassets in Resources */,
+				27CB21682AF29CB80011E4F5 /* SofiaProBold.ttf in Resources */,
 				2715A6E42AF16AEF001EE453 /* OnboardingCell.xib in Resources */,
 				2715A6D32AF15BDB001EE453 /* OnboardingVC.xib in Resources */,
 			);
@@ -325,6 +364,7 @@
 				2715A6FC2AF1B01D001EE453 /* LoginCoordinator.swift in Sources */,
 				2715A6FE2AF1B055001EE453 /* LoingViewModel.swift in Sources */,
 				2715A6ED2AF1702D001EE453 /* ReusableView.swift in Sources */,
+				276299AC2AF1DFA300159501 /* RoundedTextfield.swift in Sources */,
 				2715A6D22AF15BDB001EE453 /* OnboardingVC.swift in Sources */,
 				2715A6C12AF1551A001EE453 /* Ristoranti.xcdatamodeld in Sources */,
 				2715A6B92AF1551A001EE453 /* SceneDelegate.swift in Sources */,
@@ -393,6 +433,7 @@
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -450,6 +491,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
