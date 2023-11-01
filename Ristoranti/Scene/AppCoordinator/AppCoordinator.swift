@@ -17,7 +17,7 @@ struct AppCoordinator:Coordinator{
     
     func start() {
         var coordinator:Coordinator
-        if let isFirstLaunch = UserdefaultManager.shared.getValue(forKey: .onboarding) as? Bool {
+        if let _ = UserdefaultManager.shared.getValue(forKey: .onboarding) as? Bool {
             
             coordinator = LoginCoordinator(navigationController: navigationController)
         }else{
