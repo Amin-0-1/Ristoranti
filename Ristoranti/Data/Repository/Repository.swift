@@ -11,35 +11,45 @@ import Combine
 class Repository:RepositoryInterface{
     
     let apiClient:APIClientProtocol!
-    let connectivity:ConnectivityProtocol!
     private var cancellables:Set<AnyCancellable> = []
-    init(apiClient: APIClientProtocol = APIClient.shared,connectivity:ConnectivityProtocol = ConnectivityService()) {
+    init(apiClient: APIClientProtocol = APIClient.shared) {
         self.apiClient = apiClient
-        self.connectivity = connectivity
     }
     
     func login(endPoint: EndPoint) -> Future<LoginResponseModel, DomainError> {
         return .init { [weak self] promise in
             guard let self = self else {return}
-            connectivity.isConnected { connected in
-                if connected{
-                    self.apiClient.execute(request: endPoint).sink { completion in
-                        switch completion{
-                            case .finished: break
-                            case .failure(let error):
-                                if let error = error as? NetworkError{
-                                    let custom = DomainError.customError(error.localizedDescription)
-                                    promise(.failure(custom))
-                                }
-                                promise(.failure(.customError(error.localizedDescription)))
+            self.apiClient.execute(request: endPoint).sink { completion in
+                switch completion{
+                    case .finished: break
+                    case .failure(let error):
+                        if let error = error as? NetworkError{
+                            let custom = DomainError.customError(error.localizedDescription)
+                            promise(.failure(custom))
                         }
-                    } receiveValue: { model in
-                        promise(.success(model))
-                    }.store(in: &self.cancellables)
-                }else{
-                    promise(.failure(.connectionError))
+                        promise(.failure(.customError(error.localizedDescription)))
                 }
-            }
+            } receiveValue: { model in
+                promise(.success(model))
+            }.store(in: &self.cancellables)
+        }
+    }
+    func fetchFood(endPoint: EndPoint) -> Future<FoodResponseModel, DomainError> {
+        return .init {[weak self] promise in
+            guard let self = self else {return}
+            self.apiClient.execute(request: endPoint).sink { completion in
+                switch completion{
+                    case .finished: break
+                    case .failure(let error):
+                        if let error = error as? NetworkError{
+                            let custom = DomainError.customError(error.localizedDescription)
+                            promise(.failure(custom))
+                        }
+                        promise(.failure(.customError(error.localizedDescription)))
+                }
+            } receiveValue: { model in
+                promise(.success(model))
+            }.store(in: &self.cancellables)
         }
     }
 }

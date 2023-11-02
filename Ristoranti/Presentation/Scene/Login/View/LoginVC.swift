@@ -89,13 +89,11 @@ class LoginVC: UIViewController{
         viewModel.bindableMailNotValid.sink {[weak self] _ in
             guard let self = self else {return}
             self.uiMail.isRequired = true
-//            self.uiPassword.isRequired = false
         }.store(in: &cancellables)
         
         viewModel.bindablePasswordNotValid.sink { [weak self] _ in
             guard let self = self else {return}
             self.uiPassword.isRequired = true
-//            self.uiMail.isRequired = false
         }.store(in: &cancellables)
     }
     

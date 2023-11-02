@@ -22,6 +22,8 @@ struct AppCoordinator:Coordinator{
         }else{
             coordinator = OnboardingCoordinator(navigationController: navigationController)
         }
+        #warning("rest")
+        coordinator = HomeCoordinator(navigationController: navigationController)
         coordinator.start()
     }
 }

@@ -20,6 +20,7 @@ struct LoginCoordinator:LoginCoordinatorProtocol{
         navigationController?.setViewControllers([vc], animated: true)
     }
     func navigateToHome() {
-        
+        let coordinator = HomeCoordinator(navigationController: navigationController)
+        coordinator.start()
     }
 }
