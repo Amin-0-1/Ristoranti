@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LoginCoordinatorProtocol:Coordinator{
-    
+    func navigateToHome()
 }
 struct LoginCoordinator:LoginCoordinatorProtocol{
     var navigationController: UINavigationController?
@@ -18,5 +18,8 @@ struct LoginCoordinator:LoginCoordinatorProtocol{
         let viewModel = LoginViewModel(coordinator: self)
         vc.viewModel = viewModel
         navigationController?.setViewControllers([vc], animated: true)
+    }
+    func navigateToHome() {
+        
     }
 }

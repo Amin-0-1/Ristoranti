@@ -6,25 +6,32 @@
 //
 
 import UIKit
+import Combine
 
-class LoginVC: UIViewController ,RoundedTextfieldDelegate{
+class LoginVC: UIViewController{
     
     @IBOutlet weak var uiScrollView: UIScrollView!
     @IBOutlet private weak var uiMail: RoundedTextfield!
     @IBOutlet private weak var uiPassword: RoundedTextfield!
     @IBOutlet private weak var uiLoginButton: LoaderButton!
     @IBOutlet private weak var uiHaveAccountButton: UIButton!
+    
+    
     var viewModel:LoginViewModelProtocol!
+    private var cancellables:Set<AnyCancellable> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
          
     }
     private func configure(){
+        setupKeyboardDismissal()
         uiLoginButton.layer.shadowColor = UIColor.accent.cgColor
         uiMail.delegate = self
         uiPassword.delegate = self
         configureAttributedString()
+        bind()
     }
     private func configureAttributedString(){
         let font:UIFont = UIFont(name: "SofiaProRegular", size: 14) ?? .systemFont(ofSize: 20)
@@ -39,9 +46,13 @@ class LoginVC: UIViewController ,RoundedTextfieldDelegate{
         uiHaveAccountButton.setAttributedTitle(first, for: .normal)
     }
     @IBAction func uiLoginButtonPressed(_ sender: LoaderButton) {
+//        viewModel.publishMail.send("01287864053")
+//        viewModel.publishPassword.send("12345678")
         sender.isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+        [uiMail,uiPassword].forEach{$0?.isRequired = false}
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
             sender.isLoading = false
+            self.viewModel.publishableSubmit.send()
         }
     }
     
@@ -69,4 +80,40 @@ class LoginVC: UIViewController ,RoundedTextfieldDelegate{
         uiScrollView.contentInset = contentInset
     }
     
+    private func bind(){
+        viewModel.bindableError.sink {[weak self] message in
+            guard let self = self else {return}
+            self.showError(message: message)
+        }.store(in: &cancellables)
+        
+        viewModel.bindableMailNotValid.sink {[weak self] _ in
+            guard let self = self else {return}
+            self.uiMail.isRequired = true
+//            self.uiPassword.isRequired = false
+        }.store(in: &cancellables)
+        
+        viewModel.bindablePasswordNotValid.sink { [weak self] _ in
+            guard let self = self else {return}
+            self.uiPassword.isRequired = true
+//            self.uiMail.isRequired = false
+        }.store(in: &cancellables)
+    }
+    
+}
+extension LoginVC:RoundedTextfieldDelegate{
+    func textFieldDidChange(text: String?, textfield: RoundedTextfield) {
+        guard let text = text else {return}
+        if textfield == uiMail{
+            viewModel.publishMail.send(text)
+        }else{
+            viewModel.publishPassword.send(text)
+        }
+    }
+    func textFieldDidClearText(textfield: RoundedTextfield) {
+        if textfield == uiMail{
+            viewModel.publishMail.send("")
+        }else{
+            viewModel.publishPassword.send("")
+        }
+    }
 }

@@ -51,7 +51,7 @@
                                             <color key="textColor" name="SecondaryFont"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snc-aW-O0u" customClass="RoundedTextfield" customModule="Ristoranti" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snc-aW-O0u" customClass="RoundedTextfield" customModule="Ristoranti" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="28" width="341" height="65"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
@@ -59,9 +59,6 @@
                                             </constraints>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="background_color">
-                                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="border_width">
                                                     <real key="value" value="0.20000000000000001"/>
                                                 </userDefinedRuntimeAttribute>
