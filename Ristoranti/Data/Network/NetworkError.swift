@@ -20,11 +20,11 @@ public enum NetworkError: Error{
     public var localizedDescription: String {
         switch self {
             case .requestFailed:
-                return "Network is down.";
+                return "We've encountered issues on server.";
             case .invalidResponse:
                 return "The operation couldn’t be completed."
             case .decodingFailed:
-                return "failed to decode data"
+                return "Either email or password is not correct !"
             case .noInternetConnection:
                 return "The Internet connection appears to be offline."
             case .timeout:

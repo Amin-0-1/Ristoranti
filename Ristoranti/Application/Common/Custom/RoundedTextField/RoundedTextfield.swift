@@ -28,11 +28,17 @@ import UIKit
     var text:String?{
         get{return uiTextfield.text}
     }
+    var borderColor:UIColor!
+    var borderWidth:CGFloat!
     var isRequired:Bool = false{
-        didSet{
-            setBoarded(color: isRequired ? .systemRed : .gray)
-            if isRequired{
+        willSet(value){
+            setBoarded(color: value ? .systemRed : borderColor)
+            if value{
                 self.contentView.layer.borderWidth = 1
+                self.uiTextfield.becomeFirstResponder()
+            }else{
+                self.contentView.layer.borderWidth = borderWidth
+                self.uiTextfield.resignFirstResponder()
             }
         }
     }
@@ -53,11 +59,10 @@ import UIKit
         bundle.loadNibNamed(RoundedTextfield.nibName, owner: self)
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight,.flexibleWidth]
-        self.contentView.layer.borderWidth = 0.1
-        setBoarded(color: .gray)
+        self.border_width = 0.1
+        self.border_color = .gray
         self.addSubview(self.contentView)
         uiTextfield.delegate = self
-        
         uiTextfield.addTarget(self, action: #selector(textfieldDidEndEditing(sender:)), for: .editingDidEnd)
         uiTextfield.addTarget(self, action: #selector(textfieldValueChanged(sender:)), for: .editingChanged)
     }
@@ -77,16 +82,17 @@ import UIKit
                 currentPasswordState = isPasswordField == .hidden ? .shown : .hidden
             }else{
                 uiTextfield.text = ""
+                delegate.textFieldDidClearText(textfield: self)
             }
         }
     }
     
     @objc func textfieldDidEndEditing(sender:UITextField){
-        delegate.textFieldDidEndEditing()
+        delegate.textFieldDidEndEditing(textfield: self)
         self.endEditing(true)
     }
     @objc private func textfieldValueChanged(sender:UITextField){
-        delegate.textFieldDidChange(text: sender.text)
+        delegate.textFieldDidChange(text: sender.text, textfield: self)
     }
     
     
@@ -106,15 +112,19 @@ import UIKit
             self.contentView.backgroundColor = color
         }
     }
-    @IBInspectable var border_color: UIColor?{
-        get {return self.contentView.backgroundColor}
+    @IBInspectable var border_color: UIColor{
+        get {
+            return UIColor(cgColor: self.contentView.layer.borderColor!)
+        }
         set(color){
-            self.contentView.layer.borderColor = color?.cgColor
+            self.borderColor = color
+            self.setBoarded(color: color)
         }
     }
     @IBInspectable var border_width: CGFloat{
         get {return self.contentView.layer.borderWidth}
         set(width){
+            self.borderWidth = CGFloat(width)
             self.contentView.layer.borderWidth = width
         }
     }
@@ -148,7 +158,7 @@ import UIKit
 extension RoundedTextfield : UITextFieldDelegate{
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        delegate.textFieldDidBeginEditing()
+        delegate.textFieldDidBeginEditing(textfield: self)
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
@@ -157,13 +167,13 @@ extension RoundedTextfield : UITextFieldDelegate{
             case .committed:
                 break
             case .cancelled:
-                delegate.textFieldDidEndEditing()
+                delegate.textFieldDidEndEditing(textfield: self)
             @unknown default:
                 break
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate.textFieldDidEndEditing()
+        delegate.textFieldDidEndEditing(textfield: self)
         self.endEditing(true)
         return true
     }
@@ -172,15 +182,15 @@ extension RoundedTextfield : UITextFieldDelegate{
 
 
 protocol RoundedTextfieldDelegate{
-    func textFieldDidChange(text:String?)
-    func textFieldDidBeginEditing()
-    func textFieldDidEndEditing()
-    func textFieldDidClearText()
+    func textFieldDidChange(text:String?,textfield:RoundedTextfield)
+    func textFieldDidBeginEditing(textfield:RoundedTextfield)
+    func textFieldDidEndEditing(textfield:RoundedTextfield)
+    func textFieldDidClearText(textfield:RoundedTextfield)
 }
 
 extension RoundedTextfieldDelegate{
-    func textFieldDidChange(text:String?){}
-    func textFieldDidBeginEditing(){}
-    func textFieldDidEndEditing(){}
-    func textFieldDidClearText(){}
+    func textFieldDidChange(text:String?,textfield:RoundedTextfield){}
+    func textFieldDidBeginEditing(textfield:RoundedTextfield){}
+    func textFieldDidEndEditing(textfield:RoundedTextfield){}
+    func textFieldDidClearText(textfield:RoundedTextfield){}
 }
