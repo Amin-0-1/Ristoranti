@@ -9,4 +9,5 @@ import Foundation
 import Combine
 protocol RepositoryInterface{
     func login(endPoint:EndPoint)->Future<LoginResponseModel,DomainError>
+    func fetchFood(endPoint:EndPoint)->Future<FoodResponseModel,DomainError>
 }

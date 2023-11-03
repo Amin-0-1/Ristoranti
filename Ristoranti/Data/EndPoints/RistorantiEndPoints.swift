@@ -9,11 +9,13 @@ import Foundation
 
 enum RistorantiEndPoints:CustomStringConvertible{
     case login(LoginParamRequest)
-    
+    case fetchFood
     var description: String{
         switch self {
             case .login:
                 return "/foodItem/public/api/users/login"
+            case .fetchFood:
+                return "/foodItem/public/api/foodItem"
         }
     }
 }
@@ -34,6 +36,7 @@ extension RistorantiEndPoints:EndPoint{
         switch self {
             case .login(let loginParamRequest):
                 return loginParamRequest.dictionary
+            default: return nil
         }
     }
     
@@ -41,6 +44,8 @@ extension RistorantiEndPoints:EndPoint{
         switch self {
             case .login:
                 return .post
+            default:
+                return .get
         }
     }
     
@@ -48,6 +53,8 @@ extension RistorantiEndPoints:EndPoint{
         switch self {
             case .login:
                 return .JSONEncoding
+            case .fetchFood:
+                return .URLEncoding
         }
     }
     
