@@ -171,10 +171,10 @@ extension HomeVC:PinterestLayoutDelegate{
         
         let padding = 32
         let font = UIFont(name: "SofiaProRegular", size: 15)!
-        let labelHeight = desc?.heightFitting(width: layout.cellWidth, font: font) ?? 0
-        let descHeight = title?.heightFitting(width: layout.cellWidth, font: font.withSize(18)) ?? 0
+        let descHeight = desc?.heightFitting(width: layout.cellWidth - 32, font: font) ?? 0
+        let titleHeigh = title?.heightFitting(width: layout.cellWidth - 32, font: font.withSize(18)) ?? 0
         
-        return image + CGFloat(padding) + labelHeight + descHeight
+        return image + CGFloat(padding) + titleHeigh + descHeight
     }
     func collectionViewHeaderSize(_ collectionView: UICollectionView) -> CGFloat {
         return HeaderView.HeaderSize

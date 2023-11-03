@@ -189,7 +189,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="QeU-Fd-OFv" secondAttribute="trailing" id="1n9-9X-6Qn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="PxX-9t-meD" secondAttribute="top" id="6rE-7I-d25"/>
-                <constraint firstItem="rMR-nI-bvt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="70" id="7vt-T5-HsW"/>
+                <constraint firstItem="rMR-nI-bvt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="7vt-T5-HsW"/>
                 <constraint firstAttribute="bottom" secondItem="QeU-Fd-OFv" secondAttribute="bottom" id="OoT-rO-tGz"/>
                 <constraint firstItem="PCa-fY-Ixa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="QXJ-Aa-upQ"/>
                 <constraint firstItem="QeU-Fd-OFv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UnR-lk-Vli"/>
