@@ -15,7 +15,7 @@ class HomeUsecase:HomeUsecaseProtocol{
     private var repo:RepositoryInterface!
     
     private var cancellabels:Set<AnyCancellable> = []
-    init(repo: RepositoryInterface = Repository()) {
+    init(repo: RepositoryInterface = RistorantiRepository()) {
         self.repo = repo
     }
     

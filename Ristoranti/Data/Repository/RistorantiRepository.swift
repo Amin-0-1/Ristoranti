@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class Repository:RepositoryInterface{
+class RistorantiRepository:RepositoryInterface{
     
     let apiClient:APIClientProtocol!
     private var cancellables:Set<AnyCancellable> = []

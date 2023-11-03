@@ -48,7 +48,7 @@
 		27CB218B2AF302120011E4F5 /* LoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB218A2AF302120011E4F5 /* LoginUsecase.swift */; };
 		27CB218D2AF3083E0011E4F5 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB218C2AF3083E0011E4F5 /* AppConfiguration.swift */; };
 		27CB21912AF309BC0011E4F5 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21902AF309BC0011E4F5 /* LoginResponseModel.swift */; };
-		27CB21942AF311E10011E4F5 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21932AF311E10011E4F5 /* Repository.swift */; };
+		27CB21942AF311E10011E4F5 /* RistorantiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21932AF311E10011E4F5 /* RistorantiRepository.swift */; };
 		27CB21962AF311F50011E4F5 /* RepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21952AF311F50011E4F5 /* RepositoryInterface.swift */; };
 		27CB21982AF3194A0011E4F5 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21972AF3194A0011E4F5 /* DomainError.swift */; };
 		27CB219B2AF322D90011E4F5 /* Codable + Dict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB219A2AF322D90011E4F5 /* Codable + Dict.swift */; };
@@ -68,6 +68,12 @@
 		27CFB8B32AF429500049CD24 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFB8B22AF429500049CD24 /* PinterestLayout.swift */; };
 		27CFB8B52AF4377C0049CD24 /* SofiaProSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27CFB8B42AF4377C0049CD24 /* SofiaProSemiBold.ttf */; };
 		27CFB8B82AF448870049CD24 /* BetterSegmentedControl in Frameworks */ = {isa = PBXBuildFile; productRef = 27CFB8B72AF448870049CD24 /* BetterSegmentedControl */; };
+		27EB2DCA2AF58839005C9A29 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2DC92AF58839005C9A29 /* DetailsCoordinator.swift */; };
+		27EB2DCC2AF588BD005C9A29 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2DCB2AF588BD005C9A29 /* DetailsViewModel.swift */; };
+		27EB2DCE2AF58918005C9A29 /* DetailsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2DCD2AF58918005C9A29 /* DetailsUsecase.swift */; };
+		27EB2DD22AF58A2B005C9A29 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2DD02AF58A2B005C9A29 /* DetailsVC.swift */; };
+		27EB2DD32AF58A2B005C9A29 /* DetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2DD12AF58A2B005C9A29 /* DetailsVC.xib */; };
+		27EB2DD72AF58BC6005C9A29 /* DetailsViewModelParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2DD62AF58BC6005C9A29 /* DetailsViewModelParams.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,7 +120,7 @@
 		27CB218A2AF302120011E4F5 /* LoginUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUsecase.swift; sourceTree = "<group>"; };
 		27CB218C2AF3083E0011E4F5 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		27CB21902AF309BC0011E4F5 /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
-		27CB21932AF311E10011E4F5 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		27CB21932AF311E10011E4F5 /* RistorantiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RistorantiRepository.swift; sourceTree = "<group>"; };
 		27CB21952AF311F50011E4F5 /* RepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInterface.swift; sourceTree = "<group>"; };
 		27CB21972AF3194A0011E4F5 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		27CB219A2AF322D90011E4F5 /* Codable + Dict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable + Dict.swift"; sourceTree = "<group>"; };
@@ -131,6 +137,12 @@
 		27CFB8AF2AF424C10049CD24 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
 		27CFB8B22AF429500049CD24 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 		27CFB8B42AF4377C0049CD24 /* SofiaProSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SofiaProSemiBold.ttf; sourceTree = "<group>"; };
+		27EB2DC92AF58839005C9A29 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		27EB2DCB2AF588BD005C9A29 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		27EB2DCD2AF58918005C9A29 /* DetailsUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsUsecase.swift; sourceTree = "<group>"; };
+		27EB2DD02AF58A2B005C9A29 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
+		27EB2DD12AF58A2B005C9A29 /* DetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsVC.xib; sourceTree = "<group>"; };
+		27EB2DD62AF58BC6005C9A29 /* DetailsViewModelParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelParams.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +480,7 @@
 			children = (
 				27CB218A2AF302120011E4F5 /* LoginUsecase.swift */,
 				27CB21A92AF343500011E4F5 /* HomeUsecase.swift */,
+				27EB2DCD2AF58918005C9A29 /* DetailsUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -521,7 +534,7 @@
 		27CB21922AF311D20011E4F5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				27CB21932AF311E10011E4F5 /* Repository.swift */,
+				27CB21932AF311E10011E4F5 /* RistorantiRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -540,19 +553,20 @@
 			children = (
 				2715A6CF2AF15BCD001EE453 /* Onboarding */,
 				2715A6F22AF18242001EE453 /* Login */,
-				27CB21A12AF3422B0011E4F5 /* Home */,
+				27CB21A12AF3422B0011E4F5 /* Home + Side menu */,
+				27EB2DC52AF5880E005C9A29 /* Details */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		27CB21A12AF3422B0011E4F5 /* Home */ = {
+		27CB21A12AF3422B0011E4F5 /* Home + Side menu */ = {
 			isa = PBXGroup;
 			children = (
 				27CB21A42AF342400011E4F5 /* Coordinator */,
 				27CB21A32AF3423C0011E4F5 /* ViewModel */,
 				27CB21A22AF342390011E4F5 /* View */,
 			);
-			path = Home;
+			path = "Home + Side menu";
 			sourceTree = "<group>";
 		};
 		27CB21A22AF342390011E4F5 /* View */ = {
@@ -595,6 +609,50 @@
 				27CFB8AF2AF424C10049CD24 /* ResultCell.xib */,
 			);
 			path = ResultCell;
+			sourceTree = "<group>";
+		};
+		27EB2DC52AF5880E005C9A29 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2DC72AF58823005C9A29 /* Coordinator */,
+				27EB2DC82AF5882A005C9A29 /* Viewmodel */,
+				27EB2DC62AF5881D005C9A29 /* View */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		27EB2DC62AF5881D005C9A29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2DCF2AF589F0005C9A29 /* VC */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		27EB2DC72AF58823005C9A29 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2DC92AF58839005C9A29 /* DetailsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		27EB2DC82AF5882A005C9A29 /* Viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2DCB2AF588BD005C9A29 /* DetailsViewModel.swift */,
+				27EB2DD62AF58BC6005C9A29 /* DetailsViewModelParams.swift */,
+			);
+			path = Viewmodel;
+			sourceTree = "<group>";
+		};
+		27EB2DCF2AF589F0005C9A29 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2DD02AF58A2B005C9A29 /* DetailsVC.swift */,
+				27EB2DD12AF58A2B005C9A29 /* DetailsVC.xib */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -678,6 +736,7 @@
 				2715A6E42AF16AEF001EE453 /* OnboardingCell.xib in Resources */,
 				27CFB8B52AF4377C0049CD24 /* SofiaProSemiBold.ttf in Resources */,
 				2715A6D32AF15BDB001EE453 /* OnboardingVC.xib in Resources */,
+				27EB2DD32AF58A2B005C9A29 /* DetailsVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +750,7 @@
 				27CB219F2AF33FA90011E4F5 /* Connectivity.swift in Sources */,
 				27CB21AE2AF343BE0011E4F5 /* HomeVC.swift in Sources */,
 				27CB21A82AF342B70011E4F5 /* HomeViewModel.swift in Sources */,
+				27EB2DD72AF58BC6005C9A29 /* DetailsViewModelParams.swift in Sources */,
 				27CB21AA2AF343500011E4F5 /* HomeUsecase.swift in Sources */,
 				27CFB8AC2AF41D0A0049CD24 /* Double.swift in Sources */,
 				2715A6F62AF18264001EE453 /* LoginVC.swift in Sources */,
@@ -698,6 +758,7 @@
 				274037E72AF4756E0039800C /* HomeVC+Side.swift in Sources */,
 				27CB21962AF311F50011E4F5 /* RepositoryInterface.swift in Sources */,
 				27CFB8B32AF429500049CD24 /* PinterestLayout.swift in Sources */,
+				27EB2DCA2AF58839005C9A29 /* DetailsCoordinator.swift in Sources */,
 				27CB219B2AF322D90011E4F5 /* Codable + Dict.swift in Sources */,
 				27CB218D2AF3083E0011E4F5 /* AppConfiguration.swift in Sources */,
 				27CB219D2AF334700011E4F5 /* UserdefaultManager.swift in Sources */,
@@ -712,6 +773,7 @@
 				27CFB8B02AF424C10049CD24 /* ResultCell.swift in Sources */,
 				2715A6EE2AF17030001EE453 /* NibLoadable.swift in Sources */,
 				274037EE2AF479EF0039800C /* SideMenuCell.swift in Sources */,
+				27EB2DD22AF58A2B005C9A29 /* DetailsVC.swift in Sources */,
 				27CB21892AF2FBA10011E4F5 /* AnyViewController.swift in Sources */,
 				27CB21772AF2B8730011E4F5 /* NetworkError.swift in Sources */,
 				27CFB8A52AF412A70049CD24 /* FoodResponseModel.swift in Sources */,
@@ -720,6 +782,7 @@
 				27CB217F2AF2B9C10011E4F5 /* LoginParamRequest.swift in Sources */,
 				27CB21982AF3194A0011E4F5 /* DomainError.swift in Sources */,
 				2715A6FE2AF1B055001EE453 /* LoingViewModel.swift in Sources */,
+				27EB2DCC2AF588BD005C9A29 /* DetailsViewModel.swift in Sources */,
 				27CB21912AF309BC0011E4F5 /* LoginResponseModel.swift in Sources */,
 				27CB217A2AF2B8EC0011E4F5 /* RistorantiEndPoints.swift in Sources */,
 				2715A6ED2AF1702D001EE453 /* ReusableView.swift in Sources */,
@@ -731,7 +794,8 @@
 				2715A6B92AF1551A001EE453 /* SceneDelegate.swift in Sources */,
 				27CB21A62AF3424C0011E4F5 /* HomeCoordinator.swift in Sources */,
 				2715A6D82AF15FE3001EE453 /* OnboardingCoordinator.swift in Sources */,
-				27CB21942AF311E10011E4F5 /* Repository.swift in Sources */,
+				27EB2DCE2AF58918005C9A29 /* DetailsUsecase.swift in Sources */,
+				27CB21942AF311E10011E4F5 /* RistorantiRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
