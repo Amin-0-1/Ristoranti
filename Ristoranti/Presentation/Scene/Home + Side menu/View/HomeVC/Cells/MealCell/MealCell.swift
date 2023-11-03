@@ -33,6 +33,7 @@ class MealCell: UICollectionViewCell {
         uiRateCount.text = "( \(product.rating?.count?.description ?? uiRateCount.text ?? "") )"
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(favoriteTapped))
+        tap.cancelsTouchesInView = false
         uiFavouriteView.addGestureRecognizer(tap)
     }
     @objc private func favoriteTapped(){
