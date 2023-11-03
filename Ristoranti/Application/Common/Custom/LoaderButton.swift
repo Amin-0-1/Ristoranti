@@ -67,6 +67,7 @@ class LoaderButton: UIButton {
             setTitle("", for: .normal)
             UIView.animate(withDuration: 0.3) {
                 self.layoutIfNeeded()
+                self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
             }
             isEnabled = false
         } else {
@@ -75,6 +76,7 @@ class LoaderButton: UIButton {
             setTitle(latestTitle, for: .normal)
             UIView.animate(withDuration: 0.3) {
                 self.layoutIfNeeded()
+                self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
             }
             isEnabled = true
         }

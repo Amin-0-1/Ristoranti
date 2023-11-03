@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeCoordinatorProtocol:Coordinator{
-    
+    func logout()
 }
 
 struct HomeCoordinator:HomeCoordinatorProtocol{
@@ -19,5 +19,9 @@ struct HomeCoordinator:HomeCoordinatorProtocol{
         let viewModel = HomeViewModel(coordinator: self)
         vc.viewModel = viewModel
         navigationController?.setViewControllers([vc], animated: false)
+    }
+    func logout() {
+        let coordinator = LoginCoordinator(navigationController: navigationController)
+        coordinator.start()
     }
 }

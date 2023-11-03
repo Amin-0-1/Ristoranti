@@ -28,6 +28,8 @@ class LoginVC: UIViewController{
     private func configure(){
         setupKeyboardDismissal()
         uiLoginButton.layer.shadowColor = UIColor.accent.cgColor
+        uiLoginButton.layer.shadowPath = UIBezierPath(roundedRect: uiLoginButton.bounds, cornerRadius: uiLoginButton.layer.cornerRadius).cgPath
+
         uiMail.delegate = self
         uiPassword.delegate = self
         configureAttributedString()
@@ -46,8 +48,9 @@ class LoginVC: UIViewController{
         uiHaveAccountButton.setAttributedTitle(first, for: .normal)
     }
     @IBAction func uiLoginButtonPressed(_ sender: LoaderButton) {
-//        viewModel.publishMail.send("01287864053")
-//        viewModel.publishPassword.send("12345678")
+        #warning("delete those credientails")
+        viewModel.publishMail.send("01287864053")
+        viewModel.publishPassword.send("12345678")
         sender.isLoading = true
         [uiMail,uiPassword].forEach{$0?.isRequired = false}
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){

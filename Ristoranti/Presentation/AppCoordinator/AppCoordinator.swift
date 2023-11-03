@@ -18,12 +18,14 @@ struct AppCoordinator:Coordinator{
     func start() {
         var coordinator:Coordinator
         if let _ = UserdefaultManager.shared.getValue(forKey: .onboarding) as? Bool {
-            coordinator = LoginCoordinator(navigationController: navigationController)
+            if let _:UserResponseModel = UserdefaultManager.shared.getObject(forKey: .userData){
+                coordinator = HomeCoordinator(navigationController: navigationController)
+            }else{
+                coordinator = LoginCoordinator(navigationController: navigationController)
+            }
         }else{
             coordinator = OnboardingCoordinator(navigationController: navigationController)
         }
-        #warning("rest")
-        coordinator = HomeCoordinator(navigationController: navigationController)
         coordinator.start()
     }
 }

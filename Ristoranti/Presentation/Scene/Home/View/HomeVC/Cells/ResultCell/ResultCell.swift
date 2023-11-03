@@ -15,8 +15,8 @@ class ResultCell: UICollectionViewCell {
         
     }
     
-    func configure(text:String){
-        uiLabel.text = text
+    func configure(value:Int){
+        uiLabel.text = value.description
     }
 
 }

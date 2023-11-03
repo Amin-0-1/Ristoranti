@@ -27,6 +27,11 @@
 		2715A6FC2AF1B01D001EE453 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6FB2AF1B01D001EE453 /* LoginCoordinator.swift */; };
 		2715A6FE2AF1B055001EE453 /* LoingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */; };
 		2715A7012AF1CFBC001EE453 /* LoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A7002AF1CFBC001EE453 /* LoaderButton.swift */; };
+		274037E72AF4756E0039800C /* HomeVC+Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274037E62AF4756E0039800C /* HomeVC+Side.swift */; };
+		274037EE2AF479EF0039800C /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274037EC2AF479EF0039800C /* SideMenuCell.swift */; };
+		274037EF2AF479EF0039800C /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274037ED2AF479EF0039800C /* SideMenuCell.xib */; };
+		274037FA2AF49ADF0039800C /* SideMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274037F92AF49ADF0039800C /* SideMenuHeader.xib */; };
+		274037FC2AF49AFA0039800C /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274037FB2AF49AFA0039800C /* SideMenuHeader.swift */; };
 		276299AC2AF1DFA300159501 /* RoundedTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276299A92AF1DF8F00159501 /* RoundedTextfield.swift */; };
 		277940422AF3624200EC2F17 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277940402AF3624200EC2F17 /* HeaderView.swift */; };
 		277940432AF3624200EC2F17 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277940412AF3624200EC2F17 /* HeaderView.xib */; };
@@ -88,6 +93,11 @@
 		2715A6FB2AF1B01D001EE453 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		2715A6FD2AF1B055001EE453 /* LoingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoingViewModel.swift; sourceTree = "<group>"; };
 		2715A7002AF1CFBC001EE453 /* LoaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderButton.swift; sourceTree = "<group>"; };
+		274037E62AF4756E0039800C /* HomeVC+Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+Side.swift"; sourceTree = "<group>"; };
+		274037EC2AF479EF0039800C /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		274037ED2AF479EF0039800C /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
+		274037F92AF49ADF0039800C /* SideMenuHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuHeader.xib; sourceTree = "<group>"; };
+		274037FB2AF49AFA0039800C /* SideMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeader.swift; sourceTree = "<group>"; };
 		276299A92AF1DF8F00159501 /* RoundedTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextfield.swift; sourceTree = "<group>"; };
 		277940402AF3624200EC2F17 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		277940412AF3624200EC2F17 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
@@ -315,6 +325,43 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		274037E82AF475730039800C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				27CB21AC2AF343BE0011E4F5 /* HomeVC.swift */,
+				27CB21AD2AF343BE0011E4F5 /* HomeVC.xib */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		274037E92AF479C30039800C /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				274037F02AF489070039800C /* Header */,
+				274037EA2AF479D00039800C /* MenuCell */,
+				274037E62AF4756E0039800C /* HomeVC+Side.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		274037EA2AF479D00039800C /* MenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				274037EC2AF479EF0039800C /* SideMenuCell.swift */,
+				274037ED2AF479EF0039800C /* SideMenuCell.xib */,
+			);
+			path = MenuCell;
+			sourceTree = "<group>";
+		};
+		274037F02AF489070039800C /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				274037F92AF49ADF0039800C /* SideMenuHeader.xib */,
+				274037FB2AF49AFA0039800C /* SideMenuHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		276299A62AF1DDD000159501 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +413,15 @@
 				277940472AF375A500EC2F17 /* MealCell.xib */,
 			);
 			path = MealCell;
+			sourceTree = "<group>";
+		};
+		27992F192AF4B52000BC29A2 /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				2779403F2AF361E900EC2F17 /* Cells */,
+				27CB21AB2AF343AC0011E4F5 /* VC */,
+			);
+			path = HomeVC;
 			sourceTree = "<group>";
 		};
 		27CB216D2AF2B7A00011E4F5 /* Data */ = {
@@ -502,8 +558,8 @@
 		27CB21A22AF342390011E4F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2779403F2AF361E900EC2F17 /* Cells */,
-				27CB21AB2AF343AC0011E4F5 /* VC */,
+				27992F192AF4B52000BC29A2 /* HomeVC */,
+				274037E92AF479C30039800C /* SideMenu */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -527,8 +583,7 @@
 		27CB21AB2AF343AC0011E4F5 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				27CB21AC2AF343BE0011E4F5 /* HomeVC.swift */,
-				27CB21AD2AF343BE0011E4F5 /* HomeVC.xib */,
+				274037E82AF475730039800C /* VC */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -609,10 +664,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274037FA2AF49ADF0039800C /* SideMenuHeader.xib in Resources */,
 				2715A6F72AF18264001EE453 /* LoginVC.xib in Resources */,
 				2715A6DE2AF166BC001EE453 /* SofiaProRegular.ttf in Resources */,
 				277940492AF375A500EC2F17 /* MealCell.xib in Resources */,
 				2715A6C62AF1551B001EE453 /* LaunchScreen.storyboard in Resources */,
+				274037EF2AF479EF0039800C /* SideMenuCell.xib in Resources */,
 				27CB216C2AF2A9260011E4F5 /* RoundedTextfield.xib in Resources */,
 				2715A6C32AF1551B001EE453 /* Assets.xcassets in Resources */,
 				27CFB8B12AF424C10049CD24 /* ResultCell.xib in Resources */,
@@ -637,6 +694,8 @@
 				27CB21AA2AF343500011E4F5 /* HomeUsecase.swift in Sources */,
 				27CFB8AC2AF41D0A0049CD24 /* Double.swift in Sources */,
 				2715A6F62AF18264001EE453 /* LoginVC.swift in Sources */,
+				274037FC2AF49AFA0039800C /* SideMenuHeader.swift in Sources */,
+				274037E72AF4756E0039800C /* HomeVC+Side.swift in Sources */,
 				27CB21962AF311F50011E4F5 /* RepositoryInterface.swift in Sources */,
 				27CFB8B32AF429500049CD24 /* PinterestLayout.swift in Sources */,
 				27CB219B2AF322D90011E4F5 /* Codable + Dict.swift in Sources */,
@@ -652,6 +711,7 @@
 				27CB218B2AF302120011E4F5 /* LoginUsecase.swift in Sources */,
 				27CFB8B02AF424C10049CD24 /* ResultCell.swift in Sources */,
 				2715A6EE2AF17030001EE453 /* NibLoadable.swift in Sources */,
+				274037EE2AF479EF0039800C /* SideMenuCell.swift in Sources */,
 				27CB21892AF2FBA10011E4F5 /* AnyViewController.swift in Sources */,
 				27CB21772AF2B8730011E4F5 /* NetworkError.swift in Sources */,
 				27CFB8A52AF412A70049CD24 /* FoodResponseModel.swift in Sources */,

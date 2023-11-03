@@ -12,9 +12,10 @@ protocol LocalStorageInterface {
     func set<T: Codable>(object: T?, forKey key: UDKeys)
     func getValue(forKey key:UDKeys)->Any?
     func set(value val:Any,forKey key:UDKeys)
+    func truncate()
 }
 
-enum UDKeys: String {
+enum UDKeys: String,CaseIterable {
     case onboarding
     case userData
 }
@@ -49,5 +50,9 @@ class UserdefaultManager: LocalStorageInterface {
     func set(value val: Any, forKey key: UDKeys) {
         userDefaults.set(val, forKey: key.rawValue)
     }
-    
+    func truncate() {
+        for key in UDKeys.allCases{
+            userDefaults.removeObject(forKey: key.rawValue)
+        }
+    }
 }

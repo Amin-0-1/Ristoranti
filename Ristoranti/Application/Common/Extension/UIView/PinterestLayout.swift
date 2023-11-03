@@ -74,11 +74,10 @@ class PinterestLayout: UICollectionViewLayout {
         
         var column = 0
         var itemIndex = 0
-        var adIndex = 0
         
         if let delegate = delegate {
             if delegate.collectionViewHeaderSize(collectionView) > 0 {
-                let indexPath = IndexPath(item: adIndex, section: 0)
+                let indexPath = IndexPath(item: 0, section: 0)
                 let height = delegate.collectionViewHeaderSize(collectionView)
                 let frame = CGRect(x: 0,
                                    y: yOffsets.max() ?? 0,
@@ -91,7 +90,6 @@ class PinterestLayout: UICollectionViewLayout {
                 supplementaryCache.updateCollection(keyedBy: PinterestLayout.PinterestElementKindSectionHeader, with: attributes)
                 contentBounds = contentBounds.union(frame)
                 yOffsets = yOffsets.map { _ in frame.maxY }
-                adIndex += 1
             }
         }
         while itemIndex < count {
