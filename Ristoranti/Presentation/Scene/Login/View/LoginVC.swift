@@ -26,7 +26,7 @@ class LoginVC: UIViewController{
          
     }
     private func configure(){
-        setupKeyboardDismissal()
+        registerKeyboardDismissel()
         uiLoginButton.layer.shadowColor = UIColor.accent.cgColor
         uiLoginButton.layer.shadowPath = UIBezierPath(roundedRect: uiLoginButton.bounds, cornerRadius: uiLoginButton.layer.cornerRadius).cgPath
 

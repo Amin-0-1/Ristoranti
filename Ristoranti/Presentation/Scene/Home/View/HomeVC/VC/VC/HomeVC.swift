@@ -41,13 +41,15 @@ class HomeVC: UIViewController {
         viewModel.onScreenAppeared.send(false)
     }
     private func configure(){
+        homeState = view.transform
+        registerKeyboardDismissel()
         navigationController?.navigationBar.isHidden = true
         configureSideMenue()
         configureCollection()
         bind()
     }
     private func configureCollection(){
-        homeState = view.transform
+        uiCollection.allowsSelection = true
         let header = UINib(nibName: HeaderView.nibName, bundle: nil)
         uiCollection.register(header, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
         uiCollection.register(UINib(nibName: MealCell.nibName, bundle: nil), forCellWithReuseIdentifier: MealCell.reuseIdentifier)
@@ -70,7 +72,9 @@ class HomeVC: UIViewController {
 
         uiLogoutButton.layer.shadowColor = UIColor.accent.cgColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(onProfileTapped))
+        tap.cancelsTouchesInView = false
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(hideMenu))
+        tap2.cancelsTouchesInView = false
         uiProfile.addGestureRecognizer(tap)
         uiContainerView.addGestureRecognizer(tap2)
     }
@@ -118,7 +122,7 @@ class HomeVC: UIViewController {
     
 }
 
-extension HomeVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension HomeVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.modelData.value.count
     }
@@ -142,9 +146,14 @@ extension HomeVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollectio
             case PinterestLayout.PinterestElementKindSectionHeader:
                 guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {fatalError()}
                 header.frame = .init(x: 0, y: 0, width: uiCollection.frame.width, height: HeaderView.HeaderSize)
-                header.configure()
+                header.configure(delegate: self)
                 return header
             default: return .init()
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0{
+            dismissKeyboard()
         }
     }
 }
@@ -169,5 +178,11 @@ extension HomeVC:PinterestLayoutDelegate{
     }
     func collectionViewHeaderSize(_ collectionView: UICollectionView) -> CGFloat {
         return HeaderView.HeaderSize
+    }
+}
+
+extension HomeVC:HeaderViewDelegate{
+    @objc func onChangedSegment() {
+        dismissKeyboard()
     }
 }
