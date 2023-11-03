@@ -18,19 +18,19 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MealCell" customModule="Ristoranti" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="236" height="271"/>
+            <rect key="frame" x="0.0" y="0.0" width="467" height="301"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="236" height="271"/>
+                <rect key="frame" x="0.0" y="0.0" width="467" height="301"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOY-k8-Zry">
-                        <rect key="frame" x="4" y="4" width="228" height="263"/>
+                        <rect key="frame" x="4" y="4" width="459" height="293"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="I98-1M-KRs">
-                                <rect key="frame" x="0.0" y="0.0" width="228" height="183"/>
+                                <rect key="frame" x="0.0" y="0.0" width="459" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="KPa-En-uBR"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="180" id="KPa-En-uBR"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="NJS-H7-0Ud"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -39,20 +39,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Meat pasta" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEI-ne-KxQ">
-                                <rect key="frame" x="16" y="206" width="196" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Meat pasta" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEI-ne-KxQ">
+                                <rect key="frame" x="16" y="203" width="427" height="18"/>
                                 <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="18"/>
                                 <color key="textColor" name="MainFont"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="meat and basil" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nN-Iu-0on">
-                                <rect key="frame" x="16" y="240" width="196" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="meat and basil" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nN-Iu-0on">
+                                <rect key="frame" x="16" y="237" width="427" height="48"/>
                                 <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="15"/>
                                 <color key="textColor" name="SecondaryFont"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjW-BP-EZZ">
-                                <rect key="frame" x="190" y="8" width="30" height="30"/>
+                                <rect key="frame" x="421" y="8" width="30" height="30"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="B4g-1b-xam">
                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +131,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYg-O0-5ue">
-                                <rect key="frame" x="8" y="167" width="72.333333333333329" height="31"/>
+                                <rect key="frame" x="8" y="164" width="72.333333333333329" height="31"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OBv-Eg-wsd">
                                         <rect key="frame" x="0.0" y="0.0" width="72.333333333333329" height="31"/>
@@ -233,7 +233,7 @@
                 <constraint firstItem="aOY-k8-Zry" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="frT-bC-cye"/>
                 <constraint firstItem="aOY-k8-Zry" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="upP-ty-83d"/>
             </constraints>
-            <size key="customSize" width="236" height="271"/>
+            <size key="customSize" width="467" height="301"/>
             <connections>
                 <outlet property="uiDescription" destination="4nN-Iu-0on" id="TGS-gx-dqB"/>
                 <outlet property="uiFavoriteImage" destination="UhY-sk-7V1" id="K5C-K2-DZC"/>
@@ -244,7 +244,7 @@
                 <outlet property="uiRateCount" destination="ChV-1v-cOb" id="NTD-yR-QXX"/>
                 <outlet property="uiTitle" destination="QEI-ne-KxQ" id="tPy-V2-TgG"/>
             </connections>
-            <point key="canvasLocation" x="54.961832061068698" y="101.05633802816902"/>
+            <point key="canvasLocation" x="113.74045801526717" y="6.6901408450704229"/>
         </collectionViewCell>
     </objects>
     <resources>

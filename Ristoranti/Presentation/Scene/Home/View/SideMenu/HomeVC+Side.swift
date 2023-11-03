@@ -39,9 +39,9 @@ extension HomeVC {
         self.uiContainerView.layer.cornerRadius = 40
         let x = uiContainerView.frame.width * 0.8
         let originalTransform = self.uiContainerView.transform
-        let scaledTransform = originalTransform.scaledBy(x: 0.8, y: 0.8)
+        let scaledTransform = originalTransform.scaledBy(x: 0.7, y: 0.7)
         let scaledAndTranslatedTransform = scaledTransform.translatedBy(x: x, y: 0)
-        UIView.animate(withDuration: 0.7) {
+        UIView.animate(withDuration: 0.5) {
             self.uiContainerView.transform = scaledAndTranslatedTransform
         }
     }
