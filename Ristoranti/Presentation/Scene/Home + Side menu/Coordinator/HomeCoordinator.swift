@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeCoordinatorProtocol:Coordinator{
     func logout()
+    func navigateToDetails(id:Int)
 }
 
 struct HomeCoordinator:HomeCoordinatorProtocol{
@@ -22,6 +23,10 @@ struct HomeCoordinator:HomeCoordinatorProtocol{
     }
     func logout() {
         let coordinator = LoginCoordinator(navigationController: navigationController)
+        coordinator.start()
+    }
+    func navigateToDetails(id: Int) {
+        let coordinator = DetailsCoordinator(navigationController: navigationController,id: id)
         coordinator.start()
     }
 }

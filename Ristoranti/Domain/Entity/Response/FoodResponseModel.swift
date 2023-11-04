@@ -16,7 +16,7 @@ struct FoodResponseModel: Codable {
 
 struct FoodDataModel: Codable {
     let pages: Int?
-    let products: [FoodItemProduct]
+    let products: [FoodItemProduct]?
 }
 
 struct FoodItemProduct: Codable {
@@ -38,6 +38,6 @@ struct FoodItemOffer: Codable {
 }
 
 struct FoodItemRating: Codable {
-    let rate: Double
-    let count: Int
+    let rate: Double?
+    let count: Int?
 }

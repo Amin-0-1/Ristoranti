@@ -24,7 +24,7 @@ public enum NetworkError: Error{
             case .invalidResponse:
                 return "The operation couldn’t be completed."
             case .decodingFailed:
-                return "Either email or password is not correct !"
+                return "an error occured in the server please try again later."
             case .noInternetConnection:
                 return "The Internet connection appears to be offline."
             case .timeout:
