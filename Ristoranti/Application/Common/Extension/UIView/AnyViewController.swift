@@ -6,9 +6,7 @@
 //
 
 import UIKit
-protocol test:UIViewController{
-    
-}
+
 extension UIViewController{
     var indicator:UIActivityIndicatorView{
         let indicator = ActivityIndicator.shared.set(color: .systemGreen).build()
@@ -44,13 +42,13 @@ extension UIViewController{
             self.present(controller, animated: true)
         }
     }
-    func setupKeyboardDismissal() {
+    func registerKeyboardDismissel() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc private func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }

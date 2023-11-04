@@ -10,6 +10,8 @@ import Combine
 
 protocol HomeViewModelProtocol{
     var onScreenAppeared:PassthroughSubject<Bool,Never>{get}
+    var onTapCell: PassthroughSubject<Int,Never>{get}
+    
     var profileData:CurrentValueSubject<UserResponseModel?,Never>{get}
     var modelData:CurrentValueSubject<[FoodItemProduct],Never>{get}
     var onLogout:PassthroughSubject<Void,Never> {get}
@@ -19,6 +21,8 @@ protocol HomeViewModelProtocol{
 }
 class HomeViewModel:HomeViewModelProtocol{
     var onScreenAppeared: PassthroughSubject<Bool, Never> = .init()
+    var onTapCell: PassthroughSubject<Int, Never> = .init()
+    
     var modelData: CurrentValueSubject<[FoodItemProduct], Never> = .init([])
     var onLogout: PassthroughSubject<Void, Never> = .init()
     
@@ -43,6 +47,7 @@ class HomeViewModel:HomeViewModelProtocol{
     private func bind(){
         bindOnScreenAppeared()
         bindLogout()
+        bindOnTapCell()
     }
     
     private func bindOnScreenAppeared(){
@@ -76,6 +81,17 @@ class HomeViewModel:HomeViewModelProtocol{
             guard let self = self else {return}
             UserdefaultManager.shared.truncate()
             self.coordinator.logout()
+        }.store(in: &cancellabels)
+    }
+    
+    private func bindOnTapCell(){
+        onTapCell.sink {[weak self] index in
+            guard let self = self else {return}
+            guard let id = modelData.value[index].id else {
+                showErrorSubject.send("an error occurred, please try again later.")
+                return
+            }
+            self.coordinator.navigateToDetails(id: id)
         }.store(in: &cancellabels)
     }
     private func prepareProfileData(){

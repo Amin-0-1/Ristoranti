@@ -16,7 +16,7 @@ class LoginUsecase:LoginUsecaseProtocol{
     private var repo:RepositoryInterface!
     private var connectivity:ConnectivityProtocol!
     private var cancellables:Set<AnyCancellable> = []
-    init(repo:RepositoryInterface = Repository(),connectivity:ConnectivityProtocol = ConnectivityService()) {
+    init(repo:RepositoryInterface = RistorantiRepository(),connectivity:ConnectivityProtocol = ConnectivityService()) {
         self.repo = repo
         self.connectivity = connectivity
     }

@@ -15,21 +15,21 @@ class HomeUsecase:HomeUsecaseProtocol{
     private var repo:RepositoryInterface!
     
     private var cancellabels:Set<AnyCancellable> = []
-    init(repo: RepositoryInterface = Repository()) {
+    init(repo: RepositoryInterface = RistorantiRepository()) {
         self.repo = repo
     }
     
     func fetchData() -> Future<FoodResponseModel, DomainError> {
         return .init {[weak self] promise in
             guard let self = self else {return}
-            repo.fetchFood(endPoint: RistorantiEndPoints.fetchFood).sink { completion in
+            repo.fetchFood(endPoint: RistorantiEndPoints.foodItems).sink { completion in
                 switch completion{
                     case .finished: break
                     case .failure(let error):
                         promise(.failure(error))
                 }
             } receiveValue: { model in
-                guard let data = model.data else {
+                guard model.data != nil else {
                     let message = model.message ?? "An Error Occured"
                     let error = NSError(domain: message , code: 400)
                     promise(.failure(.customError(error.localizedDescription)))

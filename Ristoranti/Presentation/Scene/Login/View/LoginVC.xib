@@ -34,7 +34,7 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Wzs-8y-WST">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="691"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="847"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gE2-1J-8as">
                                     <rect key="frame" x="26" y="26" width="341" height="36"/>
@@ -100,7 +100,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="Pt8-u3-WU9">
-                                    <rect key="frame" x="26" y="344" width="341" height="321"/>
+                                    <rect key="frame" x="26" y="344" width="341" height="477"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WnX-bm-tIQ">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="171"/>
@@ -160,26 +160,26 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FRf-WN-U1Z">
-                                            <rect key="frame" x="0.0" y="219" width="341" height="102"/>
+                                            <rect key="frame" x="0.0" y="219" width="341" height="258"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EzN-sQ-cdx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="341" height="14"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="341" height="170"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oeR-Rc-Pf4">
-                                                            <rect key="frame" x="0.0" y="6.6666666666666288" width="118" height="1"/>
+                                                            <rect key="frame" x="0.0" y="84.666666666666629" width="118" height="1"/>
                                                             <color key="backgroundColor" name="SecondaryFont"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="ggu-yT-DTf"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Sign in with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvk-Kp-Cgk">
-                                                            <rect key="frame" x="134" y="0.0" width="73.333333333333314" height="14"/>
+                                                            <rect key="frame" x="134" y="78" width="73.333333333333314" height="14"/>
                                                             <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="highlightedColor" name="SecondaryFont"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUf-ga-7hY">
-                                                            <rect key="frame" x="223.33333333333334" y="6.6666666666666288" width="117.66666666666666" height="1"/>
+                                                            <rect key="frame" x="223.33333333333334" y="84.666666666666629" width="117.66666666666666" height="1"/>
                                                             <color key="backgroundColor" name="SecondaryFont"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="rDl-Dl-vpf"/>
@@ -191,7 +191,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" id="8sf-kS-yPS">
-                                                    <rect key="frame" x="0.0" y="29.999999999999996" width="341" height="39.666666666666657"/>
+                                                    <rect key="frame" x="0.0" y="185.99999999999994" width="341" height="39.666666666666657"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTP-lA-A5u">
