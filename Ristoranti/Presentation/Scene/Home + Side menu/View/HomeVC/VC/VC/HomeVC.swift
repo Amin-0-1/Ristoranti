@@ -111,14 +111,16 @@ class HomeVC: UIViewController {
 
     }
     @IBAction func uiLogoutPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Logout", message: "Are you sure?", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Cancel", style: .default)
-        let yes = UIAlertAction(title: "Yes", style: .destructive) { _ in
+        let vc = AlertVC()
+        vc.alertTitle = "Logout"
+        vc.alertDescription = "Are you sure ? \nyour saved data will be permanently deleted !"
+        vc.successCompletion = {
             self.viewModel.onLogout.send()
         }
-        alert.addAction(cancel)
-        alert.addAction(yes)
-        present(alert, animated: true)
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        
+        present(vc, animated: true)
     }
     
 }
