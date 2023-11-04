@@ -29,11 +29,10 @@ class MealCell: UICollectionViewCell {
         let url = URL(string: product.image ?? "")
         uiProductImage.sd_setImage(with: url, placeholderImage: image)
         uiPrice.text = product.price?.rounded(toPlaces: 1).description
-        uiRate.text = product.rating?.rate.rounded(toPlaces: 1).description
-        uiRateCount.text = "( \(product.rating?.count.description ?? uiRateCount.text ?? "") )"
+        uiRate.text = product.rating?.rate?.rounded(toPlaces: 1).description
+        uiRateCount.text = "( \(product.rating?.count?.description ?? uiRateCount.text ?? "") )"
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(favoriteTapped))
-        tap.cancelsTouchesInView = false
         uiFavouriteView.addGestureRecognizer(tap)
     }
     @objc private func favoriteTapped(){

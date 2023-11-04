@@ -80,6 +80,7 @@ class HomeVC: UIViewController {
     }
     @objc private func onProfileTapped(){
         isSideMenue ? hideMenu() : showMenu()
+        isSideMenue ?  uiTableView.reloadData() :nil  
     }
     
     private func bind(){
@@ -154,7 +155,9 @@ extension HomeVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item == 0{
             dismissKeyboard()
+            return
         }
+        viewModel.onTapCell.send(indexPath.row)
     }
 }
 extension HomeVC:PinterestLayoutDelegate{

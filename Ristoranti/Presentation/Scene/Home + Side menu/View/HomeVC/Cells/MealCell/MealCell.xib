@@ -30,8 +30,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="I98-1M-KRs">
                                 <rect key="frame" x="0.0" y="0.0" width="459" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="180" id="KPa-En-uBR"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="NJS-H7-0Ud"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="180" id="KPa-En-uBR"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="180" id="NJS-H7-0Ud"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

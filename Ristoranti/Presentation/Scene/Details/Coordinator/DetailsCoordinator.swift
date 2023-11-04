@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailsCoordinatorProtocol:Coordinator{
-    
+    func popVC()
 }
 
 struct DetailsCoordinator:DetailsCoordinatorProtocol{
@@ -23,5 +23,8 @@ struct DetailsCoordinator:DetailsCoordinatorProtocol{
         let viewModel = DetailsViewModel(params: .init(coordinator: self, itemID: id))
         vc.viewModel = viewModel
         navigationController?.pushViewController(vc, animated: true)
+    }
+    func popVC() {
+        navigationController?.popViewController(animated: true)
     }
 }

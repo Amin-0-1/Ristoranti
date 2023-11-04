@@ -26,7 +26,7 @@ struct HomeCoordinator:HomeCoordinatorProtocol{
         coordinator.start()
     }
     func navigateToDetails(id: Int) {
-        let coordinator = DetailsCoordinator(id: id)
-        
+        let coordinator = DetailsCoordinator(navigationController: navigationController,id: id)
+        coordinator.start()
     }
 }

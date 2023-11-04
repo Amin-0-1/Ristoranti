@@ -9,13 +9,16 @@ import Foundation
 
 enum RistorantiEndPoints:CustomStringConvertible{
     case login(LoginParamRequest)
-    case fetchFood
+    case foodItems
+    case details(Int)
     var description: String{
         switch self {
             case .login:
                 return "/foodItem/public/api/users/login"
-            case .fetchFood:
+            case .foodItems:
                 return "/foodItem/public/api/foodItem"
+            case .details(let id):
+                return "/foodItem/public/api/foodItem/\(id)"
         }
     }
 }
@@ -29,7 +32,7 @@ extension RistorantiEndPoints:EndPoint{
     }
     
     var header: HTTPHeaders? {
-        return nil
+        return AppConfiguration.shared.header
     }
     
     var parameters: Parameters? {
@@ -53,7 +56,7 @@ extension RistorantiEndPoints:EndPoint{
         switch self {
             case .login:
                 return .JSONEncoding
-            case .fetchFood:
+            case .foodItems,.details:
                 return .URLEncoding
         }
     }
