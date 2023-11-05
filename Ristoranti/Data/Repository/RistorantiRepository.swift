@@ -29,7 +29,7 @@ class RistorantiRepository:RepositoryInterface{
                                     let custom = self.handleAndReturnDomainErrorWithServer(data: data,error: networkError)
                                     promise(.failure(custom))
                                 default:
-                                    let custom = DomainError.customError(error.localizedDescription)
+                                    let custom = DomainError.customError(networkError.localizedDescription)
                                     promise(.failure(custom))
                             }
                         }
@@ -53,7 +53,7 @@ class RistorantiRepository:RepositoryInterface{
                                     let custom = self.handleAndReturnDomainErrorWithServer(data: data,error: networkError)
                                     promise(.failure(custom))
                                 default:
-                                    let custom = DomainError.customError(error.localizedDescription)
+                                    let custom = DomainError.customError(networkError.localizedDescription)
                                     promise(.failure(custom))
                             }
                         }
@@ -78,7 +78,7 @@ class RistorantiRepository:RepositoryInterface{
                                     let custom = self.handleAndReturnDomainErrorWithServer(data: data,error: networkError)
                                     promise(.failure(custom))
                                 default:
-                                    let custom = DomainError.customError(error.localizedDescription)
+                                    let custom = DomainError.customError(networkError.localizedDescription)
                                     promise(.failure(custom))
                             }
                         }
