@@ -34,6 +34,8 @@ class APIClient:NSObject, URLSessionDataDelegate,APIClientProtocol{
                                     promise(.failure(NetworkError.noInternetConnection))
                                 case .timedOut:
                                     promise(.failure(NetworkError.timeout))
+                                case .badURL,.badURL:
+                                    promise(.failure(NetworkError.invalidURL))
                                 default:
                                     promise(.failure(NetworkError.requestFailed))
                                     
@@ -44,17 +46,13 @@ class APIClient:NSObject, URLSessionDataDelegate,APIClientProtocol{
                         return
                     }
                     
-                    guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
-                        if let httpResponse = response as? HTTPURLResponse {
-                            promise(.failure(NetworkError.serverError(statusCode: httpResponse.statusCode)))
-                        } else {
-                            promise(.failure(NetworkError.invalidResponse))
-                        }
+                    guard let data = data else {
+                        promise(.failure(NetworkError.invalidResponse))
                         return
                     }
                     
-                    guard let data = data else {
-                        promise(.failure(NetworkError.invalidResponse))
+                    guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
+                        promise(.failure(NetworkError.serverError(data)))
                         return
                     }
                     

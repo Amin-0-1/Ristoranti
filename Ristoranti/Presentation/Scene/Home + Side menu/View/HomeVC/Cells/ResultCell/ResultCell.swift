@@ -16,7 +16,7 @@ class ResultCell: UICollectionViewCell {
     }
     
     func configure(value:Int){
-        uiLabel.text = value.description
+        uiLabel.text = (value - 1).description
     }
 
 }

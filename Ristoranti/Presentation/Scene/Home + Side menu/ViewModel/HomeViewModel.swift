@@ -11,20 +11,28 @@ import Combine
 protocol HomeViewModelProtocol{
     var onScreenAppeared:PassthroughSubject<Bool,Never>{get}
     var onTapCell: PassthroughSubject<Int,Never>{get}
+    var onChangedSegment:PassthroughSubject<Int,Never>{get}
+    var onSearching:PassthroughSubject<String?,Never> {get}
     
     var profileData:CurrentValueSubject<UserResponseModel?,Never>{get}
     var modelData:CurrentValueSubject<[FoodItemProduct],Never>{get}
     var onLogout:PassthroughSubject<Void,Never> {get}
     var showError:AnyPublisher<String,Never>{get}
     var showProgress:AnyPublisher<Bool,Never>{get}
+    var selectSegment:Int {get}
+    var searchText:String {get}
     
 }
 class HomeViewModel:HomeViewModelProtocol{
+    
     var onScreenAppeared: PassthroughSubject<Bool, Never> = .init()
     var onTapCell: PassthroughSubject<Int, Never> = .init()
+    var onChangedSegment: PassthroughSubject<Int, Never> = .init()
+    var onSearching: PassthroughSubject<String?, Never> = .init()
     
     var modelData: CurrentValueSubject<[FoodItemProduct], Never> = .init([])
     var onLogout: PassthroughSubject<Void, Never> = .init()
+    var profileData: CurrentValueSubject<UserResponseModel?, Never> = .init(nil)
     
     var showError: AnyPublisher<String, Never>{
         return showErrorSubject.eraseToAnyPublisher()
@@ -32,13 +40,20 @@ class HomeViewModel:HomeViewModelProtocol{
     var showProgress: AnyPublisher<Bool, Never>{
         return showProgressSubject.eraseToAnyPublisher()
     }
-    var profileData: CurrentValueSubject<UserResponseModel?, Never> = .init(nil)
+    
+    @Published var selectSegment: Int = 0
+    @Published var searchText: String = ""
+    
     
     private var showErrorSubject:PassthroughSubject<String,Never> = .init()
     private var showProgressSubject:PassthroughSubject<Bool,Never> = .init()
+    
+    private var currentState:[FoodItemProduct] = []
+    
     private var usecase:HomeUsecaseProtocol!
     private var coordinator:HomeCoordinatorProtocol!
     private var cancellabels:Set<AnyCancellable> = []
+    
     init(usecase: HomeUsecaseProtocol = HomeUsecase(),coordinator:HomeCoordinatorProtocol) {
         self.usecase = usecase
         self.coordinator = coordinator
@@ -48,6 +63,8 @@ class HomeViewModel:HomeViewModelProtocol{
         bindOnScreenAppeared()
         bindLogout()
         bindOnTapCell()
+        bindOnChangedSegment()
+        bindOnSearching()
     }
     
     private func bindOnScreenAppeared(){
@@ -70,7 +87,10 @@ class HomeViewModel:HomeViewModelProtocol{
                     self.showErrorSubject.send("There is no data found, please tray agina later.")
                     return
                 }
-                self.modelData.send(products)
+                
+                let model = [FoodItemProduct.fakeModel] + products
+                self.currentState = model
+                self.modelData.send(model)
             }.store(in: &self.cancellabels)
             
             
@@ -94,8 +114,46 @@ class HomeViewModel:HomeViewModelProtocol{
             self.coordinator.navigateToDetails(id: id)
         }.store(in: &cancellabels)
     }
+    private func bindOnChangedSegment(){
+        onChangedSegment.sink { [weak self] segment in
+            guard let self = self else {return}
+            let origin = modelData.value.dropFirst()
+            let shuffled = origin.shuffled()
+            let data = [FoodItemProduct.fakeModel] + shuffled
+            selectSegment = segment
+            self.modelData.send(data)
+        }.store(in: &cancellabels)
+    }
+    
+    
+    private func bindOnSearching(){
+//        throttle(for: 1.5, scheduler: DispatchWorkloop.main, latest: true)
+        onSearching.debounce(for: 1.5, scheduler: DispatchWorkloop.main, options: .init(qos: .userInteractive)).sink {[weak self] query in
+            guard let self = self else {return}
+            guard let query = query,!query.isEmpty else {
+                searchText = ""
+                self.modelData.send(self.currentState)
+                return
+            }
+            self.search(query: query)
+        }.store(in: &cancellabels)
+    }
+    
     private func prepareProfileData(){
         guard let data:UserResponseModel = UserdefaultManager.shared.getObject(forKey: .userData) else {return}
         profileData.send(data)
+    }
+    
+    private func search(query:String){
+        self.searchText = query
+        let data = currentState
+        var searchList:[FoodItemProduct] = []
+        data.forEach {item in
+            if let contains = item.description?.contains(query), contains{
+                searchList.append(item)
+            }
+        }
+        let result = [FoodItemProduct.fakeModel] + searchList
+        self.modelData.send(result)
     }
 }

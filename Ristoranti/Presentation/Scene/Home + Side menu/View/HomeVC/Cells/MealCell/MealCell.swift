@@ -48,4 +48,10 @@ class MealCell: UICollectionViewCell {
         }
     }
 
+    // MARK: - put this in headerView.swift file
+    override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
+        let size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+        return size
+    }
 }
+
