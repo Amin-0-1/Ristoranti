@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SofiaProRegular.ttf">
+            <string>SofiaProRegular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MealCell" customModule="Ristoranti" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="467" height="301"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="467" height="301"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOY-k8-Zry">
+                        <rect key="frame" x="4" y="4" width="459" height="293"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="I98-1M-KRs">
+                                <rect key="frame" x="0.0" y="0.0" width="459" height="213"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="180" id="KPa-En-uBR"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="180" id="NJS-H7-0Ud"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Meat pasta" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEI-ne-KxQ">
+                                <rect key="frame" x="16" y="236" width="427" height="18"/>
+                                <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="18"/>
+                                <color key="textColor" name="MainFont"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="meat and basil" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nN-Iu-0on">
+                                <rect key="frame" x="16" y="270" width="427" height="15"/>
+                                <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="15"/>
+                                <color key="textColor" name="SecondaryFont"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjW-BP-EZZ">
+                                <rect key="frame" x="421" y="8" width="30" height="30"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="B4g-1b-xam">
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UhY-sk-7V1">
+                                            <rect key="frame" x="4" y="5.9999999999999982" width="22" height="19"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="UhY-sk-7V1" firstAttribute="leading" secondItem="B4g-1b-xam" secondAttribute="leading" constant="4" id="EI4-0h-p7B"/>
+                                        <constraint firstAttribute="bottom" secondItem="UhY-sk-7V1" secondAttribute="bottom" constant="4" id="HUw-ff-efA"/>
+                                        <constraint firstItem="UhY-sk-7V1" firstAttribute="top" secondItem="B4g-1b-xam" secondAttribute="top" constant="4" id="LTi-CQ-EmS"/>
+                                        <constraint firstAttribute="trailing" secondItem="UhY-sk-7V1" secondAttribute="trailing" constant="4" id="US2-sB-fXt"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ew2-kg-E2s"/>
+                                    <constraint firstAttribute="width" constant="30" id="Lob-i4-ijo"/>
+                                </constraints>
+                                <blurEffect style="regular"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujp-TZ-K6r">
+                                <rect key="frame" x="8" y="8" width="64.666666666666671" height="28"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q48-Fi-Oax">
+                                        <rect key="frame" x="7.9999999999999964" y="4" width="48.666666666666657" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fa-bB-myP">
+                                                <rect key="frame" x="0.0" y="0.0" width="9" height="20"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="$">
+                                                        <attributes>
+                                                            <color key="NSColor" name="AccentColor"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxY-cz-7qO">
+                                                <rect key="frame" x="9" y="0.0" width="39.666666666666664" height="20"/>
+                                                <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="q48-Fi-Oax" secondAttribute="trailing" constant="8" id="McG-lG-xhM"/>
+                                    <constraint firstItem="q48-Fi-Oax" firstAttribute="top" secondItem="ujp-TZ-K6r" secondAttribute="top" constant="4" id="iAP-jz-hlx"/>
+                                    <constraint firstAttribute="bottom" secondItem="q48-Fi-Oax" secondAttribute="bottom" constant="4" id="jVu-gh-AbW"/>
+                                    <constraint firstItem="q48-Fi-Oax" firstAttribute="leading" secondItem="ujp-TZ-K6r" secondAttribute="leading" constant="8" id="kLI-xA-dOW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
+                                        <point key="value" x="5" y="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYg-O0-5ue">
+                                <rect key="frame" x="8" y="197" width="72.333333333333329" height="31"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OBv-Eg-wsd">
+                                        <rect key="frame" x="0.0" y="0.0" width="72.333333333333329" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7R-yB-uUr">
+                                                <rect key="frame" x="4" y="8" width="23" height="15"/>
+                                                <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bOg-JK-edF">
+                                                <rect key="frame" x="29" y="7.666666666666667" width="15" height="14.666666666666661"/>
+                                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="15" id="cle-ez-mTB"/>
+                                                    <constraint firstAttribute="height" constant="15" id="ijD-BD-UTh"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChV-1v-cOb">
+                                                <rect key="frame" x="46" y="8" width="22.333333333333329" height="15"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="(25+)">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.38039000000000001" green="0.40392" blue="0.44706000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <edgeInsets key="layoutMargins" top="8" left="4" bottom="8" right="4"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="OBv-Eg-wsd" firstAttribute="top" secondItem="aYg-O0-5ue" secondAttribute="top" id="EiS-tG-wRx"/>
+                                    <constraint firstAttribute="trailing" secondItem="OBv-Eg-wsd" secondAttribute="trailing" id="F2S-lJ-BAL"/>
+                                    <constraint firstAttribute="bottom" secondItem="OBv-Eg-wsd" secondAttribute="bottom" id="F3U-jn-aGF"/>
+                                    <constraint firstItem="OBv-Eg-wsd" firstAttribute="leading" secondItem="aYg-O0-5ue" secondAttribute="leading" id="nfo-gG-bKG"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
+                                        <point key="value" x="5" y="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="I98-1M-KRs" firstAttribute="leading" secondItem="aOY-k8-Zry" secondAttribute="leading" id="8Om-Hw-8UZ"/>
+                            <constraint firstAttribute="trailing" secondItem="VjW-BP-EZZ" secondAttribute="trailing" constant="8" id="GX0-vH-npg"/>
+                            <constraint firstAttribute="trailing" secondItem="I98-1M-KRs" secondAttribute="trailing" id="I7L-mE-sZj"/>
+                            <constraint firstItem="VjW-BP-EZZ" firstAttribute="top" secondItem="aOY-k8-Zry" secondAttribute="top" constant="8" id="OeO-2l-cjD"/>
+                            <constraint firstItem="aYg-O0-5ue" firstAttribute="bottom" secondItem="I98-1M-KRs" secondAttribute="bottom" constant="15" id="TzM-8l-sne"/>
+                            <constraint firstItem="aYg-O0-5ue" firstAttribute="leading" secondItem="ujp-TZ-K6r" secondAttribute="leading" id="WPT-dC-MCW"/>
+                            <constraint firstAttribute="bottom" secondItem="4nN-Iu-0on" secondAttribute="bottom" constant="8" id="WiN-o1-N0B"/>
+                            <constraint firstAttribute="trailing" secondItem="QEI-ne-KxQ" secondAttribute="trailing" constant="16" id="XqY-Vi-3AE"/>
+                            <constraint firstItem="QEI-ne-KxQ" firstAttribute="top" secondItem="aYg-O0-5ue" secondAttribute="bottom" constant="8" id="eNc-mT-vK7"/>
+                            <constraint firstItem="4nN-Iu-0on" firstAttribute="trailing" secondItem="QEI-ne-KxQ" secondAttribute="trailing" id="fUr-hJ-H8W"/>
+                            <constraint firstItem="4nN-Iu-0on" firstAttribute="top" secondItem="QEI-ne-KxQ" secondAttribute="bottom" constant="16" id="g7I-nV-uum"/>
+                            <constraint firstItem="I98-1M-KRs" firstAttribute="top" secondItem="aOY-k8-Zry" secondAttribute="top" id="kbZ-dr-XkQ"/>
+                            <constraint firstItem="ujp-TZ-K6r" firstAttribute="leading" secondItem="aOY-k8-Zry" secondAttribute="leading" constant="8" id="nWA-4G-O55"/>
+                            <constraint firstItem="QEI-ne-KxQ" firstAttribute="leading" secondItem="aOY-k8-Zry" secondAttribute="leading" constant="16" id="pdA-il-noZ"/>
+                            <constraint firstItem="ujp-TZ-K6r" firstAttribute="top" secondItem="aOY-k8-Zry" secondAttribute="top" constant="8" id="tgf-o6-EtU"/>
+                            <constraint firstItem="4nN-Iu-0on" firstAttribute="leading" secondItem="QEI-ne-KxQ" secondAttribute="leading" id="z9A-aa-cM0"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                <real key="value" value="0.10000000000000001"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
+                                <point key="value" x="1" y="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="aOY-k8-Zry" secondAttribute="bottom" constant="4" id="SfS-gd-uUl"/>
+                <constraint firstAttribute="trailing" secondItem="aOY-k8-Zry" secondAttribute="trailing" constant="4" id="UpV-CB-Uf7"/>
+                <constraint firstItem="aOY-k8-Zry" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="frT-bC-cye"/>
+                <constraint firstItem="aOY-k8-Zry" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="upP-ty-83d"/>
+            </constraints>
+            <size key="customSize" width="467" height="301"/>
+            <connections>
+                <outlet property="uiDescription" destination="4nN-Iu-0on" id="TGS-gx-dqB"/>
+                <outlet property="uiFavoriteImage" destination="UhY-sk-7V1" id="K5C-K2-DZC"/>
+                <outlet property="uiFavouriteView" destination="VjW-BP-EZZ" id="o1n-Tq-MtA"/>
+                <outlet property="uiPrice" destination="OxY-cz-7qO" id="Ghy-tt-NZz"/>
+                <outlet property="uiProductImage" destination="I98-1M-KRs" id="9L4-FN-EAh"/>
+                <outlet property="uiRate" destination="Y7R-yB-uUr" id="raH-NK-Eu6"/>
+                <outlet property="uiRateCount" destination="ChV-1v-cOb" id="NTD-yR-QXX"/>
+                <outlet property="uiTitle" destination="QEI-ne-KxQ" id="tPy-V2-TgG"/>
+            </connections>
+            <point key="canvasLocation" x="113.74045801526717" y="6.6901408450704229"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="logo" width="1886" height="1572"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <namedColor name="AccentColor">
+            <color red="0.99607843137254903" green="0.44705882352941179" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainFont">
+            <color red="0.074509803921568626" green="0.10196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryFont">
+            <color red="0.38039215686274508" green="0.40392156862745099" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
