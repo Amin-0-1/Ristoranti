@@ -11,6 +11,7 @@ class DetailsVC: UIViewController {
 
     @IBOutlet private weak var uiTableView: UITableView!
     @IBOutlet private weak var uiBackView: UIView!
+    @IBOutlet private weak var uiButton: UIButton!
     
     private let headerTitle = "Choice of Add On"
     
@@ -18,10 +19,12 @@ class DetailsVC: UIViewController {
     private var cancellabels:Set<AnyCancellable> = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configure()
     }
     
     private func configure(){
+        uiButton.imageView?.backgroundColor = .white
         configureBackButton()
         configureTableView()
         bind()

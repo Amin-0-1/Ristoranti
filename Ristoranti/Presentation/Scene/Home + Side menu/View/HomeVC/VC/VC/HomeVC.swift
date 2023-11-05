@@ -197,14 +197,29 @@ extension HomeVC:PinterestLayoutDelegate{
         }
         let item = viewModel.modelData.value[indexPath.item]
         let title = item.name
-        let desc = item.description
+        let desc = item.description ?? ""
         
         let image = (180 * layout.contentWidth) / 180
         
         let padding = 32
         let font = UIFont(name: "SofiaProRegular", size: 15)!
-        let descHeight = desc?.pinterestHeightFitting(width: layout.contentWidth - 32, font: font) ?? 0
         let titleHeigh = title?.pinterestHeightFitting(width: layout.contentWidth - 32, font: font.withSize(18)) ?? 0
+//        let descHeight = desc?.pinterestHeightFitting(width: layout.contentWidth - 32, font: font) ?? 0
+        
+        let textAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: font
+        ]
+        let rect = NSString(string: desc).boundingRect(
+            with: CGSize(width: layout.contentWidth - 32, height: .greatestFiniteMagnitude),
+            options: [.usesLineFragmentOrigin],
+            attributes: textAttributes,
+            context: nil
+        )
+
+        let lineHeight = font.lineHeight
+        let maxHeight = lineHeight * CGFloat(2)
+        let descHeight = min(rect.height, maxHeight)
+        
         
         return image + CGFloat(padding) + titleHeigh + descHeight
     }
