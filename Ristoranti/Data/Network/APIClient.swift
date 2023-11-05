@@ -57,7 +57,8 @@ class APIClient:NSObject, URLSessionDataDelegate,APIClientProtocol{
                     }
                     
                     guard let model = try? JSONDecoder().decode(T.self, from: data)else {
-                        promise(.failure(NetworkError.decodingFailed))
+//                        promise(.failure(NetworkError.decodingFailed))
+                        promise(.failure(NetworkError.serverError(data)))
                         return
                     }
                     promise(.success(model))
