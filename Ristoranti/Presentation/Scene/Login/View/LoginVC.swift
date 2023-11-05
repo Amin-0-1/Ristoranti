@@ -53,7 +53,7 @@ class LoginVC: UIViewController{
         
         sender.isLoading = true
         [uiMail,uiPassword].forEach{$0?.isRequired = false}
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2){ [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){ [weak self] in
             guard let self = self else {return}
             self.viewModel.publishableSubmit.send()
             sender.isLoading = false

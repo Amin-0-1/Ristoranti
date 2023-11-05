@@ -18,6 +18,7 @@ struct LoginCoordinator:LoginCoordinatorProtocol{
         let viewModel = LoginViewModel(coordinator: self)
         vc.viewModel = viewModel
         navigationController?.setViewControllers([vc], animated: true)
+        navigationController?.navigationBar.isHidden = true
     }
     func navigateToHome() {
         let coordinator = HomeCoordinator(navigationController: navigationController)

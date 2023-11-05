@@ -12,15 +12,20 @@ import UIKit
     @IBOutlet private var contentView: UIView!
     @IBOutlet private weak var uiTextfield: UITextField!
     @IBOutlet private weak var uiActionButton: UIButton!
-    private enum PasswordStates:String{
-        case hidden = "eye.fill"
-        case shown = "eye.slash.fill"
+//    private enum PasswordStates:String{
+//        case hidden = "eye.fill"
+//        case shown = "eye.slash.fill"
+//    }
+    
+    private enum PasswordStates{
+        case hidden
+        case shown
     }
     private var currentPasswordState:PasswordStates?{
         willSet{
             guard let value = newValue else {return}
-            let image = UIImage(systemName: value.rawValue)
-            self.uiActionButton.setImage(image,for: .normal)
+//            let image = UIImage(systemName: value.rawValue)
+//            self.uiActionButton.setImage(image,for: .normal)
             self.uiTextfield.isSecureTextEntry = value == .hidden
         }
     }
@@ -150,6 +155,18 @@ import UIKit
                 self.currentPasswordState = .hidden
                 self.uiTextfield.isSecureTextEntry = true
             }
+        }
+    }
+    @IBInspectable var secureImage:UIImage?{
+        get{
+            return uiActionButton.image(for: .normal)
+        }
+        
+        set{
+            guard let image = newValue else {return}
+            self.uiActionButton.setImage(image, for: .normal)
+            self.uiActionButton.setImage(image, for: .selected)
+            self.uiActionButton.setImage(image, for: .highlighted)
         }
     }
 

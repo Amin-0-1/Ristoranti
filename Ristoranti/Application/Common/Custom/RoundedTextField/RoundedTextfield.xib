@@ -7,8 +7,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Archivo-Regular.ttf">
-            <string>Archivo-Regular</string>
+        <array key="SofiaProRegular.ttf">
+            <string>SofiaProRegular</string>
         </array>
     </customFonts>
     <objects>
@@ -26,13 +26,13 @@
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mZW-mO-B1w">
                     <rect key="frame" x="16" y="8" width="650" height="210"/>
-                    <fontDescription key="fontDescription" name="Archivo-Regular" family="Archivo" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="Location"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7T-2h-oIK">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7T-2h-oIK">
                     <rect key="frame" x="674" y="98" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="SfF-4g-o4e"/>
