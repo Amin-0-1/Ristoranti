@@ -6,35 +6,35 @@
 //
 
 import Foundation
-public enum NetworkError: Error{
+public enum NetworkError: Error,Equatable{
     
     case noInternetConnection
-    case requestFailed
     case timeout
+    case invalidURL
+    case requestFailed
     case encodingFailed
     case invalidResponse
     case decodingFailed
-    case invalidURL
-    case serverError(statusCode: Int)
+    case serverError(Data)
     
     public var localizedDescription: String {
         switch self {
-            case .requestFailed:
-                return "We've encountered issues on server.";
-            case .invalidResponse:
-                return "The operation couldn’t be completed."
-            case .decodingFailed:
-                return "an error occured in the server please try again later."
             case .noInternetConnection:
-                return "The Internet connection appears to be offline."
+                return "Oops! It seems you're not connected to the internet. Please check your internet connection and try again."
             case .timeout:
-                return "The request timed out."
-            case .serverError(statusCode: let statusCode):
-                return "Could not connect to the server, \(statusCode) has found."
+                return "Sorry, the operation took longer than expected. Please check your internet connection and try again. If the issue persists, please contact support."
+            case .invalidURL:
+                return "Invalid URL provided. Please double-check the URL and try again."
+            case .requestFailed:
+                return "Oops, something went wrong with the network. Please check your connection, try again later, or contact support if the issue persists.";
             case .encodingFailed:
                 return "Unable to encode request data"
-            case .invalidURL:
-                return "Invalid url for network"
+            case .invalidResponse:
+                return "Empty Response: No Available Data"
+            case .decodingFailed:
+                return "an error occured in the server please try again later."
+            case .serverError:
+                return "Oops, server error encountered while loading data"
         }
     } 
 }
