@@ -48,8 +48,8 @@ class LoginVC: UIViewController{
         uiHaveAccountButton.setAttributedTitle(first, for: .normal)
     }
     @IBAction func uiLoginButtonPressed(_ sender: LoaderButton) {
-        viewModel.publishMail.send("01287864053")
-        viewModel.publishPassword.send("12345678")
+//        viewModel.publishMail.send("01287864053")
+//        viewModel.publishPassword.send("12345678")
         self.viewModel.publishableSubmit.send()
         sender.isLoading = true
         [uiMail,uiPassword].forEach{$0?.isRequired = false}
