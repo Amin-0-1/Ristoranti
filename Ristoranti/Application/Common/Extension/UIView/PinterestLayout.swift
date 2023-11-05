@@ -18,119 +18,57 @@ extension PinterestLayoutDelegate {
     func collectionViewHeaderSize(_ collectionView:UICollectionView)->CGFloat {return 0}
 }
 
+
 class PinterestLayout: UICollectionViewLayout {
-    // MARK: Static Constants
-    static let PinterestElementKindSectionHeader: String = UICollectionView.elementKindSectionHeader
-    
+    var numberOfColumns = 2
+    var cellPadding: CGFloat = 16
+    var verticalSpacing:CGFloat = 16
     typealias AttributeCache = [UICollectionViewLayoutAttributes]
     
-    // MARK: Delegate
-    weak var delegate: PinterestLayoutDelegate?
-    
-    // MARK: Cache
     private var itemCache: AttributeCache = []
     private var supplementaryCache: [String: AttributeCache] = [:]
-
     
-    private lazy var contentBounds: CGRect = {
-        guard let collectionView = collectionView else { return .zero }
-        var size = collectionView.bounds.inset(by: collectionView.contentInset).size
-        if let headerSize = supplementaryCache[PinterestLayout.PinterestElementKindSectionHeader]?.first?.frame.size {
-            size.height += headerSize.height // Adjust for header view height
-        }
-        return CGRect(origin: .zero, size: size)
-    }()
-        
-    // MARK: Public Variables
-    var cellPadding: CGFloat = 6 {
-        didSet {
-            if oldValue != cellPadding { invalidateLayout() }
-        }
+    private var contentHeight: CGFloat = 0
+    
+    var contentWidth: CGFloat {
+        return (collectionViewContentSize.width / CGFloat(numberOfColumns)) - 2 * cellPadding
     }
     
-    var numberOfColumns = 2 {
-        didSet {
-            if oldValue != numberOfColumns { invalidateLayout() }
-        }
+    static let PinterestElementKindSectionHeader: String = UICollectionView.elementKindSectionHeader
+    
+    weak var delegate: PinterestLayoutDelegate?
+    
+    override func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem]) {
+        // Handle updates to the collection view, if needed.
+        super.prepare(forCollectionViewUpdates: updateItems)
+        invalidateLayout()
     }
     
-    var cellWidth: CGFloat {
-        return (contentBounds.width / CGFloat(numberOfColumns)) - 2 * cellPadding
-    }
-    
-    // MARK: - Overrides
-    override func prepare() {
-        guard let collectionView = collectionView else { return }
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        var visibleLayoutAttributes: [UICollectionViewLayoutAttributes] = []
         
-        itemCache.removeAll()
-        supplementaryCache.removeAll()
-        
-        var xOffsets: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
-        xOffsets = xOffsets.indices.map { CGFloat($0) * contentBounds.width / CGFloat(numberOfColumns) }
-        
-        var yOffsets: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
-        
-        let count = collectionView.numberOfItems(inSection: 0)
-        
-        var column = 0
-        var itemIndex = 0
-        
-        if let delegate = delegate {
-            if delegate.collectionViewHeaderSize(collectionView) > 0 {
-                let indexPath = IndexPath(item: 0, section: 0)
-                let height = delegate.collectionViewHeaderSize(collectionView)
-                let frame = CGRect(x: 0,
-                                   y: yOffsets.max() ?? 0,
-                                   width: contentBounds.width,
-                                   height: height)
-                
-                let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: Self.PinterestElementKindSectionHeader, with: indexPath)
-                attributes.frame = insetFrame
-                supplementaryCache.updateCollection(keyedBy: PinterestLayout.PinterestElementKindSectionHeader, with: attributes)
-                contentBounds = contentBounds.union(frame)
-                yOffsets = yOffsets.map { _ in frame.maxY }
+        // Loop through the cache and add attributes to the visibleLayoutAttributes array if they intersect with the rect.
+        for attributes in itemCache {
+            if attributes.frame.intersects(rect) {
+                visibleLayoutAttributes.append(attributes)
             }
         }
-        while itemIndex < count {
-            let indexPath = IndexPath(item: itemIndex, section: 0)
-            
-            let photoHeight = delegate?.collectionView(collectionView, layout: self,
-                                                       heightForItemAtIndexPath: indexPath) ?? 180
-            let height = cellPadding * 2 + photoHeight
-            let width = contentBounds.width / CGFloat(numberOfColumns)
-            let frame = CGRect(x: xOffsets[column],
-                               y: yOffsets[column],
-                               width: width,
-                               height: height)
-            
-            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            attributes.frame = insetFrame
-            itemCache.append(attributes)
-            contentBounds = contentBounds.union(frame)
-            yOffsets[column] = frame.maxY
-            column = yOffsets.indexOfMin ?? 0 // Waterfall Layout
-            itemIndex += 1
+        
+        for (_, supplementaryAttributes) in supplementaryCache {
+            for attributes in supplementaryAttributes {
+                if attributes.frame.intersects(rect) {
+                    visibleLayoutAttributes.append(attributes)
+                }
+            }
         }
         
-        
-    }
-    
-    override var collectionViewContentSize: CGSize {
-        return contentBounds.size
-    }
-    
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        guard let collectionView = collectionView else { return false }
-        return !newBounds.size.equalTo(collectionView.bounds.size)
+        return visibleLayoutAttributes
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return itemCache[indexPath.item]
     }
     
-    // MARK: - Header view
     override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         if elementKind == PinterestLayout.PinterestElementKindSectionHeader {
             return supplementaryCache[elementKind]?[indexPath.item]
@@ -138,63 +76,64 @@ class PinterestLayout: UICollectionViewLayout {
         return nil
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var result = [UICollectionViewLayoutAttributes]()
+    
+    override var collectionViewContentSize: CGSize {
+        return CGSize(width: collectionView?.frame.width ?? 0, height: contentHeight)
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return newBounds.size != collectionView?.bounds.size
+    }
+    
+    override func prepare() {
+        // Ensure the cache is empty before we start building it.
+        itemCache.removeAll()
+        supplementaryCache.removeAll()
         
-        let attributes = binSearchAttributes(in: itemCache, intersecting: rect)
-        result.append(contentsOf: attributes)
+        guard let collectionView = collectionView else { return }
         
-        supplementaryCache.keys.forEach { key in
-            if let cache = supplementaryCache[key] {
-                let attributes = binSearchAttributes(in: cache, intersecting: rect)
-                result.append(contentsOf: attributes)
+        // Calculate xOffset based on the updated bounds
+        var xOffset: [CGFloat] = []
+        for column in 0..<numberOfColumns {
+            xOffset.append(CGFloat(column) * collectionView.frame.size.width / CGFloat(numberOfColumns))
+        }
+        
+        var yOffset: [CGFloat] = Array(repeating: 0, count: numberOfColumns)
+        
+        if let delegate = delegate {
+            // MARK: - height of header if exists
+            if delegate.collectionViewHeaderSize(collectionView) > 0 {
+                let indexPath = IndexPath(item: 0, section: 0)
+                let itemHeight = delegate.collectionViewHeaderSize(collectionView)
+                let frame = CGRect(x: 0, y: yOffset.max() ?? 0, width: contentWidth, height: itemHeight)
+                
+                let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: Self.PinterestElementKindSectionHeader, with: indexPath)
+                attributes.frame = insetFrame
+                supplementaryCache.updateCollection(keyedBy: PinterestLayout.PinterestElementKindSectionHeader, with: attributes)
+                contentHeight = frame.maxY
+                yOffset = yOffset.map { _ in frame.maxY }
             }
         }
         
-        return result
-    }
-    
-    // MARK: - Helpers
-    func binSearchAttributes(in cache: AttributeCache, intersecting rect: CGRect) -> AttributeCache {
-        var result = [UICollectionViewLayoutAttributes]()
-        
-        let start = cache.startIndex
-        guard let end = cache.indices.last else { return result }
-        
-        guard let firstMatchIndex = findPivot(in: cache, for: rect, start: start, end: end) else {
-            return result
-        }
-        
-        for attributes in cache[..<firstMatchIndex].reversed() {
-            guard attributes.frame.maxY >= rect.minY else { break }
-            result.append(attributes)
-        }
-        
-        for attributes in cache[firstMatchIndex...] {
-            guard attributes.frame.minY <= rect.maxY else { break }
-            result.append(attributes)
-        }
-        
-        return result
-    }
-    
-    func findPivot(in cache: AttributeCache, for rect: CGRect, start: Int, end: Int) -> Int? {
-        if end < start { return nil }
-        
-        let mid = (start + end) / 2
-        let attr = cache[mid]
-        
-        if attr.frame.intersects(rect) {
-            return mid
-        } else {
-            if attr.frame.maxY < rect.minY {
-                return findPivot(in: cache, for: rect, start: (mid + 1), end: end)
-            } else {
-                return findPivot(in: cache, for: rect, start: start, end: (mid - 1))
-            }
+        var column = 0
+        for item in 0..<collectionView.numberOfItems(inSection: 0) {
+            let indexPath = IndexPath(item: item, section: 0)
+            
+            let width = collectionView.frame.size.width / CGFloat(numberOfColumns) - cellPadding * 2
+            let itemHeight = (delegate?.collectionView(collectionView, layout: self, heightForItemAtIndexPath: indexPath) ?? 0)
+            
+            let frame = CGRect(x: xOffset[column], y: yOffset[column], width: width, height: itemHeight )
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+            attributes.frame = frame
+            itemCache.append(attributes)
+            
+            contentHeight = max(contentHeight, frame.maxY)
+            yOffset[column] += itemHeight + verticalSpacing
+            
+            column = (column + 1) % numberOfColumns
         }
     }
-    
 }
 
 extension Dictionary where Value: RangeReplaceableCollection {
@@ -210,15 +149,9 @@ extension Dictionary where Value: RangeReplaceableCollection {
     }
 }
 
-extension Array where Element: Comparable {
-    var indexOfMin: Int? {
-        guard let min = self.min() else { return nil }
-        return self.firstIndex(of: min)
-    }
-}
 
 extension String {
-    func heightFitting(width: CGFloat, font: UIFont) -> CGFloat {
+    func pinterestHeightFitting(width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [.font: font], context: nil)
         return boundingBox.height

@@ -36,9 +36,11 @@ extension UIViewController{
     func showError(message:String,completion:@escaping()->Void = {}){
         DispatchQueue.main.async {
             let controller = UIAlertController(title: "Opps!!", message: message , preferredStyle: .alert)
+            controller.view.tintColor = .systemBlue
             controller.addAction(.init(title: "OK", style: .default,handler: { _ in
                 completion()
             }))
+            controller.addAction(.init(title: "Cancel", style: .destructive))
             self.present(controller, animated: true)
         }
     }

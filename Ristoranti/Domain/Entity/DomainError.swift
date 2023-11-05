@@ -18,7 +18,7 @@ extension DomainError:Error{
             case .serverError:
                 return "Server Error"
             case .connectionError:
-                return "No internet connection, try again later!"
+                return "Oops! It seems you're not connected to the internet. Please check your internet connection and try again."
             case .customError(let string):
                 return string
         }

@@ -23,9 +23,15 @@ class RistorantiRepository:RepositoryInterface{
                 switch completion{
                     case .finished: break
                     case .failure(let error):
-                        if let error = error as? NetworkError{
-                            let custom = DomainError.customError(error.localizedDescription)
-                            promise(.failure(custom))
+                        if let networkError = error as? NetworkError{
+                            switch networkError{
+                                case .serverError(let data):
+                                    let custom = self.handleAndReturnDomainErrorWithServer(data: data,error: networkError)
+                                    promise(.failure(custom))
+                                default:
+                                    let custom = DomainError.customError(error.localizedDescription)
+                                    promise(.failure(custom))
+                            }
                         }
                         promise(.failure(.customError(error.localizedDescription)))
                 }
@@ -41,9 +47,15 @@ class RistorantiRepository:RepositoryInterface{
                 switch completion{
                     case .finished: break
                     case .failure(let error):
-                        if let error = error as? NetworkError{
-                            let custom = DomainError.customError(error.localizedDescription)
-                            promise(.failure(custom))
+                        if let networkError = error as? NetworkError{
+                            switch networkError{
+                                case .serverError(let data):
+                                    let custom = self.handleAndReturnDomainErrorWithServer(data: data,error: networkError)
+                                    promise(.failure(custom))
+                                default:
+                                    let custom = DomainError.customError(error.localizedDescription)
+                                    promise(.failure(custom))
+                            }
                         }
                         promise(.failure(.customError(error.localizedDescription)))
                 }
@@ -60,9 +72,15 @@ class RistorantiRepository:RepositoryInterface{
                 switch completion{
                     case .finished: break
                     case .failure(let error):
-                        if let error = error as? NetworkError{
-                            let custom = DomainError.customError(error.localizedDescription)
-                            promise(.failure(custom))
+                        if let networkError = error as? NetworkError{
+                            switch networkError{
+                                case .serverError(let data):
+                                    let custom = self.handleAndReturnDomainErrorWithServer(data: data,error: networkError)
+                                    promise(.failure(custom))
+                                default:
+                                    let custom = DomainError.customError(error.localizedDescription)
+                                    promise(.failure(custom))
+                            }
                         }
                         promise(.failure(.customError(error.localizedDescription)))
                 }
@@ -70,6 +88,13 @@ class RistorantiRepository:RepositoryInterface{
                 promise(.success(model))
             }.store(in: &cancellables)
         }
+    }
+    
+    private func handleAndReturnDomainErrorWithServer(data:Data,error:NetworkError)->DomainError{
+        guard let decoded = try? JSONDecoder().decode(ErrorResponseModel.self, from: data), let message = decoded.message else {
+            return .customError(error.localizedDescription)
+        }
+        return .customError(message)
     }
     
 }
