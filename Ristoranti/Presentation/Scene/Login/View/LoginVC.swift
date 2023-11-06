@@ -10,7 +10,7 @@ import Combine
 
 class LoginVC: UIViewController{
     
-    @IBOutlet weak var uiScrollView: UIScrollView!
+    @IBOutlet private weak var uiScrollView: UIScrollView!
     @IBOutlet private weak var uiMail: RoundedTextfield!
     @IBOutlet private weak var uiPassword: RoundedTextfield!
     @IBOutlet private weak var uiLoginButton: LoaderButton!
@@ -48,8 +48,8 @@ class LoginVC: UIViewController{
         uiHaveAccountButton.setAttributedTitle(first, for: .normal)
     }
     @IBAction func uiLoginButtonPressed(_ sender: LoaderButton) {
-//        viewModel.publishMail.send("01287864053")
-//        viewModel.publishPassword.send("12345678")
+        viewModel.publishMail.send("01287864053")
+        viewModel.publishPassword.send("12345678")
         
         sender.isLoading = true
         [uiMail,uiPassword].forEach{$0?.isRequired = false}

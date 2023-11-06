@@ -29,7 +29,7 @@ import UIKit
             self.uiTextfield.isSecureTextEntry = value == .hidden
         }
     }
-    var delegate:RoundedTextfieldDelegate!
+    weak var delegate:RoundedTextfieldDelegate!
     var text:String?{
         get{return uiTextfield.text}
     }
@@ -198,7 +198,7 @@ extension RoundedTextfield : UITextFieldDelegate{
 
 
 
-protocol RoundedTextfieldDelegate{
+protocol RoundedTextfieldDelegate:AnyObject{
     func textFieldDidChange(text:String?,textfield:RoundedTextfield)
     func textFieldDidBeginEditing(textfield:RoundedTextfield)
     func textFieldDidEndEditing(textfield:RoundedTextfield)

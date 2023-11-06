@@ -12,13 +12,14 @@ class SideMenuHeader: UITableViewHeaderFooterView {
     @IBOutlet private weak var uiImage: UIImageView!
     @IBOutlet private weak var uiName: UILabel!
     @IBOutlet private weak var uiContact: UILabel!
+    private var image:UIImage!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.image = #imageLiteral(resourceName: "logo")
     }
     func configure(profile:UserResponseModel){
         if let url = profile.image{
-            let image = #imageLiteral(resourceName: "logo")
+            
             uiImage.sd_setImage(with: URL(string: url), placeholderImage: image)
         }
         uiName.text = profile.name

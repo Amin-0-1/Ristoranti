@@ -17,23 +17,24 @@ class MealCell: UICollectionViewCell {
     @IBOutlet weak var uiRate: UILabel!
     @IBOutlet weak var uiRateCount: UILabel!
     @IBOutlet weak var uiPrice: UILabel!
+    
+    private var image:UIImage!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tap = UITapGestureRecognizer(target: self, action: #selector(favoriteTapped))
+        uiFavouriteView.addGestureRecognizer(tap)
+        self.image = #imageLiteral(resourceName: "logo")
     }
     func configure(product:FoodItemProduct){
         
         uiDescription.text = product.description
         uiTitle.text = product.name
-        let image = #imageLiteral(resourceName: "logo")
         let url = URL(string: product.image ?? "")
         uiProductImage.sd_setImage(with: url, placeholderImage: image)
         uiPrice.text = product.price?.rounded(toPlaces: 1).description
         uiRate.text = product.rating?.rate?.rounded(toPlaces: 1).description
         uiRateCount.text = "( \(product.rating?.count?.description ?? uiRateCount.text ?? "") )"
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(favoriteTapped))
-        uiFavouriteView.addGestureRecognizer(tap)
     }
     @objc private func favoriteTapped(){
         let xPosition = center.x - uiFavouriteView.frame.width * 0.5
