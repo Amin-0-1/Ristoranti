@@ -10,7 +10,7 @@ import Combine
 
 class LoginVC: UIViewController {
     
-    @IBOutlet weak var uiScrollView: UIScrollView!
+    @IBOutlet private weak var uiScrollView: UIScrollView!
     @IBOutlet private weak var uiMail: RoundedTextfield!
     @IBOutlet private weak var uiPassword: RoundedTextfield!
     @IBOutlet private weak var uiLoginButton: LoaderButton!
