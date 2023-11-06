@@ -10,7 +10,6 @@ import BetterSegmentedControl
 
 @objc protocol HeaderViewDelegate:AnyObject,UITextFieldDelegate{
     @objc func onChangedSegment(_ sender: BetterSegmentedControl)
-//    @objc func onSearchValueChanged(_ sender:UITextField)
 }
 
 class HeaderView: UICollectionReusableView {
