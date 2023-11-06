@@ -1,7 +1,7 @@
 # Ristoranti
  Beautiful, user-friendly, and efficient interface for food browsing, ordering, and taste preferences management. Includes well-structured code and clear documentation for easy collaboration and development.
 
-# Football Leagues - iOS Swift App
+# Ristoranti  - iOS Swift App
 
 The Football Leagues Swift Application is a clean and scalable, reusable and maintainable iOS app built using the Model-View-ViewModel-Coordinator (MVVM-C) architecture. This project is designed to demonstrate best practices for developing iOS applications, including code organization, maintainability, and scalability.
 
