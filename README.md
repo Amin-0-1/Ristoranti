@@ -30,6 +30,10 @@ This project follows the Model-View-ViewModel-Coordinator (MVVM-C) architecture 
 
 The project also employs Clean Architecture principles to separate concerns and promote testability.
 
+
+## Demo
+https://www.youtube.com/watch?v=7ip-M9j6sOY
+
 ## Getting Started
 
 These instructions will help you set up and run the project on your local machine.
