@@ -7,17 +7,17 @@
 
 import UIKit
 
-protocol HomeCoordinatorProtocol:Coordinator{
+protocol HomeCoordinatorProtocol: Coordinator {
     func logout()
-    func navigateToDetails(id:Int)
+    func navigateToDetails(id: Int)
 }
 
-struct HomeCoordinator:HomeCoordinatorProtocol{
+struct HomeCoordinator: HomeCoordinatorProtocol {
     var navigationController: UINavigationController?
     
     func start() {
-        let vc = HomeVC()
         let viewModel = HomeViewModel(coordinator: self)
+        let vc = HomeVC(viewModel: viewModel)
         vc.viewModel = viewModel
         navigationController?.setViewControllers([vc], animated: false)
     }
@@ -26,7 +26,7 @@ struct HomeCoordinator:HomeCoordinatorProtocol{
         coordinator.start()
     }
     func navigateToDetails(id: Int) {
-        let coordinator = DetailsCoordinator(navigationController: navigationController,id: id)
+        let coordinator = DetailsCoordinator(navigationController: navigationController, id: id)
         coordinator.start()
     }
 }

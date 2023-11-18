@@ -14,7 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RoundedTextfield" customModule="Ristoranti" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="1m4-Mr-ycf"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="QgF-LZ-gF6"/>
                 <outlet property="uiActionButton" destination="v7T-2h-oIK" id="Od9-CH-nke"/>
                 <outlet property="uiTextfield" destination="mZW-mO-B1w" id="WCA-WM-Eqs"/>
             </connections>

@@ -45,7 +45,6 @@ struct ProductDataModel: Codable {
     }
 }
 
-
 struct NutrientDataModel: Codable {
     let id: Int?
     let name, unitOfMeasurement, value: String?

@@ -11,27 +11,35 @@ class DetailsVC: UIViewController {
 
     @IBOutlet private weak var uiTableView: UITableView!
     @IBOutlet private weak var uiBackView: UIView!
-    @IBOutlet private weak var uiButton: UIButton!
     
     private let headerTitle = "Choice of Add On"
     
-    var viewModel:DetailsViewModelProtocol!
-    private var cancellabels:Set<AnyCancellable> = []
+    var viewModel: DetailsViewModelProtocol
+    private var cancellabels: Set<AnyCancellable> = []
+    
+    init(viewModel: DetailsViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configure()
     }
     
-    private func configure(){
-        uiButton.imageView?.backgroundColor = .white
+    private func configure() {
         configureBackButton()
         configureTableView()
         bind()
         viewModel.onScreenAppeared.send(false)
     }
     
-    private func bind(){
+    private func bind() {
         viewModel.showError.sink { [weak self] error in
             guard let self = self else {return}
             self.showError(message: error)
@@ -46,12 +54,12 @@ class DetailsVC: UIViewController {
         }.store(in: &cancellabels)
     }
     
-    private func configureBackButton(){
+    private func configureBackButton() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(onBackPressed))
         uiBackView.addGestureRecognizer(tap)
     }
     
-    private func configureTableView(){
+    private func configureTableView() {
         
         let cellNib = UINib(nibName: AddOnCell.nibName, bundle: nil)
         uiTableView.register(cellNib, forCellReuseIdentifier: AddOnCell.reuseIdentifier)
@@ -63,13 +71,13 @@ class DetailsVC: UIViewController {
         uiTableView.register(titleHeaderNib, forHeaderFooterViewReuseIdentifier: TitleHeaderView.reuseIdentifier)
     }
     
-    @objc private func onBackPressed(){
+    @objc private func onBackPressed() {
         viewModel.onBackPressed.send()
     }
 
 }
 
-extension DetailsVC:UITableViewDelegate,UITableViewDataSource{
+extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -77,12 +85,18 @@ extension DetailsVC:UITableViewDelegate,UITableViewDataSource{
         if section == 0 {
             return 0
         }
-        return viewModel.dataModel.value?.addons?.count ?? 0 
+        return viewModel.dataModel.value?.addons?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AddOnCell.reuseIdentifier, for: indexPath) as? AddOnCell else {fatalError()}
-        if let model = viewModel.dataModel.value?.addons?[indexPath.row]{
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: AddOnCell.reuseIdentifier,
+            for: indexPath
+        ) as? AddOnCell else {
+            print("unable to dequeue cell for identifier \(AddOnCell.reuseIdentifier)")
+            return .init()
+        }
+        if let model = viewModel.dataModel.value?.addons?[indexPath.row] {
             cell.configure(addOne: model)
         }
         return cell
@@ -90,7 +104,7 @@ extension DetailsVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let header = tableView.headerView(forSection: 0) as? DetailsHeaderView else {return}
         
-        if let value = viewModel.dataModel.value?.addons?[indexPath.row], let price = value.price{
+        if let value = viewModel.dataModel.value?.addons?[indexPath.row], let price = value.price {
             header.addPrice(value: price)
         }
     }
@@ -98,26 +112,37 @@ extension DetailsVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let header = tableView.headerView(forSection: 0) as? DetailsHeaderView else {return}
         
-        if let value = viewModel.dataModel.value?.addons?[indexPath.row], let price = value.price{
+        if let value = viewModel.dataModel.value?.addons?[indexPath.row], let price = value.price {
             header.subtractPrice(value: price)
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let _ = viewModel.dataModel.value else {return nil}
+        guard viewModel.dataModel.value != nil else {return nil}
+        
         // MARK: - Top Static Header
         if section == 0 {
-            guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailsHeaderView.reuseIdentifier) as? DetailsHeaderView else {fatalError()}
-            if let model = viewModel.dataModel.value{
+            guard let cell = tableView.dequeueReusableHeaderFooterView(
+                withIdentifier: DetailsHeaderView.reuseIdentifier
+            ) as? DetailsHeaderView else {
+                print("unable to dequeue cell for identifier \(DetailsHeaderView.reuseIdentifier)")
+                return .init()
+            }
+            if let model = viewModel.dataModel.value {
                 cell.configure(product: model)
             }
             return cell
         }
-        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: TitleHeaderView.reuseIdentifier) as? TitleHeaderView else {fatalError()}
+        guard let cell = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: TitleHeaderView.reuseIdentifier
+        ) as? TitleHeaderView else {
+            print("unable to dequeue cell for identifier \(TitleHeaderView.reuseIdentifier)")
+            return .init()
+        }
         cell.configure(title: headerTitle)
-        if viewModel.dataModel.value?.addons?.count ?? 0 == 0{
+        if viewModel.dataModel.value?.addons?.count ?? 0 == 0 {
             cell.isHidden = true
-        }else{
+        } else {
             cell.isHidden = false
         }
         return cell
@@ -125,13 +150,21 @@ extension DetailsVC:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            if let header = tableView.headerView(forSection: 0) as? DetailsHeaderView{
-                let targetSize = CGSize(width: tableView.frame.size.width, height: UIView.layoutFittingCompressedSize.height)
+            if let header = tableView.headerView(forSection: 0) as? DetailsHeaderView {
+                let targetSize = CGSize(
+                    width: tableView.frame.size.width,
+                    height: UIView.layoutFittingCompressedSize.height
+                )
                 return header.systemLayoutSizeFitting(targetSize).height
             }
         }
-        if let header = tableView.headerView(forSection: section) as? TitleHeaderView{
-            let targetSize = CGSize(width: tableView.frame.size.width, height: UIView.layoutFittingCompressedSize.height)
+        if let header = tableView.headerView(
+            forSection: section
+        ) as? TitleHeaderView {
+            let targetSize = CGSize(
+                width: tableView.frame.size.width,
+                height: UIView.layoutFittingCompressedSize.height
+            )
             return header.systemLayoutSizeFitting(targetSize).height
         }
         
@@ -139,5 +172,3 @@ extension DetailsVC:UITableViewDelegate,UITableViewDataSource{
     }
     
 }
-
-

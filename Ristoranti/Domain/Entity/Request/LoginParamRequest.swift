@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct LoginParamRequest:Encodable{
-    let phone:String
-    let device_name:String = AppConfiguration.shared.DEVICE_NAME
-    let password:String
+struct LoginParamRequest: Encodable {
+    let phone: String
+    let device_name: String = AppConfiguration.shared.kDeviceName
+    let password: String
 }

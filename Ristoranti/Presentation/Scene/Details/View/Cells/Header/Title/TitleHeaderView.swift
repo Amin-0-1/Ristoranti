@@ -10,14 +10,17 @@ import UIKit
 class TitleHeaderView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var uiTitle: UILabel!
-
     
     override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
-        let size = contentView.systemLayoutSizeFitting(targetSize,withHorizontalFittingPriority: .required,verticalFittingPriority: .fittingSizeLevel)
+        let size = contentView.systemLayoutSizeFitting(
+            targetSize,
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
         return size
     }
     
-    func configure(title:String){
+    func configure(title: String) {
         uiTitle.text = title
     }
 

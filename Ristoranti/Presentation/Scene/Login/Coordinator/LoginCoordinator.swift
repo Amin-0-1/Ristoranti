@@ -7,15 +7,16 @@
 
 import UIKit
 
-protocol LoginCoordinatorProtocol:Coordinator{
+protocol LoginCoordinatorProtocol: Coordinator {
     func navigateToHome()
 }
-struct LoginCoordinator:LoginCoordinatorProtocol{
+struct LoginCoordinator: LoginCoordinatorProtocol {
     var navigationController: UINavigationController?
     
     func start() {
-        let vc = LoginVC()
+        
         let viewModel = LoginViewModel(coordinator: self)
+        let vc = LoginVC(viewModel: viewModel)
         vc.viewModel = viewModel
         navigationController?.setViewControllers([vc], animated: true)
         navigationController?.navigationBar.isHidden = true

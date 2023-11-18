@@ -13,41 +13,49 @@ class HomeVC: UIViewController {
     @IBOutlet private weak var uiUserImage: UIImageView!
     @IBOutlet private weak var uiProfile: UIView!
     @IBOutlet private weak var uiTableView: UITableView!
-    @IBOutlet private weak var uiLogoutButton:UIButton!
+    @IBOutlet private weak var uiLogoutButton: UIButton!
     @IBOutlet weak var uiContainerView: UIView!
     
-    enum SectionIdentifier:Hashable{
+    enum SectionIdentifier: Hashable {
         case main
     }
-    private var datasource:UICollectionViewDiffableDataSource<SectionIdentifier,FoodItemProduct>!
+    private var datasource: UICollectionViewDiffableDataSource<SectionIdentifier, FoodItemProduct>?
     private var snapshot = NSDiffableDataSourceSnapshot<SectionIdentifier, FoodItemProduct>()
     var homeState = CGAffineTransform()
     var isSideMenue = false
     
-    private lazy var refreshControl : UIRefreshControl = {
+    private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .systemGreen
         refreshControl.addTarget(self, action: #selector(refreshControlValueChanged), for: .valueChanged)
         return refreshControl
     }()
     
-    
-    @objc func refreshControlValueChanged(){
+    @objc func refreshControlValueChanged() {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2){[weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[weak self] in
             guard let self = self else {return}
             self.viewModel.onScreenAppeared.send(true)
         }
     }
     
-    var viewModel:HomeViewModelProtocol!
-    private var cancellabels:Set<AnyCancellable> = []
+    var viewModel: HomeViewModelProtocol
+    private var cancellabels: Set<AnyCancellable> = []
+    
+    init(viewModel: HomeViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         viewModel.onScreenAppeared.send(false)
     }
-    private func configure(){
+    private func configure() {
         homeState = view.transform
         registerKeyboardDismissel()
         navigationController?.navigationBar.isHidden = true
@@ -56,12 +64,22 @@ class HomeVC: UIViewController {
         bind()
     }
     // MARK: - Collection
-    private func configureCollection(){
+    private func configureCollection() {
         uiCollection.allowsSelection = true
         let header = UINib(nibName: HeaderView.nibName, bundle: nil)
-        uiCollection.register(header, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
-        uiCollection.register(UINib(nibName: MealCell.nibName, bundle: nil), forCellWithReuseIdentifier: MealCell.reuseIdentifier)
-        uiCollection.register(UINib(nibName: ResultCell.nibName, bundle: nil), forCellWithReuseIdentifier: ResultCell.reuseIdentifier)
+        uiCollection.register(
+            header,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: HeaderView.reuseIdentifier
+        )
+        uiCollection.register(
+            UINib(nibName: MealCell.nibName, bundle: nil),
+            forCellWithReuseIdentifier: MealCell.reuseIdentifier
+        )
+        uiCollection.register(
+            UINib(nibName: ResultCell.nibName, bundle: nil),
+            forCellWithReuseIdentifier: ResultCell.reuseIdentifier
+        )
         
         let pinterestLayout = PinterestLayout()
 
@@ -72,20 +90,31 @@ class HomeVC: UIViewController {
         uiCollection.refreshControl = refreshControl
         configureCellForRow()
         configureSupplementaryViewProvider()
-        self.snapshot = datasource.snapshot()
-        self.snapshot.appendSections([.main])
-        self.datasource.apply(snapshot, animatingDifferences: false)
+        if let datasource {
+            self.snapshot = datasource.snapshot()
+            self.snapshot.appendSections([.main])
+            datasource.apply(snapshot, animatingDifferences: false)
+        }
     }
-    private func configureCellForRow(){
-        datasource = UICollectionViewDiffableDataSource<SectionIdentifier, FoodItemProduct>(collectionView: uiCollection) { [weak self] collectionView, indexPath, itemIdentifier in
-            guard let self = self else {fatalError()}
-            if indexPath.item == 0{
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCell.reuseIdentifier, for: indexPath) as? ResultCell else {fatalError()}
+    private func configureCellForRow() {
+        datasource = UICollectionViewDiffableDataSource
+        <SectionIdentifier, FoodItemProduct>(
+            collectionView: uiCollection
+        ) { [weak self] collectionView, indexPath, _ in
+            guard let self = self else {fatalError("captured self is equal to nil")}
+            if indexPath.item == 0 {
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: ResultCell.reuseIdentifier,
+                    for: indexPath
+                ) as? ResultCell else {fatalError("unable to dequeue")}
                 let val = viewModel.modelData.value.count
                 cell.configure(value: val)
                 return cell
-            }else{
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MealCell.reuseIdentifier, for: indexPath) as? MealCell else {fatalError()}
+            } else {
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: MealCell.reuseIdentifier,
+                    for: indexPath
+                ) as? MealCell else {fatalError("unable to dequeue")}
                 let product = viewModel.modelData.value[indexPath.item]
                 cell.configure(product: product)
                 return cell
@@ -93,20 +122,33 @@ class HomeVC: UIViewController {
         }
     }
     
-    private func configureSupplementaryViewProvider(){
-        datasource.supplementaryViewProvider = { [weak self] collection, kind, indexPath in
-            guard let self = self else {fatalError()}
-            switch kind{
+    private func configureSupplementaryViewProvider() {
+        datasource?.supplementaryViewProvider = { [weak self] collection, kind, indexPath in
+            guard let self = self else {fatalError("captured self is equal to nil")}
+            switch kind {
                 case PinterestLayout.PinterestElementKindSectionHeader:
-                    guard let header = collection.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {fatalError()}
-                    header.frame = .init(x: 0, y: 0, width: uiCollection.frame.size.width, height: HeaderView.HeaderSize)
-                    header.configure(delegate: self,selectedIndex: viewModel.selectSegment,searchText: viewModel.searchText)
+                    guard let header = collection.dequeueReusableSupplementaryView(
+                        ofKind: UICollectionView.elementKindSectionHeader,
+                        withReuseIdentifier: HeaderView.reuseIdentifier,
+                        for: indexPath
+                    ) as? HeaderView else {fatalError("unable to dequeue")}
+                    header.frame = .init(
+                        x: 0,
+                        y: 0,
+                        width: uiCollection.frame.size.width,
+                        height: HeaderView.HeaderSize
+                    )
+                    header.configure(
+                        delegate: self,
+                        selectedIndex: viewModel.selectSegment,
+                        searchText: viewModel.searchText
+                    )
                     return header
                 default: return .init()
             }
         }
     }
-    private func configureSideMenue(){
+    private func configureSideMenue() {
         let nib = UINib(nibName: SideMenuCell.nibName, bundle: nil)
         uiTableView.register(nib, forCellReuseIdentifier: SideMenuCell.reuseIdentifier)
         
@@ -121,12 +163,12 @@ class HomeVC: UIViewController {
         uiProfile.addGestureRecognizer(tap)
         uiContainerView.addGestureRecognizer(tap2)
     }
-    @objc private func onProfileTapped(){
+    @objc private func onProfileTapped() {
         isSideMenue ? hideMenu() : showMenu()
-        isSideMenue ?  uiTableView.reloadData() :nil  
+        isSideMenue ? uiTableView.reloadData() : nil
     }
     
-    private func bind(){
+    private func bind() {
         viewModel.showError.sink {[weak self] message in
             guard let self = self else {return}
             self.showError(message: message)
@@ -144,7 +186,7 @@ class HomeVC: UIViewController {
                 self.snapshot.deleteAllItems()
                 self.snapshot.appendSections([.main])
                 self.snapshot.appendItems(model)
-                self.datasource.apply(self.snapshot, animatingDifferences: true) {
+                self.datasource?.apply(self.snapshot, animatingDifferences: true) {
                     guard let cell = self.uiCollection.visibleCells.first as? ResultCell else {return}
                     self.uiCollection.layoutIfNeeded()
                     cell.configure(value: model.count)
@@ -155,7 +197,7 @@ class HomeVC: UIViewController {
     
         viewModel.profileData.sink {[weak self] profile in
             guard let self = self else {return}
-            if let url = profile?.image{
+            if let url = profile?.image {
                 let person = UIImage(systemName: "person.fill")
                 person?.withTintColor(.accent)
                 self.uiUserImage.sd_setImage(with: URL(string: url), placeholderImage: person)
@@ -163,13 +205,18 @@ class HomeVC: UIViewController {
         }.store(in: &cancellabels)
 
     }
-    @IBAction func uiLogoutPressed(_ sender: UIButton) {        
-        let alert = UIAlertController(title: "Logout", message: "Are you sure ?\n all your saved data will be deleted forever.", preferredStyle: .alert)
+    @IBAction func uiLogoutPressed(_ sender: UIButton) {
+        let alert = UIAlertController(
+            title: "Logout",
+            message: "Are you sure ?\n all your saved data will be deleted forever.",
+            preferredStyle: .alert
+        )
         alert.view.tintColor = .systemBlue
-        alert.addAction(.init(title: "Yes", style: .destructive, handler: {[weak self] _ in
+        let yestAction = UIAlertAction(title: "Yes", style: .destructive) {[weak self] _ in
             guard let self = self else {return}
             self.viewModel.onLogout.send()
-        }))
+        }
+        alert.addAction(yestAction)
         alert.addAction(.init(title: "Cancel", style: .cancel))
         present(alert, animated: true)
     }
@@ -177,10 +224,10 @@ class HomeVC: UIViewController {
 }
 
 // MARK: - Collection view layout delegate
-extension HomeVC:UICollectionViewDelegate{
+extension HomeVC: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 0{
+        if indexPath.item == 0 {
             dismissKeyboard()
             return
         }
@@ -189,12 +236,13 @@ extension HomeVC:UICollectionViewDelegate{
 }
 
 // MARK: - Pinterest layout delegate
-extension HomeVC:PinterestLayoutDelegate{
-    func collectionView(_ collectionView: UICollectionView, layout: PinterestLayout,heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat{
+extension HomeVC: PinterestLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout: PinterestLayout, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
         
         guard indexPath.item != 0 else {
             return 100
         }
+        
         let item = viewModel.modelData.value[indexPath.item]
         let title = item.name
         let desc = item.description ?? ""
@@ -202,13 +250,13 @@ extension HomeVC:PinterestLayoutDelegate{
         let image = (180 * layout.contentWidth) / 180
         
         let padding = 32
-        let font = UIFont(name: "SofiaProRegular", size: 15)!
-        let titleHeigh = title?.pinterestHeightFitting(width: layout.contentWidth - 32, font: font.withSize(18)) ?? 0
-//        let descHeight = desc?.pinterestHeightFitting(width: layout.contentWidth - 32, font: font) ?? 0
-        
+        let font = UIFont(name: "SofiaProRegular", size: 15) ?? .systemFont(ofSize: 15)
         let textAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.font: font
         ]
+        let titleHeigh = title?.pinterestHeightFitting(width: layout.contentWidth - 32, font: font.withSize(18)) ?? 0
+        // let descHeight = desc?.pinterestHeightFitting(width: layout.contentWidth - 32, font: font) ?? 0
+        
         let rect = NSString(string: desc).boundingRect(
             with: CGSize(width: layout.contentWidth - 32, height: .greatestFiniteMagnitude),
             options: [.usesLineFragmentOrigin],
@@ -220,7 +268,6 @@ extension HomeVC:PinterestLayoutDelegate{
         let maxHeight = lineHeight * CGFloat(2)
         let descHeight = min(rect.height, maxHeight)
         
-        
         return image + CGFloat(padding) + titleHeigh + descHeight
     }
     func collectionViewHeaderSize(_ collectionView: UICollectionView) -> CGFloat {
@@ -229,7 +276,7 @@ extension HomeVC:PinterestLayoutDelegate{
 }
 
 // MARK: - Header view delegate
-extension HomeVC:HeaderViewDelegate{
+extension HomeVC: HeaderViewDelegate {
     @objc func onChangedSegment(_ sender: BetterSegmentedControl) {
         dismissKeyboard()
         viewModel.onChangedSegment.send(sender.index)
@@ -239,7 +286,7 @@ extension HomeVC:HeaderViewDelegate{
     }
 }
 
-extension HomeVC:UITextFieldDelegate{
+extension HomeVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)

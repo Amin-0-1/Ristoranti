@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct DetailsViewModelParams{
+struct DetailsViewModelParams {
     let coordinator: DetailsCoordinatorProtocol
     let usecase: DetailsUsecaseProtocol = DetailsUsecase()
-    let itemID:Int
+    let itemID: Int
 }
