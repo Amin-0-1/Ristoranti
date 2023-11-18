@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ErrorResponseModel:Codable{
-    let result:Bool?
-    let message:String?
-    let status:Int?
+struct ErrorResponseModel: Codable {
+    let result: Bool?
+    let message: String?
+    let status: Int?
 }

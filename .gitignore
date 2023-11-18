@@ -1,7 +1,9 @@
 # Xcode
 .DS_Store
+
 DerivedData/
 build/
+
 *.pbxuser
 *.xcuserstate
 *.xccheckout
@@ -56,6 +58,9 @@ vagrant_up
 
 # SPM Package Builder
 .buildFolder/
+
+/Pods/
+/Podfile.lock
 
 # SPM Coverage folder
 .cov/

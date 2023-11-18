@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum OnboardingViewDataModel:Int,CustomStringConvertible{
+enum OnboardingViewDataModel: Int, CustomStringConvertible {
     case first = 0
     case second
     case third
     
-    var description: String{
+    var description: String {
         switch self {
             case .first:
                 return "Browse your  menu and order directly"
@@ -22,7 +22,7 @@ enum OnboardingViewDataModel:Int,CustomStringConvertible{
                 return "Pickup delivery at your door"
         }
     }
-    var coverImage:String{
+    var coverImage: String {
         switch self {
             case .first:
                 return "onboarding1"
@@ -32,7 +32,7 @@ enum OnboardingViewDataModel:Int,CustomStringConvertible{
                 return "onboarding3"
         }
     }
-    var stepImgage:String{
+    var stepImgage: String {
         switch self {
             case .first:
                 return "1st"

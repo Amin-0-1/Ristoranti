@@ -8,7 +8,7 @@
 import UIKit
 extension HomeVC {
     
-    var options:[HomeSideMenueOption]{
+    var options: [HomeSideMenueOption] {
         [
             .init(title: "My Orders", image: "Document"),
             .init(title: "My Profile", image: "Profile"),
@@ -16,15 +16,14 @@ extension HomeVC {
             .init(title: "Payment Methods", image: "Wallet"),
             .init(title: "Contact Us", image: "Message"),
             .init(title: "Settings", image: "Settings"),
-            .init(title: "Helps & FAQs", image: "Help"),
+            .init(title: "Helps & FAQs", image: "Help")
         ]
     }
     
-    struct HomeSideMenueOption{
-        var title:String
-        var image:String
+    struct HomeSideMenueOption {
+        var title: String
+        var image: String
     }
-    
     
     @objc func hideMenu() {
         isSideMenue = false
@@ -47,19 +46,25 @@ extension HomeVC {
     }
 }
 
-extension HomeVC: UITableViewDelegate, UITableViewDataSource{
+extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuCell.reuseIdentifier, for: indexPath) as! SideMenuCell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SideMenuCell.reuseIdentifier,
+            for: indexPath
+        ) as? SideMenuCell else {
+            print("Failed to dequeue SideMenuCell for indexPath: \(indexPath)")
+            return .init()
+        }
         cell.configure(option: options[indexPath.row])
         return cell
     }
     
-    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let indexPath = tableView.indexPathForSelectedRow {
             
@@ -75,10 +80,12 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SideMenuHeader.reuseIdentifier) as? SideMenuHeader else {fatalError()}
-        guard let profile = viewModel.profileData.value else {fatalError()}
-        header.configure(profile:profile)
-        let view:UIView = .init(frame: header.bounds)
+        guard let header = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: SideMenuHeader.reuseIdentifier
+        ) as? SideMenuHeader else {fatalError("unable to dequeue")}
+        guard let profile = viewModel.profileData.value else {fatalError("profile doesn't exist")}
+        header.configure(profile: profile)
+        let view: UIView = .init(frame: header.bounds)
         view.backgroundColor = .secondarySystemBackground
         header.backgroundView = view
         return header

@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol OnboardingCoordinatorProtocol:Coordinator{
+protocol OnboardingCoordinatorProtocol: Coordinator {
     func onFinishedOnboarding()
 }
-struct OnboardingCoordinator:OnboardingCoordinatorProtocol{
+struct OnboardingCoordinator: OnboardingCoordinatorProtocol {
     var navigationController: UINavigationController?
     
     func start() {

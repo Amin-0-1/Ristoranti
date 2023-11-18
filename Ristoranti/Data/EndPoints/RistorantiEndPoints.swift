@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum RistorantiEndPoints:CustomStringConvertible{
+enum RistorantiEndPoints: CustomStringConvertible {
     case login(LoginParamRequest)
     case foodItems
     case details(Int)
-    var description: String{
+    var description: String {
         switch self {
             case .login:
                 return "/foodItem/public/api/users/login"
@@ -22,9 +22,9 @@ enum RistorantiEndPoints:CustomStringConvertible{
         }
     }
 }
-extension RistorantiEndPoints:EndPoint{
+extension RistorantiEndPoints: EndPoint {
     var base: String {
-        return AppConfiguration.shared.BASE_URL
+        return AppConfiguration.shared.kBaseURL
     }
     
     var path: String {
@@ -52,14 +52,7 @@ extension RistorantiEndPoints:EndPoint{
         }
     }
     
-    var encoding: ParameterEncoding {
-        switch self {
-            case .login:
-                return .JSONEncoding
-            case .foodItems,.details:
-                return .URLEncoding
-        }
+    var encoding: Encoding {
+        return .JSONEncoding
     }
-    
-    
 }

@@ -14,19 +14,22 @@ class OnboardingVC: UIViewController {
     @IBOutlet private weak var uiCaption: UILabel!
     @IBOutlet private weak var uiButton: LoaderButton!
     private  var currentVisibleIndex = 0
-    var coordinator:OnboardingCoordinator!
+    var coordinator: OnboardingCoordinator?
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollection()
     }
     
-    private func configureCollection(){
+    private func configureCollection() {
         let nib = UINib(nibName: OnboardingCell.nibName, bundle: nil)
         uiCollection.register(nib, forCellWithReuseIdentifier: OnboardingCell.reuseIdentifier)
         uiCollection.isUserInteractionEnabled = false
 
-        let layout = UICollectionViewCompositionalLayout { section, evnironment in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let layout = UICollectionViewCompositionalLayout { section, _ in
+            let itemSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1)
+            )
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitems: [item])
             group.interItemSpacing = .fixed(0)
@@ -41,15 +44,15 @@ class OnboardingVC: UIViewController {
     @IBAction func nextButton(_ sender: UIButton) {
         navigate(next: true)
     }
-    private func navigate(next:Bool){
+    private func navigate(next: Bool) {
         
         let newValue = next ? currentVisibleIndex + 1 : currentVisibleIndex - 1
-        guard let _ = OnboardingViewDataModel(rawValue: newValue) else {
-            if next{
+        guard OnboardingViewDataModel(rawValue: newValue) != nil else {
+            if next {
                 uiButton.isLoading = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.uiButton.isLoading = false
-                    self.coordinator.onFinishedOnboarding()
+                    self.coordinator?.onFinishedOnboarding()
                     
                 }
             }
@@ -59,29 +62,35 @@ class OnboardingVC: UIViewController {
     }
 }
 
-extension OnboardingVC:UICollectionViewDelegate,UICollectionViewDataSource{
+extension OnboardingVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.reuseIdentifier , for: indexPath) as? OnboardingCell else {fatalError()}
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: OnboardingCell.reuseIdentifier,
+            for: indexPath
+        ) as? OnboardingCell else {
+            print("unable to dequeue cell for identifier \(OnboardingCell.reuseIdentifier)")
+            return .init()
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.currentVisibleIndex = indexPath.item
-        if let cell = cell as? OnboardingCell{
+        if let cell = cell as? OnboardingCell {
             guard let state = OnboardingViewDataModel(rawValue: currentVisibleIndex) else {
                 if indexPath.item > 0 {
-                    coordinator.onFinishedOnboarding()
+                    coordinator?.onFinishedOnboarding()
                 }
                 return
             }
             
-            UIView.transition(with: uiStatusImage, duration: 0.5, options: .transitionCrossDissolve){
+            UIView.transition(with: uiStatusImage, duration: 0.5, options: .transitionCrossDissolve) {
                 self.uiStatusImage.image = UIImage(named: state.stepImgage)
             }
             
-            UIView.transition(with: uiCaption, duration: 0.5,options: .transitionCrossDissolve) {
+            UIView.transition(with: uiCaption, duration: 0.5, options: .transitionCrossDissolve) {
                 self.uiCaption.text = state.description
             }
             

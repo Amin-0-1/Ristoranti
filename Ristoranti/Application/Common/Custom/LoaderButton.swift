@@ -11,25 +11,24 @@ import UIKit
 class LoaderButton: UIButton {
 
     var spinner = UIActivityIndicatorView()
-    private var latestImage:UIImage?
-    private var latestTitle:String?
+    private var latestImage: UIImage?
+    private var latestTitle: String?
     
     @IBInspectable
-    var isLargeIndicator:Bool{
-        set{
+    var isLargeIndicator: Bool {
+        get {return spinner.style == .large}
+        set {
             spinner.style = newValue ? .large : .medium
         }
-        get{return spinner.style == .large}
     }
     
     @IBInspectable
-    var indicatorColor:UIColor{
-        set{
+    var indicatorColor: UIColor {
+        get {return spinner.color}
+        set {
             spinner.color = newValue
         }
-        get{return spinner.color}
     }
-    
     
     var isLoading = false {
         didSet {
@@ -67,7 +66,10 @@ class LoaderButton: UIButton {
             setTitle("", for: .normal)
             UIView.animate(withDuration: 0.3) {
                 self.layoutIfNeeded()
-                self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+                self.layer.shadowPath = UIBezierPath(
+                    roundedRect: self.bounds,
+                    cornerRadius: self.layer.cornerRadius
+                ).cgPath
             }
             isEnabled = false
         } else {
@@ -76,7 +78,10 @@ class LoaderButton: UIButton {
             setTitle(latestTitle, for: .normal)
             UIView.animate(withDuration: 0.3) {
                 self.layoutIfNeeded()
-                self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+                self.layer.shadowPath = UIBezierPath(
+                    roundedRect: self.bounds,
+                    cornerRadius: self.layer.cornerRadius
+                ).cgPath
             }
             isEnabled = true
         }

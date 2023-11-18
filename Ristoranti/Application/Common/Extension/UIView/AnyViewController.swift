@@ -7,9 +7,10 @@
 
 import UIKit
 
-extension UIViewController{
-    var indicator:UIActivityIndicatorView{
-        let indicator = ActivityIndicator.shared.set(color: .systemGreen).build()
+extension UIViewController {
+    
+    private var indicator: UIActivityIndicatorView {
+        let indicator = ActivityIndicator.shared.set().build()
         DispatchQueue.main.async {
             self.view.addSubview(indicator)
             indicator.center = self.view.center
@@ -17,15 +18,18 @@ extension UIViewController{
         return indicator
     }
     
-    func showProgress(){
+    /// show native activity indicator Progress and block the user interaction if enabled
+    /// - Parameter disableInteractions: disableing user interaction while showing progress, default = true
+    func showProgress(disableInteractions: Bool = true) {
         DispatchQueue.main.async {
             self.indicator.startAnimating()
             self.indicator.isHidden = false
-            self.view.isUserInteractionEnabled = false
+            self.view.isUserInteractionEnabled = !disableInteractions
         }
     }
     
-    func hideProgress(){
+    /// hide the activity indicator and enable user interation
+    func hideProgress() {
         DispatchQueue.main.async {
             self.indicator.stopAnimating()
             self.indicator.isHidden = true
@@ -33,17 +37,27 @@ extension UIViewController{
         }
     }
     
-    func showError(message:String,completion:@escaping()->Void = {}){
+    /// present native alert controller with specified message
+    /// - Parameters:
+    ///   - title: alert controller top title message, default = nil
+    ///   - message: alert message to show in the alert
+    ///   - completion: completion block of code to be executed after dismissing the alert
+    func showError(
+        title: String? = nil,
+        message: String,
+        completion: @escaping() -> Void = {}
+    ) {
         DispatchQueue.main.async {
-            let controller = UIAlertController(title: "Opps!!", message: message , preferredStyle: .alert)
-            controller.view.tintColor = .systemBlue
-            controller.addAction(.init(title: "OK", style: .default,handler: { _ in
+            let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                 completion()
-            }))
-            controller.addAction(.init(title: "Cancel", style: .destructive))
+            }
+            controller.addAction(okAction)
             self.present(controller, animated: true)
         }
     }
+    
+    /// add keyboard dissmissel tap gesture, so that whenever the user taps on any empy area on the screen the keyboard will be hidden
     func registerKeyboardDismissel() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -54,21 +68,20 @@ extension UIViewController{
         view.endEditing(true)
     }
 }
-
-
-class ActivityIndicator{
+// MARK: - ActivityIndicator
+class ActivityIndicator {
     static let shared = ActivityIndicator()
-    private let indicator: UIActivityIndicatorView!
-    private init(){
+    private let indicator: UIActivityIndicatorView
+    private init() {
         indicator = UIActivityIndicatorView()
         indicator.hidesWhenStopped = true
     }
-    func set(color:UIColor = .cyan,style:UIActivityIndicatorView.Style = .large)->ActivityIndicator{
+    func set(color: UIColor = .green, style: UIActivityIndicatorView.Style = .large) -> ActivityIndicator {
         indicator.color = color
         indicator.style = style
         return self
     }
-    func build()->UIActivityIndicatorView{
+    func build() -> UIActivityIndicatorView {
         return self.indicator
     }
 }

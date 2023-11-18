@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class LoginVC: UIViewController{
+class LoginVC: UIViewController {
     
     @IBOutlet weak var uiScrollView: UIScrollView!
     @IBOutlet private weak var uiMail: RoundedTextfield!
@@ -16,44 +16,52 @@ class LoginVC: UIViewController{
     @IBOutlet private weak var uiLoginButton: LoaderButton!
     @IBOutlet private weak var uiHaveAccountButton: UIButton!
     
+    var viewModel: LoginViewModelProtocol
+    private var cancellables: Set<AnyCancellable> = []
     
-    var viewModel:LoginViewModelProtocol!
-    private var cancellables:Set<AnyCancellable> = []
-    
+    init(viewModel: LoginViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
          
     }
-    private func configure(){
+    private func configure() {
         registerKeyboardDismissel()
         uiLoginButton.layer.shadowColor = UIColor.accent.cgColor
-        uiLoginButton.layer.shadowPath = UIBezierPath(roundedRect: uiLoginButton.bounds, cornerRadius: uiLoginButton.layer.cornerRadius).cgPath
+        uiLoginButton.layer.shadowPath = UIBezierPath(
+            roundedRect: uiLoginButton.bounds,
+            cornerRadius: uiLoginButton.layer.cornerRadius
+        ).cgPath
 
         uiMail.delegate = self
         uiPassword.delegate = self
         configureAttributedString()
         bind()
     }
-    private func configureAttributedString(){
-        let font:UIFont = UIFont(name: "SofiaProRegular", size: 14) ?? .systemFont(ofSize: 20)
-        let defaultAttr : [NSAttributedString.Key:Any] = [.font:font,.foregroundColor:UIColor.black]
-        let specialAttr: [NSAttributedString.Key:Any] = [.font:font,.foregroundColor:UIColor.accent]
+    private func configureAttributedString() {
+        let font = UIFont(name: "SofiaProRegular", size: 14) ?? .systemFont(ofSize: 20)
+        let defaultAttr: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: UIColor.black]
+        let specialAttr: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: UIColor.accent]
         
-        
-        let first = NSMutableAttributedString(string: "Don’t have an account? ",attributes: defaultAttr)
-        let second = NSMutableAttributedString(string: "Sign up",attributes: specialAttr)
+        let first = NSMutableAttributedString(string: "Don’t have an account? ", attributes: defaultAttr)
+        let second = NSMutableAttributedString(string: "Sign up", attributes: specialAttr)
         
         first.append(second)
         uiHaveAccountButton.setAttributedTitle(first, for: .normal)
     }
     @IBAction func uiLoginButtonPressed(_ sender: LoaderButton) {
-//        viewModel.publishMail.send("01287864053")
-//        viewModel.publishPassword.send("12345678")
+        //        viewModel.publishMail.send("01287864053")
+        //        viewModel.publishPassword.send("12345678")
         
         sender.isLoading = true
-        [uiMail,uiPassword].forEach{$0?.isRequired = false}
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){ [weak self] in
+        [uiMail, uiPassword].forEach { $0?.isRequired = false }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             guard let self = self else {return}
             self.viewModel.publishableSubmit.send()
             sender.isLoading = false
@@ -62,29 +70,50 @@ class LoginVC: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        var keyboardFrame: CGRect = (
+            userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue
+        )?.cgRectValue ?? .zero
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        var contentInset:UIEdgeInsets = self.uiScrollView.contentInset
+        var contentInset: UIEdgeInsets = self.uiScrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height + 20
         uiScrollView.contentInset = contentInset
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        let contentInset = UIEdgeInsets.zero
         uiScrollView.contentInset = contentInset
     }
     
-    private func bind(){
+    private func bind() {
         viewModel.bindableError.sink {[weak self] message in
             guard let self = self else {return}
             self.showError(message: message)
@@ -102,19 +131,19 @@ class LoginVC: UIViewController{
     }
     
 }
-extension LoginVC:RoundedTextfieldDelegate{
+extension LoginVC: RoundedTextfieldDelegate {
     func textFieldDidChange(text: String?, textfield: RoundedTextfield) {
         guard let text = text else {return}
-        if textfield == uiMail{
+        if textfield == uiMail {
             viewModel.publishMail.send(text)
-        }else{
+        } else {
             viewModel.publishPassword.send(text)
         }
     }
     func textFieldDidClearText(textfield: RoundedTextfield) {
-        if textfield == uiMail{
+        if textfield == uiMail {
             viewModel.publishMail.send("")
-        }else{
+        } else {
             viewModel.publishPassword.send("")
         }
     }

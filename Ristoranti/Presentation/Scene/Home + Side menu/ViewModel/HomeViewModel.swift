@@ -8,22 +8,22 @@
 import Foundation
 import Combine
 
-protocol HomeViewModelProtocol{
-    var onScreenAppeared:PassthroughSubject<Bool,Never>{get}
-    var onTapCell: PassthroughSubject<Int,Never>{get}
-    var onChangedSegment:PassthroughSubject<Int,Never>{get}
-    var onSearching:PassthroughSubject<String?,Never> {get}
+protocol HomeViewModelProtocol {
+    var onScreenAppeared: PassthroughSubject<Bool, Never> {get}
+    var onTapCell: PassthroughSubject<Int, Never> {get}
+    var onChangedSegment: PassthroughSubject<Int, Never> {get}
+    var onSearching: PassthroughSubject<String?, Never> {get}
     
-    var profileData:CurrentValueSubject<UserResponseModel?,Never>{get}
-    var modelData:CurrentValueSubject<[FoodItemProduct],Never>{get}
-    var onLogout:PassthroughSubject<Void,Never> {get}
-    var showError:AnyPublisher<String,Never>{get}
-    var showProgress:AnyPublisher<Bool,Never>{get}
-    var selectSegment:Int {get}
-    var searchText:String {get}
+    var profileData: CurrentValueSubject<UserResponseModel?, Never> {get}
+    var modelData: CurrentValueSubject<[FoodItemProduct], Never> {get}
+    var onLogout: PassthroughSubject<Void, Never> {get}
+    var showError: AnyPublisher<String, Never> {get}
+    var showProgress: AnyPublisher<Bool, Never> {get}
+    var selectSegment: Int {get}
+    var searchText: String {get}
     
 }
-class HomeViewModel:HomeViewModelProtocol{
+class HomeViewModel: HomeViewModelProtocol {
     
     var onScreenAppeared: PassthroughSubject<Bool, Never> = .init()
     var onTapCell: PassthroughSubject<Int, Never> = .init()
@@ -34,32 +34,31 @@ class HomeViewModel:HomeViewModelProtocol{
     var onLogout: PassthroughSubject<Void, Never> = .init()
     var profileData: CurrentValueSubject<UserResponseModel?, Never> = .init(nil)
     
-    var showError: AnyPublisher<String, Never>{
+    var showError: AnyPublisher<String, Never> {
         return showErrorSubject.eraseToAnyPublisher()
     }
-    var showProgress: AnyPublisher<Bool, Never>{
+    var showProgress: AnyPublisher<Bool, Never> {
         return showProgressSubject.eraseToAnyPublisher()
     }
     
     @Published var selectSegment: Int = 0
     @Published var searchText: String = ""
     
+    private var showErrorSubject: PassthroughSubject<String, Never> = .init()
+    private var showProgressSubject: PassthroughSubject<Bool, Never> = .init()
     
-    private var showErrorSubject:PassthroughSubject<String,Never> = .init()
-    private var showProgressSubject:PassthroughSubject<Bool,Never> = .init()
+    private var currentState: [FoodItemProduct] = []
     
-    private var currentState:[FoodItemProduct] = []
+    private var usecase: HomeUsecaseProtocol
+    private var coordinator: HomeCoordinatorProtocol
+    private var cancellabels: Set<AnyCancellable> = []
     
-    private var usecase:HomeUsecaseProtocol!
-    private var coordinator:HomeCoordinatorProtocol!
-    private var cancellabels:Set<AnyCancellable> = []
-    
-    init(usecase: HomeUsecaseProtocol = HomeUsecase(),coordinator:HomeCoordinatorProtocol) {
+    init(usecase: HomeUsecaseProtocol = HomeUsecase(), coordinator: HomeCoordinatorProtocol) {
         self.usecase = usecase
         self.coordinator = coordinator
         bind()
     }
-    private func bind(){
+    private func bind() {
         bindOnScreenAppeared()
         bindLogout()
         bindOnTapCell()
@@ -67,16 +66,16 @@ class HomeViewModel:HomeViewModelProtocol{
         bindOnSearching()
     }
     
-    private func bindOnScreenAppeared(){
+    private func bindOnScreenAppeared() {
         onScreenAppeared.sink {[weak self] isPullToRefresh in
             guard let self = self else {return}
             self.prepareProfileData()
-            if !isPullToRefresh{
+            if !isPullToRefresh {
                 self.showProgressSubject.send(true)
             }
             usecase.fetchData().sink { completion in
                 self.showProgressSubject.send(false)
-                switch completion{
+                switch completion {
                     case .finished: break
                     case .failure(let error):
                         print(error)
@@ -93,10 +92,9 @@ class HomeViewModel:HomeViewModelProtocol{
                 self.modelData.send(model)
             }.store(in: &self.cancellabels)
             
-            
         }.store(in: &self.cancellabels)
     }
-    private func bindLogout(){
+    private func bindLogout() {
         onLogout.sink {[weak self] _ in
             guard let self = self else {return}
             UserdefaultManager.shared.truncate()
@@ -104,7 +102,7 @@ class HomeViewModel:HomeViewModelProtocol{
         }.store(in: &cancellabels)
     }
     
-    private func bindOnTapCell(){
+    private func bindOnTapCell() {
         onTapCell.sink {[weak self] index in
             guard let self = self else {return}
             guard let id = modelData.value[index].id else {
@@ -114,7 +112,7 @@ class HomeViewModel:HomeViewModelProtocol{
             self.coordinator.navigateToDetails(id: id)
         }.store(in: &cancellabels)
     }
-    private func bindOnChangedSegment(){
+    private func bindOnChangedSegment() {
         onChangedSegment.sink { [weak self] segment in
             guard let self = self else {return}
             let origin = modelData.value.dropFirst()
@@ -125,12 +123,14 @@ class HomeViewModel:HomeViewModelProtocol{
         }.store(in: &cancellabels)
     }
     
-    
-    private func bindOnSearching(){
-//        throttle(for: 1.5, scheduler: DispatchWorkloop.main, latest: true)
-        onSearching.debounce(for: 1.5, scheduler: DispatchWorkloop.main, options: .init(qos: .userInteractive)).sink {[weak self] query in
+    private func bindOnSearching() {
+        onSearching.debounce(
+            for: 1.5,
+            scheduler: DispatchWorkloop.main,
+            options: .init(qos: .userInteractive)
+        ).sink {[weak self] query in
             guard let self = self else {return}
-            guard let query = query,!query.isEmpty else {
+            guard let query = query, !query.isEmpty else {
                 searchText = ""
                 self.modelData.send(self.currentState)
                 return
@@ -139,17 +139,17 @@ class HomeViewModel:HomeViewModelProtocol{
         }.store(in: &cancellabels)
     }
     
-    private func prepareProfileData(){
-        guard let data:UserResponseModel = UserdefaultManager.shared.getObject(forKey: .userData) else {return}
+    private func prepareProfileData() {
+        guard let data: UserResponseModel = UserdefaultManager.shared.getObject(forKey: .userData) else {return}
         profileData.send(data)
     }
     
-    private func search(query:String){
+    private func search(query: String) {
         self.searchText = query
         let data = currentState
-        var searchList:[FoodItemProduct] = []
+        var searchList: [FoodItemProduct] = []
         data.forEach {item in
-            if let contains = item.description?.contains(query), contains{
+            if let contains = item.description?.contains(query), contains {
                 searchList.append(item)
             }
         }

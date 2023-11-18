@@ -7,26 +7,27 @@
 
 import UIKit
 
-
 protocol PinterestLayoutDelegate: AnyObject {
-    func collectionView(_ collectionView: UICollectionView, layout: PinterestLayout,
-                        heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat
-    func collectionViewHeaderSize(_ collectionView:UICollectionView)->CGFloat
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout: PinterestLayout,
+        heightForItemAtIndexPath indexPath: IndexPath
+    ) -> CGFloat
+    func collectionViewHeaderSize(_ collectionView: UICollectionView) -> CGFloat
 }
 
 extension PinterestLayoutDelegate {
-    func collectionViewHeaderSize(_ collectionView:UICollectionView)->CGFloat {return 0}
+    func collectionViewHeaderSize(_ collectionView: UICollectionView) -> CGFloat {return 0}
 }
-
 
 class PinterestLayout: UICollectionViewLayout {
     var numberOfColumns = 2
     var cellPadding: CGFloat = 16
-    var verticalSpacing:CGFloat = 16
+    var verticalSpacing: CGFloat = 16
     typealias AttributeCache = [UICollectionViewLayoutAttributes]
     
     private var itemCache: AttributeCache = []
-    private var supplementaryCache: [String: AttributeCache] = [:]
+    private var supplementaryCache: [String: AttributeCache] = [: ]
     
     private var contentHeight: CGFloat = 0
     
@@ -48,17 +49,13 @@ class PinterestLayout: UICollectionViewLayout {
         var visibleLayoutAttributes: [UICollectionViewLayoutAttributes] = []
         
         // Loop through the cache and add attributes to the visibleLayoutAttributes array if they intersect with the rect.
-        for attributes in itemCache {
-            if attributes.frame.intersects(rect) {
-                visibleLayoutAttributes.append(attributes)
-            }
+        for attributes in itemCache where attributes.frame.intersects(rect) {
+            visibleLayoutAttributes.append(attributes)
         }
         
         for (_, supplementaryAttributes) in supplementaryCache {
-            for attributes in supplementaryAttributes {
-                if attributes.frame.intersects(rect) {
-                    visibleLayoutAttributes.append(attributes)
-                }
+            for attributes in supplementaryAttributes where attributes.frame.intersects(rect) {
+                visibleLayoutAttributes.append(attributes)
             }
         }
         
@@ -75,7 +72,6 @@ class PinterestLayout: UICollectionViewLayout {
         }
         return nil
     }
-    
     
     override var collectionViewContentSize: CGSize {
         return CGSize(width: collectionView?.frame.width ?? 0, height: contentHeight)
@@ -108,9 +104,15 @@ class PinterestLayout: UICollectionViewLayout {
                 let frame = CGRect(x: 0, y: yOffset.max() ?? 0, width: contentWidth, height: itemHeight)
                 
                 let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: Self.PinterestElementKindSectionHeader, with: indexPath)
+                let attributes = UICollectionViewLayoutAttributes(
+                    forSupplementaryViewOfKind: Self.PinterestElementKindSectionHeader,
+                    with: indexPath
+                )
                 attributes.frame = insetFrame
-                supplementaryCache.updateCollection(keyedBy: PinterestLayout.PinterestElementKindSectionHeader, with: attributes)
+                supplementaryCache.updateCollection(
+                    keyedBy: PinterestLayout.PinterestElementKindSectionHeader,
+                    with: attributes
+                )
                 contentHeight = frame.maxY
                 yOffset = yOffset.map { _ in frame.maxY }
             }
@@ -121,7 +123,11 @@ class PinterestLayout: UICollectionViewLayout {
             let indexPath = IndexPath(item: item, section: 0)
             
             let width = collectionView.frame.size.width / CGFloat(numberOfColumns) - cellPadding * 2
-            let itemHeight = (delegate?.collectionView(collectionView, layout: self, heightForItemAtIndexPath: indexPath) ?? 0)
+            
+            let itemHeight = delegate?.collectionView(
+                collectionView,
+                layout: self,
+                heightForItemAtIndexPath: indexPath) ?? 0
             
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: width, height: itemHeight )
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
@@ -149,11 +155,15 @@ extension Dictionary where Value: RangeReplaceableCollection {
     }
 }
 
-
 extension String {
     func pinterestHeightFitting(width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [.font: font], context: nil)
+        let boundingBox = self.boundingRect(
+            with: constraintRect,
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: [.font: font],
+            context: nil
+        )
         return boundingBox.height
     }
 }

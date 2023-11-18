@@ -10,19 +10,19 @@ import Foundation
 protocol LocalStorageInterface {
     func getObject<T: Codable>(forKey key: UDKeys) -> T?
     func set<T: Codable>(object: T?, forKey key: UDKeys)
-    func getValue(forKey key:UDKeys)->Any?
-    func set(value val:Any,forKey key:UDKeys)
+    func getValue(forKey key: UDKeys) -> Any?
+    func set(value val: Any, forKey key: UDKeys)
     func truncate()
 }
 
-enum UDKeys: String,CaseIterable {
+enum UDKeys: String, CaseIterable {
     case onboarding
     case userData
 }
 
 class UserdefaultManager: LocalStorageInterface {
     static let shared = UserdefaultManager()
-    private let userDefaults: UserDefaults = UserDefaults.standard
+    private let userDefaults = UserDefaults.standard
     
     private init() {}
     
@@ -43,7 +43,7 @@ class UserdefaultManager: LocalStorageInterface {
         }
     }
     func getValue(forKey key: UDKeys) -> Any? {
-        let val = userDefaults.value(forKey:key.rawValue)
+        let val = userDefaults.value(forKey: key.rawValue)
         return val
     }
     
@@ -51,7 +51,7 @@ class UserdefaultManager: LocalStorageInterface {
         userDefaults.set(val, forKey: key.rawValue)
     }
     func truncate() {
-        for key in UDKeys.allCases{
+        for key in UDKeys.allCases {
             userDefaults.removeObject(forKey: key.rawValue)
         }
     }

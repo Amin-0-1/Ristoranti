@@ -19,7 +19,7 @@ struct FoodDataModel: Codable {
     let products: [FoodItemProduct]?
 }
 
-struct FoodItemProduct: Codable,Hashable {
+struct FoodItemProduct: Codable, Hashable {
     static func == (lhs: FoodItemProduct, rhs: FoodItemProduct) -> Bool {
         return lhs.id == rhs.id
     }
@@ -39,13 +39,26 @@ struct FoodItemProduct: Codable,Hashable {
         }
     }
     
-    static var fakeModel:FoodItemProduct{
-        return .init(id: nil, name: nil, description: nil, calories: nil, price: nil, currency: nil, discount: nil, favourite: nil, hasOffer: nil, offer: nil, rating: nil, image: nil)
+    static var fakeModel: FoodItemProduct {
+        return .init(
+            id: nil,
+            name: nil,
+            description: nil,
+            calories: nil,
+            price: nil,
+            currency: nil,
+            discount: nil,
+            favourite: nil,
+            hasOffer: nil,
+            offer: nil,
+            rating: nil,
+            image: nil
+        )
     }
 }
 
 struct FoodItemOffer: Codable {
-    let percentage, priceAfterDiscount : Double?
+    let percentage, priceAfterDiscount: Double?
     let remainingDays: Int?
 }
 

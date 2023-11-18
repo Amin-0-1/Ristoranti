@@ -8,16 +8,12 @@
 import UIKit
 import SDWebImage
 class SideMenuHeader: UITableViewHeaderFooterView {
-    static let contentHeight:CGFloat = 185
+    static let contentHeight: CGFloat = 185
     @IBOutlet private weak var uiImage: UIImageView!
     @IBOutlet private weak var uiName: UILabel!
     @IBOutlet private weak var uiContact: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    func configure(profile:UserResponseModel){
-        if let url = profile.image{
+    func configure(profile: UserResponseModel) {
+        if let url = profile.image {
             let image = #imageLiteral(resourceName: "logo")
             uiImage.sd_setImage(with: URL(string: url), placeholderImage: image)
         }

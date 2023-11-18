@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2702CAFC2AFA03D300CEBFAB /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702CAFB2AFA03D300CEBFAB /* RequestMethod.swift */; };
 		2715A6B72AF1551A001EE453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6B62AF1551A001EE453 /* AppDelegate.swift */; };
 		2715A6B92AF1551A001EE453 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6B82AF1551A001EE453 /* SceneDelegate.swift */; };
 		2715A6C12AF1551A001EE453 /* Ristoranti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2715A6BF2AF1551A001EE453 /* Ristoranti.xcdatamodeld */; };
@@ -40,7 +41,7 @@
 		27CB216C2AF2A9260011E4F5 /* RoundedTextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27CB216B2AF2A9260011E4F5 /* RoundedTextfield.xib */; };
 		27CB21712AF2B7D10011E4F5 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21702AF2B7D10011E4F5 /* APIClient.swift */; };
 		27CB21732AF2B7F30011E4F5 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21722AF2B7F30011E4F5 /* EndPoint.swift */; };
-		27CB21752AF2B8510011E4F5 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21742AF2B8510011E4F5 /* ParameterEncoding.swift */; };
+		27CB21752AF2B8510011E4F5 /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21742AF2B8510011E4F5 /* Encoding.swift */; };
 		27CB21772AF2B8730011E4F5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21762AF2B8730011E4F5 /* NetworkError.swift */; };
 		27CB217A2AF2B8EC0011E4F5 /* RistorantiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB21792AF2B8EC0011E4F5 /* RistorantiEndPoints.swift */; };
 		27CB217F2AF2B9C10011E4F5 /* LoginParamRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB217E2AF2B9C10011E4F5 /* LoginParamRequest.swift */; };
@@ -61,7 +62,6 @@
 		27CB21AF2AF343BE0011E4F5 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27CB21AD2AF343BE0011E4F5 /* HomeVC.xib */; };
 		27CFB8A52AF412A70049CD24 /* FoodResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFB8A42AF412A70049CD24 /* FoodResponseModel.swift */; };
 		27CFB8A82AF419E90049CD24 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 27CFB8A72AF419E90049CD24 /* SDWebImage */; };
-		27CFB8AA2AF419E90049CD24 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 27CFB8A92AF419E90049CD24 /* SDWebImageMapKit */; };
 		27CFB8AC2AF41D0A0049CD24 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFB8AB2AF41D0A0049CD24 /* Double.swift */; };
 		27CFB8B02AF424C10049CD24 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFB8AE2AF424C10049CD24 /* ResultCell.swift */; };
 		27CFB8B12AF424C10049CD24 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27CFB8AF2AF424C10049CD24 /* ResultCell.xib */; };
@@ -86,6 +86,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2702CAFB2AFA03D300CEBFAB /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		2715A6B32AF1551A001EE453 /* Ristoranti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ristoranti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2715A6B62AF1551A001EE453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2715A6B82AF1551A001EE453 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +122,7 @@
 		27CB216B2AF2A9260011E4F5 /* RoundedTextfield.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundedTextfield.xib; sourceTree = "<group>"; };
 		27CB21702AF2B7D10011E4F5 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		27CB21722AF2B7F30011E4F5 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		27CB21742AF2B8510011E4F5 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		27CB21742AF2B8510011E4F5 /* Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoding.swift; sourceTree = "<group>"; };
 		27CB21762AF2B8730011E4F5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		27CB21792AF2B8EC0011E4F5 /* RistorantiEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RistorantiEndPoints.swift; sourceTree = "<group>"; };
 		27CB217E2AF2B9C10011E4F5 /* LoginParamRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginParamRequest.swift; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27CFB8AA2AF419E90049CD24 /* SDWebImageMapKit in Frameworks */,
 				27CFB8A82AF419E90049CD24 /* SDWebImage in Frameworks */,
 				27CFB8B82AF448870049CD24 /* BetterSegmentedControl in Frameworks */,
 			);
@@ -478,8 +478,9 @@
 			children = (
 				27CB21702AF2B7D10011E4F5 /* APIClient.swift */,
 				27CB21722AF2B7F30011E4F5 /* EndPoint.swift */,
-				27CB21742AF2B8510011E4F5 /* ParameterEncoding.swift */,
+				27CB21742AF2B8510011E4F5 /* Encoding.swift */,
 				27CB21762AF2B8730011E4F5 /* NetworkError.swift */,
+				2702CAFB2AFA03D300CEBFAB /* RequestMethod.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -736,11 +737,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				27D0D86D2B09617100A2B0E5 /* PBXTargetDependency */,
 			);
 			name = Ristoranti;
 			packageProductDependencies = (
 				27CFB8A72AF419E90049CD24 /* SDWebImage */,
-				27CFB8A92AF419E90049CD24 /* SDWebImageMapKit */,
 				27CFB8B72AF448870049CD24 /* BetterSegmentedControl */,
 			);
 			productName = Ristoranti;
@@ -774,6 +775,7 @@
 			packageReferences = (
 				27CFB8A62AF419E90049CD24 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				27CFB8B62AF448870049CD24 /* XCRemoteSwiftPackageReference "BetterSegmentedControl" */,
+				27D0D8612B094DBE00A2B0E5 /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */,
 			);
 			productRefGroup = 2715A6B42AF1551A001EE453 /* Products */;
 			projectDirPath = "";
@@ -862,12 +864,13 @@
 				27EB2DDF2AF59A2A005C9A29 /* UIColor.swift in Sources */,
 				27CB21732AF2B7F30011E4F5 /* EndPoint.swift in Sources */,
 				276299AC2AF1DFA300159501 /* RoundedTextfield.swift in Sources */,
-				27CB21752AF2B8510011E4F5 /* ParameterEncoding.swift in Sources */,
+				27CB21752AF2B8510011E4F5 /* Encoding.swift in Sources */,
 				2715A6D22AF15BDB001EE453 /* OnboardingVC.swift in Sources */,
 				27E68DEB2AF7670400134F0C /* ErrorResponseModel.swift in Sources */,
 				2715A6C12AF1551A001EE453 /* Ristoranti.xcdatamodeld in Sources */,
 				27C759CE2AF5DCEB005CCEC3 /* DetailsResponseModel.swift in Sources */,
 				2715A6B92AF1551A001EE453 /* SceneDelegate.swift in Sources */,
+				2702CAFC2AFA03D300CEBFAB /* RequestMethod.swift in Sources */,
 				27CB21A62AF3424C0011E4F5 /* HomeCoordinator.swift in Sources */,
 				2715A6D82AF15FE3001EE453 /* OnboardingCoordinator.swift in Sources */,
 				27EB2DCE2AF58918005C9A29 /* DetailsUsecase.swift in Sources */,
@@ -876,6 +879,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27D0D86D2B09617100A2B0E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 27D0D86C2B09617100A2B0E5 /* SwiftLint */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2715A6C82AF1551B001EE453 /* Debug */ = {
@@ -1007,6 +1017,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B6A7UUWXVV;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ristoranti/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1025,7 +1036,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1037,6 +1048,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B6A7UUWXVV;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ristoranti/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1055,7 +1067,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1099,6 +1111,14 @@
 				minimumVersion = 2.0.1;
 			};
 		};
+		27D0D8612B094DBE00A2B0E5 /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lukepistrol/SwiftLintPlugin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1107,15 +1127,15 @@
 			package = 27CFB8A62AF419E90049CD24 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
-		27CFB8A92AF419E90049CD24 /* SDWebImageMapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 27CFB8A62AF419E90049CD24 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImageMapKit;
-		};
 		27CFB8B72AF448870049CD24 /* BetterSegmentedControl */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 27CFB8B62AF448870049CD24 /* XCRemoteSwiftPackageReference "BetterSegmentedControl" */;
 			productName = BetterSegmentedControl;
+		};
+		27D0D86C2B09617100A2B0E5 /* SwiftLint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27D0D8612B094DBE00A2B0E5 /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */;
+			productName = "plugin:SwiftLint";
 		};
 /* End XCSwiftPackageProductDependency section */
 
