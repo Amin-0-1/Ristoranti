@@ -65,7 +65,7 @@
                                     </constraints>
                                     <blurEffect style="regular"/>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="UICornerRadius">
+                                        <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
                                             <real key="value" value="15"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
@@ -166,14 +166,12 @@
                                             <state key="normal" image="minus" catalog="system"/>
                                             <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="UICornerRadius">
-                                                    <real key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="UIBorderColor">
-                                                    <color key="value" name="AccentColor"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="UIBorderWidth">
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="_FullRounded" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="_BorderWidth">
                                                     <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="_BorderColor">
+                                                    <color key="value" name="AccentColor"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
@@ -207,6 +205,13 @@
                                                     <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="_FullRounded" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="_BorderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="_BorderColor">
+                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="orderRequest:" destination="iN0-l3-epB" eventType="touchUpInside" id="mBg-E7-CFv"/>
@@ -227,7 +232,6 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="64c-97-KD0" secondAttribute="trailing" id="D9W-ms-k2A"/>
                 <constraint firstItem="64c-97-KD0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RSb-gN-qfj"/>

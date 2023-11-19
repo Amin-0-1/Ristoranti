@@ -68,7 +68,8 @@
 		27CFB8B32AF429500049CD24 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFB8B22AF429500049CD24 /* PinterestLayout.swift */; };
 		27CFB8B52AF4377C0049CD24 /* SofiaProSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27CFB8B42AF4377C0049CD24 /* SofiaProSemiBold.ttf */; };
 		27CFB8B82AF448870049CD24 /* BetterSegmentedControl in Frameworks */ = {isa = PBXBuildFile; productRef = 27CFB8B72AF448870049CD24 /* BetterSegmentedControl */; };
-		27DA85632AF5B115007F98F4 /* UIView + Inspectables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA85622AF5B115007F98F4 /* UIView + Inspectables.swift */; };
+		27D0D8752B09739000A2B0E5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D8742B09739000A2B0E5 /* Environment.swift */; };
+		27DA85632AF5B115007F98F4 /* AnyInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA85622AF5B115007F98F4 /* AnyInspectable.swift */; };
 		27DA85692AF5C881007F98F4 /* AddOnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA85672AF5C881007F98F4 /* AddOnCell.swift */; };
 		27DA856A2AF5C881007F98F4 /* AddOnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DA85682AF5C881007F98F4 /* AddOnCell.xib */; };
 		27DA856E2AF5D7BF007F98F4 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA856D2AF5D7BF007F98F4 /* TitleHeaderView.swift */; };
@@ -147,7 +148,9 @@
 		27CFB8AF2AF424C10049CD24 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
 		27CFB8B22AF429500049CD24 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 		27CFB8B42AF4377C0049CD24 /* SofiaProSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SofiaProSemiBold.ttf; sourceTree = "<group>"; };
-		27DA85622AF5B115007F98F4 /* UIView + Inspectables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Inspectables.swift"; sourceTree = "<group>"; };
+		27D0D8712B09726700A2B0E5 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		27D0D8742B09739000A2B0E5 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		27DA85622AF5B115007F98F4 /* AnyInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyInspectable.swift; sourceTree = "<group>"; };
 		27DA85672AF5C881007F98F4 /* AddOnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnCell.swift; sourceTree = "<group>"; };
 		27DA85682AF5C881007F98F4 /* AddOnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddOnCell.xib; sourceTree = "<group>"; };
 		27DA856D2AF5D7BF007F98F4 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				2715A6C22AF1551B001EE453 /* Assets.xcassets */,
 				2715A6C72AF1551B001EE453 /* Info.plist */,
 				2715A6BF2AF1551A001EE453 /* Ristoranti.xcdatamodeld */,
+				27D0D8712B09726700A2B0E5 /* Development.xcconfig */,
+				27D0D8742B09739000A2B0E5 /* Environment.swift */,
 			);
 			path = Ristoranti;
 			sourceTree = "<group>";
@@ -528,7 +533,7 @@
 				2715A6EB2AF16FF5001EE453 /* ReusableView.swift */,
 				27CB21882AF2FBA10011E4F5 /* AnyViewController.swift */,
 				27CFB8B22AF429500049CD24 /* PinterestLayout.swift */,
-				27DA85622AF5B115007F98F4 /* UIView + Inspectables.swift */,
+				27DA85622AF5B115007F98F4 /* AnyInspectable.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -849,6 +854,7 @@
 				27EB2DD22AF58A2B005C9A29 /* DetailsVC.swift in Sources */,
 				27CB21892AF2FBA10011E4F5 /* AnyViewController.swift in Sources */,
 				27CB21772AF2B8730011E4F5 /* NetworkError.swift in Sources */,
+				27D0D8752B09739000A2B0E5 /* Environment.swift in Sources */,
 				27CFB8A52AF412A70049CD24 /* FoodResponseModel.swift in Sources */,
 				277940422AF3624200EC2F17 /* HeaderView.swift in Sources */,
 				2715A6FC2AF1B01D001EE453 /* LoginCoordinator.swift in Sources */,
@@ -856,7 +862,7 @@
 				27CB217F2AF2B9C10011E4F5 /* LoginParamRequest.swift in Sources */,
 				27CB21982AF3194A0011E4F5 /* DomainError.swift in Sources */,
 				2715A6FE2AF1B055001EE453 /* LoingViewModel.swift in Sources */,
-				27DA85632AF5B115007F98F4 /* UIView + Inspectables.swift in Sources */,
+				27DA85632AF5B115007F98F4 /* AnyInspectable.swift in Sources */,
 				27EB2DCC2AF588BD005C9A29 /* DetailsViewModel.swift in Sources */,
 				27CB21912AF309BC0011E4F5 /* ResponseModel.swift in Sources */,
 				27CB217A2AF2B8EC0011E4F5 /* RistorantiEndPoints.swift in Sources */,
@@ -888,8 +894,9 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2715A6C82AF1551B001EE453 /* Debug */ = {
+		2715A6C82AF1551B001EE453 /* Debug (dev) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27D0D8712B09726700A2B0E5 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -950,10 +957,11 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = "Debug (dev)";
 		};
-		2715A6C92AF1551B001EE453 /* Release */ = {
+		2715A6C92AF1551B001EE453 /* Release (dev) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27D0D8712B09726700A2B0E5 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1007,10 +1015,11 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = "Release (dev)";
 		};
-		2715A6CB2AF1551B001EE453 /* Debug */ = {
+		2715A6CB2AF1551B001EE453 /* Debug (dev) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27D0D8712B09726700A2B0E5 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1038,10 +1047,11 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Debug;
+			name = "Debug (dev)";
 		};
-		2715A6CC2AF1551B001EE453 /* Release */ = {
+		2715A6CC2AF1551B001EE453 /* Release (dev) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27D0D8712B09726700A2B0E5 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1069,7 +1079,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Release;
+			name = "Release (dev)";
 		};
 /* End XCBuildConfiguration section */
 
@@ -1077,20 +1087,20 @@
 		2715A6AE2AF1551A001EE453 /* Build configuration list for PBXProject "Ristoranti" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2715A6C82AF1551B001EE453 /* Debug */,
-				2715A6C92AF1551B001EE453 /* Release */,
+				2715A6C82AF1551B001EE453 /* Debug (dev) */,
+				2715A6C92AF1551B001EE453 /* Release (dev) */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (dev)";
 		};
 		2715A6CA2AF1551B001EE453 /* Build configuration list for PBXNativeTarget "Ristoranti" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2715A6CB2AF1551B001EE453 /* Debug */,
-				2715A6CC2AF1551B001EE453 /* Release */,
+				2715A6CB2AF1551B001EE453 /* Debug (dev) */,
+				2715A6CC2AF1551B001EE453 /* Release (dev) */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (dev)";
 		};
 /* End XCConfigurationList section */
 

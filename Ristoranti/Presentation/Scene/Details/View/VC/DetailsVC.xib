@@ -54,17 +54,17 @@
                         <constraint firstAttribute="bottom" secondItem="Uo4-G2-PfM" secondAttribute="bottom" constant="8" id="uoy-yP-3H0"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="14"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
+                            <real key="value" value="14"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                            <integer key="value" value="2"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                        <userDefinedRuntimeAttribute type="number" keyPath="_ShadowOpacity">
                             <real key="value" value="0.20000000000000001"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
-                            <point key="value" x="1" y="1"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="_ShadowRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="_ShadowOffset">
+                            <size key="value" width="1" height="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -135,6 +135,7 @@
                         <userDefinedRuntimeAttribute type="color" keyPath="UIShadowColor">
                             <color key="value" name="AccentColor"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="_FullRounded" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </stackView>
             </subviews>

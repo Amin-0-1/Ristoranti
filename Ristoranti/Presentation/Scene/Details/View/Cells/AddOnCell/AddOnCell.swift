@@ -20,12 +20,12 @@ class AddOnCell: UITableViewCell {
         if isSelected {
             UIView.animate(withDuration: 0.5) {
                 self.uiSelectionIn.backgroundColor = .accent
-                self.uiSelectionOut.UIBorderColor = .accent
+                self.uiSelectionOut._BorderColor = .accent
             }
         } else {
             UIView.animate(withDuration: 0.5) {
                 self.uiSelectionIn.backgroundColor = .white
-                self.uiSelectionOut.UIBorderColor = .systemGray4
+                self.uiSelectionOut._BorderColor = .systemGray4
             }
         }
     }

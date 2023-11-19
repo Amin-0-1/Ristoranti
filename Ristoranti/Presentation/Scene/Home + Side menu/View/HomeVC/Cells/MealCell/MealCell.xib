@@ -24,7 +24,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="467" height="301"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOY-k8-Zry">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOY-k8-Zry">
                         <rect key="frame" x="4" y="4" width="459" height="293"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="I98-1M-KRs">
@@ -119,15 +119,6 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                        <real key="value" value="0.10000000000000001"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
-                                        <point key="value" x="5" y="5"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYg-O0-5ue">
@@ -178,14 +169,14 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                        <integer key="value" value="5"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_ShadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                        <real key="value" value="0.10000000000000001"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_ShadowRadius">
+                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
-                                        <point key="value" x="5" y="5"/>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="_ShadowOffset">
+                                        <size key="value" width="1" height="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -210,17 +201,9 @@
                             <constraint firstItem="4nN-Iu-0on" firstAttribute="leading" secondItem="QEI-ne-KxQ" secondAttribute="leading" id="z9A-aa-cM0"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="15"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                <integer key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                <real key="value" value="0.10000000000000001"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
-                                <point key="value" x="1" y="1"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="_HasCGPath" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
+                                <real key="value" value="15"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -234,6 +217,17 @@
                 <constraint firstItem="aOY-k8-Zry" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="upP-ty-83d"/>
             </constraints>
             <size key="customSize" width="467" height="301"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
+                    <real key="value" value="15"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="_ShadowOpacity">
+                    <real key="value" value="0.20000000000000001"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="size" keyPath="_ShadowOffset">
+                    <size key="value" width="2" height="2"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="uiDescription" destination="4nN-Iu-0on" id="TGS-gx-dqB"/>
                 <outlet property="uiFavoriteImage" destination="UhY-sk-7V1" id="K5C-K2-DZC"/>
