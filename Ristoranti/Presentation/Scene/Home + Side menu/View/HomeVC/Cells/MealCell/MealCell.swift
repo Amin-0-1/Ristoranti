@@ -17,17 +17,15 @@ class MealCell: UICollectionViewCell {
     @IBOutlet weak var uiRate: UILabel!
     @IBOutlet weak var uiRateCount: UILabel!
     @IBOutlet weak var uiPrice: UILabel!
+    var image: UIImage?
     
-    private var image:UIImage!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        image = #imageLiteral(resourceName: "logo")
         let tap = UITapGestureRecognizer(target: self, action: #selector(favoriteTapped))
         uiFavouriteView.addGestureRecognizer(tap)
-        self.image = #imageLiteral(resourceName: "logo")
     }
-    func configure(product:FoodItemProduct){
-        
+    func configure(product: FoodItemProduct) {
         uiDescription.text = product.description
         uiTitle.text = product.name
         let url = URL(string: product.image ?? "")
