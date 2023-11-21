@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -33,25 +35,25 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Wzs-8y-WST">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="783.33333333333337"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="781"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gE2-1J-8as">
-                                    <rect key="frame" x="26" y="100" width="341" height="42"/>
+                                    <rect key="frame" x="26" y="100" width="341" height="36"/>
                                     <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="36"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lTn-ZQ-pd6">
-                                    <rect key="frame" x="26" y="174" width="341" height="95.666666666666686"/>
+                                    <rect key="frame" x="26" y="168" width="341" height="93"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHF-Rv-9ZU">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="18.666666666666668"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="16"/>
                                             <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="16"/>
                                             <color key="textColor" name="SecondaryFont"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snc-aW-O0u" customClass="RoundedTextfield" customModule="Ristoranti" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="30.666666666666686" width="341" height="65"/>
+                                            <rect key="frame" x="0.0" y="28" width="341" height="65"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="ndk-xa-duv"/>
@@ -65,22 +67,26 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="10"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="disableAction" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="disableAction" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="prefixImage" value="envelope.fill" catalog="system"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="actionDefaultTintColor">
+                                                    <color key="value" name="SecondaryFont"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fBX-ei-tEd">
-                                    <rect key="frame" x="26" y="301.66666666666669" width="341" height="95.666666666666686"/>
+                                    <rect key="frame" x="26" y="293" width="341" height="93"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nro-bM-9th">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="18.666666666666668"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="16"/>
                                             <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="16"/>
                                             <color key="textColor" name="SecondaryFont"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmx-sD-Lp4" customClass="RoundedTextfield" customModule="Ristoranti" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="30.666666666666629" width="341" height="65"/>
+                                            <rect key="frame" x="0.0" y="28" width="341" height="65"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="4Bc-2P-dwX"/>
@@ -95,19 +101,24 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Your Password"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isPassword" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="secureTextfield" value="YES"/>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="secureImage" value="eye"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="prefixImage">
+                                                    <imageReference key="value" image="lock.fill" catalog="system" symbolScale="default"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="actionDefaultTintColor">
+                                                    <color key="value" name="SecondaryFont"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="Pt8-u3-WU9">
-                                    <rect key="frame" x="26" y="429.33333333333326" width="341" height="328"/>
+                                    <rect key="frame" x="26" y="418" width="341" height="337"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WnX-bm-tIQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="175.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="171"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLx-6a-aq7">
-                                                    <rect key="frame" x="101.66666666666669" y="0.0" width="138" height="30.333333333333332"/>
+                                                    <rect key="frame" x="101.66666666666667" y="0.0" width="137.66666666666663" height="28"/>
                                                     <color key="tintColor" name="AccentColor"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Forget Password?">
@@ -115,10 +126,10 @@
                                                     </buttonConfiguration>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B8V-7E-xxp">
-                                                    <rect key="frame" x="40.666666666666686" y="46.333333333333314" width="260" height="83"/>
+                                                    <rect key="frame" x="46" y="44" width="249" height="83"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30e-ai-XAY" customClass="LoaderButton" customModule="Ristoranti" customModuleProvider="target">
-                                                            <rect key="frame" x="32" y="8" width="196" height="67"/>
+                                                            <rect key="frame" x="32" y="8" width="185" height="67"/>
                                                             <color key="backgroundColor" name="AccentColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="67" id="11W-ap-fb2"/>
@@ -129,19 +140,19 @@
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="              LOGIN              "/>
                                                             <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <real key="value" value="33.5"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                                                    <size key="value" width="1" height="3"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                                                    <real key="value" value="0.5"/>
-                                                                </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="value" systemColor="systemBackgroundColor"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isLargeIndicator" value="NO"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
+                                                                    <real key="value" value="33.5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="size" keyPath="_ShadowOffset">
+                                                                    <size key="value" width="1" height="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="_ShadowOpacity">
+                                                                    <real key="value" value="0.5"/>
+                                                                </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="uiLoginButtonPressed:" destination="-1" eventType="touchUpInside" id="RbV-ZT-AdL"/>
@@ -151,7 +162,7 @@
                                                     <edgeInsets key="layoutMargins" top="8" left="32" bottom="8" right="32"/>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyU-41-YDN">
-                                                    <rect key="frame" x="84" y="145.33333333333331" width="173" height="30.333333333333343"/>
+                                                    <rect key="frame" x="83.333333333333329" y="143" width="174.33333333333337" height="28"/>
                                                     <color key="tintColor" name="SecondaryFont"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Don’t have an account?">
@@ -161,26 +172,26 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FRf-WN-U1Z">
-                                            <rect key="frame" x="0.0" y="223.66666666666671" width="341" height="104.33333333333334"/>
+                                            <rect key="frame" x="0.0" y="219" width="341" height="118"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EzN-sQ-cdx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="341" height="16.333333333333332"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="341" height="14"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oeR-Rc-Pf4">
-                                                            <rect key="frame" x="0.0" y="7.6666666666666288" width="118.33333333333333" height="1"/>
+                                                            <rect key="frame" x="0.0" y="6.6666666666666288" width="118" height="1"/>
                                                             <color key="backgroundColor" name="SecondaryFont"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="ggu-yT-DTf"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Sign in with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvk-Kp-Cgk">
-                                                            <rect key="frame" x="134.33333333333334" y="0.0" width="72.666666666666657" height="16.333333333333332"/>
+                                                            <rect key="frame" x="134" y="0.0" width="73.333333333333314" height="14"/>
                                                             <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="highlightedColor" name="SecondaryFont"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUf-ga-7hY">
-                                                            <rect key="frame" x="223" y="7.6666666666666288" width="118" height="1"/>
+                                                            <rect key="frame" x="223.33333333333334" y="6.6666666666666288" width="117.66666666666666" height="1"/>
                                                             <color key="backgroundColor" name="SecondaryFont"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="rDl-Dl-vpf"/>
@@ -191,12 +202,11 @@
                                                         <constraint firstItem="cUf-ga-7hY" firstAttribute="width" secondItem="oeR-Rc-Pf4" secondAttribute="width" id="NQ3-Ih-VYw"/>
                                                     </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" id="8sf-kS-yPS">
-                                                    <rect key="frame" x="0.0" y="32.333333333333258" width="341" height="39.666666666666657"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="8sf-kS-yPS">
+                                                    <rect key="frame" x="0.0" y="30" width="341" height="88"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTP-lA-A5u">
-                                                            <rect key="frame" x="0.0" y="0.0" width="154.66666666666666" height="72"/>
+                                                            <rect key="frame" x="8" y="8" width="146.66666666666666" height="72"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="72" id="OVX-n1-sQH"/>
@@ -207,22 +217,22 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="36"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
+                                                                    <real key="value" value="36"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                                                    <size key="value" width="0.0" height="1"/>
+                                                                <userDefinedRuntimeAttribute type="size" keyPath="_ShadowOffset">
+                                                                    <size key="value" width="1" height="1"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="_ShadowOpacity">
                                                                     <real key="value" value="0.10000000000000001"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                                                    <integer key="value" value="1"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="_ShadowRadius">
+                                                                    <real key="value" value="1"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edf-AG-BwW">
-                                                            <rect key="frame" x="186.66666666666663" y="0.0" width="154.33333333333337" height="72"/>
+                                                            <rect key="frame" x="186.66666666666663" y="8" width="146.33333333333337" height="72"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="72" id="050-MW-3q1"/>
@@ -233,22 +243,22 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="36"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
+                                                                    <real key="value" value="36"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                                                    <size key="value" width="0.0" height="1"/>
+                                                                <userDefinedRuntimeAttribute type="size" keyPath="_ShadowOffset">
+                                                                    <size key="value" width="1" height="1"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="_ShadowOpacity">
                                                                     <real key="value" value="0.10000000000000001"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                                                    <integer key="value" value="1"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="_ShadowRadius">
+                                                                    <real key="value" value="1"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
                                                     </subviews>
-                                                    <viewLayoutGuide key="safeArea" id="lLK-Gw-h1z"/>
+                                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 </stackView>
                                             </subviews>
                                         </stackView>
@@ -275,7 +285,7 @@
                         <constraint firstAttribute="height" constant="180" id="baA-RV-21O"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="UICornerRadius">
+                        <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
                             <real key="value" value="90"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
@@ -288,14 +298,14 @@
                         <constraint firstAttribute="height" constant="96" id="waa-mf-U3p"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="UICornerRadius">
+                        <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
                             <real key="value" value="48"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="UIBorderColor">
+                        <userDefinedRuntimeAttribute type="color" keyPath="_BorderColor">
                             <color key="value" name="AccentColor"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="UIBorderWidth">
-                            <real key="value" value="36"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="_BorderWidth">
+                            <real key="value" value="32"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -307,7 +317,7 @@
                         <constraint firstAttribute="width" constant="165" id="acZ-RH-oOD"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="UICornerRadius">
+                        <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
                             <real key="value" value="82.5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
@@ -330,10 +340,16 @@
             <point key="canvasLocation" x="140" y="20"/>
         </view>
     </objects>
+    <designables>
+        <designable name="30e-ai-XAY">
+            <size key="intrinsicContentSize" width="185" height="30"/>
+        </designable>
+    </designables>
     <resources>
-        <image name="eye" width="17.666666030883789" height="12.333333015441895"/>
+        <image name="envelope.fill" catalog="system" width="128" height="85"/>
         <image name="face" width="38.333332061767578" height="39.666667938232422"/>
         <image name="google" width="30.666666030883789" height="30.333333969116211"/>
+        <image name="lock.fill" catalog="system" width="125" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.99607843137254903" green="0.44705882352941179" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -4,6 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,6 +18,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="QgF-LZ-gF6"/>
                 <outlet property="uiActionButton" destination="v7T-2h-oIK" id="Od9-CH-nke"/>
+                <outlet property="uiPrefixImage" destination="zUP-Fz-gOu" id="DhV-jU-AZP"/>
                 <outlet property="uiTextfield" destination="mZW-mO-B1w" id="WCA-WM-Eqs"/>
             </connections>
         </placeholder>
@@ -24,38 +27,59 @@
             <rect key="frame" x="0.0" y="0.0" width="712" height="226"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mZW-mO-B1w">
-                    <rect key="frame" x="16" y="8" width="650" height="210"/>
-                    <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="17"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="Location"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7T-2h-oIK">
-                    <rect key="frame" x="674" y="98" width="30" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="30" id="SfF-4g-o4e"/>
-                        <constraint firstAttribute="height" constant="30" id="bMV-tI-aNw"/>
-                    </constraints>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <connections>
-                        <action selector="uiActionButtonTapped:" destination="-1" eventType="touchUpInside" id="g9u-pw-Yhe"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8AD-fw-jmA">
+                    <rect key="frame" x="0.0" y="0.0" width="712" height="226"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zUP-Fz-gOu">
+                            <rect key="frame" x="16" y="110.66666666666667" width="30" height="30.000000000000014"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="C73-rl-78R"/>
+                                <constraint firstAttribute="width" constant="30" id="ggN-Sc-9TQ"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mZW-mO-B1w">
+                            <rect key="frame" x="54" y="116.33333333333333" width="604" height="18.666666666666671"/>
+                            <fontDescription key="fontDescription" name="SofiaProRegular" family="Sofia Pro" pointSize="17"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="Location"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7T-2h-oIK">
+                            <rect key="frame" x="666" y="110.66666666666667" width="30" height="30.000000000000014"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="SfF-4g-o4e"/>
+                                <constraint firstAttribute="height" constant="30" id="bMV-tI-aNw"/>
+                            </constraints>
+                            <color key="tintColor" name="SecondaryFont"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                            <connections>
+                                <action selector="uiActionButtonTapped:" destination="-1" eventType="touchUpInside" id="g9u-pw-Yhe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
+                </stackView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="v7T-2h-oIK" firstAttribute="leading" secondItem="mZW-mO-B1w" secondAttribute="trailing" constant="8" id="8Z4-o8-NT7"/>
-                <constraint firstItem="mZW-mO-B1w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="9xO-nq-yjq"/>
-                <constraint firstItem="v7T-2h-oIK" firstAttribute="centerY" secondItem="mZW-mO-B1w" secondAttribute="centerY" id="M9N-Oy-MMv"/>
-                <constraint firstAttribute="trailing" secondItem="v7T-2h-oIK" secondAttribute="trailing" constant="8" id="Wa4-y0-feF"/>
-                <constraint firstAttribute="bottom" secondItem="mZW-mO-B1w" secondAttribute="bottom" constant="8" id="XDP-w2-ofD"/>
-                <constraint firstItem="mZW-mO-B1w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="eGH-ya-ds9"/>
+                <constraint firstAttribute="trailing" secondItem="8AD-fw-jmA" secondAttribute="trailing" id="MXh-ST-o5P"/>
+                <constraint firstItem="8AD-fw-jmA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nUi-yi-qaq"/>
+                <constraint firstItem="8AD-fw-jmA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qil-cn-YYe"/>
+                <constraint firstAttribute="bottom" secondItem="8AD-fw-jmA" secondAttribute="bottom" id="ys2-mx-lrc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="99.236641221374043" y="818.30985915492965"/>
         </view>
     </objects>
+    <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="SecondaryFont">
+            <color red="0.38039215686274508" green="0.40392156862745099" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

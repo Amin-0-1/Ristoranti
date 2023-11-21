@@ -12,11 +12,15 @@ class RoundedTextfield: UIView {
     
     @IBOutlet private var contentView: UIView!
     @IBOutlet private weak var uiTextfield: UITextField!
+    @IBOutlet private weak var uiPrefixImage: UIImageView!
     @IBOutlet private weak var uiActionButton: UIButton!
-    //    private enum PasswordStates: String {
-    //        case hidden = "eye.fill"
-    //        case shown = "eye.slash.fill"
-    //    }
+    
+    private var _secureImage = UIImage(systemName: "eye.fill")
+    private var _unSecureImage = UIImage(systemName: "eye.slash.fill")
+    private var _customActionImage: UIImage?
+    
+    var borderColor: UIColor?
+    var borderWidth: CGFloat?
     
     private enum PasswordStates {
         case hidden
@@ -25,8 +29,8 @@ class RoundedTextfield: UIView {
     private var currentPasswordState: PasswordStates? {
         willSet {
             guard let value = newValue else {return}
-            //            let image = UIImage(systemName: value.rawValue)
-            //            self.uiActionButton.setImage(image, for: .normal)
+            let image = value == .hidden ? _secureImage : _unSecureImage
+            self.uiActionButton.setImage(image, for: .normal)
             self.uiTextfield.isSecureTextEntry = value == .hidden
         }
     }
@@ -34,9 +38,6 @@ class RoundedTextfield: UIView {
     var text: String? {
         return uiTextfield.text
     }
-    var borderColor: UIColor?
-    var borderWidth: CGFloat?
-    
     var isRequired = false {
         willSet(value) {
             setBoarded(color: value ? .systemRed : borderColor)
@@ -68,6 +69,7 @@ class RoundedTextfield: UIView {
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.border_width = 0.1
         self.border_color = .gray
+        self.prefixImage = nil
         self.addSubview(self.contentView)
         uiTextfield.delegate = self
         uiTextfield.addTarget(self, action: #selector(textfieldDidEndEditing(sender: )), for: .editingDidEnd)
@@ -102,6 +104,7 @@ class RoundedTextfield: UIView {
         delegate?.textFieldDidChange(text: sender.text, textfield: self)
     }
     
+    // MARK: - placeholder
     @IBInspectable
     var placeholder: String? {
         get {return self.uiTextfield.placeholder}
@@ -109,7 +112,7 @@ class RoundedTextfield: UIView {
             self.uiTextfield.placeholder = placeholder
         }
     }
-    
+    // MARK: - backgroundColor
     @IBInspectable
     var background_color: UIColor? {
         get {return self.contentView.backgroundColor}
@@ -117,6 +120,7 @@ class RoundedTextfield: UIView {
             self.contentView.backgroundColor = color
         }
     }
+    // MARK: - border
     @IBInspectable
     var border_color: UIColor? {
         get {
@@ -138,6 +142,7 @@ class RoundedTextfield: UIView {
             self.contentView.layer.borderWidth = width
         }
     }
+    // MARK: - cornerRadius
     @IBInspectable
     var cornerRadius: Float {
         get {return Float(self.contentView.layer.cornerRadius)}
@@ -145,6 +150,7 @@ class RoundedTextfield: UIView {
             self.contentView.layer.cornerRadius = CGFloat(newValue)
         }
     }
+    // MARK: - suffixAction
     @IBInspectable
     var disableAction: Bool {
         get {return false}
@@ -154,7 +160,25 @@ class RoundedTextfield: UIView {
             }
         }
     }
-    
+    @IBInspectable
+    var actionImage: UIImage? {
+        get {return _customActionImage}
+        set {
+            if let newValue {
+                _customActionImage = newValue
+                uiActionButton.setImage(newValue, for: .normal)
+            }
+        }
+    }
+    @IBInspectable
+    var actionDefaultTintColor: UIColor? {
+        get {return uiActionButton.imageView?.tintColor}
+        set {
+            guard let color = newValue else {return}
+            self.uiActionButton.imageView?.tintColor = color
+        }
+    }
+    // MARK: - Password
     @IBInspectable
     var secureTextfield: Bool {
         get {return false}
@@ -173,9 +197,34 @@ class RoundedTextfield: UIView {
         
         set {
             guard let image = newValue else {return}
+            self._secureImage = image
             self.uiActionButton.setImage(image, for: .normal)
-            self.uiActionButton.setImage(image, for: .selected)
-            self.uiActionButton.setImage(image, for: .highlighted)
+        }
+    }
+    @IBInspectable
+    var unSecureImage: UIImage? {
+        get {return uiActionButton.image(for: .selected)}
+        set {
+            if let image = newValue {
+                self.uiActionButton.setImage(image, for: .selected)
+                self._unSecureImage = image
+            }
+        }
+    }
+    
+    // MARK: - prefixImage
+    @IBInspectable
+    var prefixImage: UIImage? {
+        get {return uiPrefixImage.image}
+        set {
+            if let newValue {
+                uiPrefixImage.image = newValue
+                uiPrefixImage.isHidden = false
+                return
+            }
+            uiPrefixImage.image = nil
+            uiPrefixImage.isHidden = true
+            
         }
     }
     
