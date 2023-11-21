@@ -74,6 +74,7 @@ extension UIView {
             return layer.shadowOpacity
         }
         set {
+            updateShadowPath()
             layer.shadowOpacity = newValue
         }
     }
@@ -84,6 +85,7 @@ extension UIView {
             return layer.shadowRadius
         }
         set {
+            updateShadowPath()
             layer.shadowRadius = newValue
         }
     }
@@ -94,6 +96,7 @@ extension UIView {
             return layer.shadowOffset
         }
         set {
+            updateShadowPath()
             layer.shadowOffset = newValue
         }
     }
@@ -107,26 +110,14 @@ extension UIView {
             return nil
         }
         set {
+            updateShadowPath()
             layer.shadowColor = newValue?.cgColor
         }
     }
     
-    @IBInspectable
-    var _ISShadowPath: Bool {
-        get {
-            return layer.cornerRadius > 0
-        }
-        set {
-            if newValue {
-                updateShadowPath()
-            } else {
-                layer.shadowPath = nil
-            }
-        }
-    }
     private func updateShadowPath() {
-        shadowPath.configure(rect: bounds, cornerRadius: _ISShadowPath ? layer.cornerRadius : nil)
-        layer.shadowPath = shadowPath.getPath()
+//        shadowPath.configure(rect: bounds, cornerRadius: layer.cornerRadius )
+//        layer.shadowPath = shadowPath.getPath()
     }
 }
 

@@ -201,7 +201,6 @@
                             <constraint firstItem="4nN-Iu-0on" firstAttribute="leading" secondItem="QEI-ne-KxQ" secondAttribute="leading" id="z9A-aa-cM0"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="_HasCGPath" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="_CornerRadius">
                                 <real key="value" value="15"/>
                             </userDefinedRuntimeAttribute>
@@ -225,7 +224,10 @@
                     <real key="value" value="0.20000000000000001"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="size" keyPath="_ShadowOffset">
-                    <size key="value" width="2" height="2"/>
+                    <size key="value" width="1" height="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="_ShadowRadius">
+                    <real key="value" value="1"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
